@@ -1,1 +1,81 @@
-<p>login works!</p>
+<div class="container d-flex flex-column align-items-center justify-content-center vh-100">
+    <div class="card w-100">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="showLogin" (click)="showLogin = true">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="!showLogin" (click)="showLogin = false">Registrate</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div *ngIf="showLogin; else registerTemplate">
+                <h2 class="card-title">Login</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input id="email" formControlName="email" type="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password:</label>
+                        <input id="password" formControlName="password" type="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+            <ng-template #registerTemplate>
+                <h2 class="card-title">Registro</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onRegister($event)">
+                    <div class="mb-3">
+                        <label for="profilePicture" class="form-label">Foto de perfil:</label>
+                        <input id="profilePicture" type="file" (change)="onProfilePictureChange($event)"
+                            class="form-control">
+                        <div *ngIf="profilePicturePreview" class="mt-2">
+                            <img [src]="profilePicturePreview" alt="Profile Picture Preview" class="img-thumbnail"
+                                width="150">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="form-label">Nombre:</label>
+                            <input id="firstName" formControlName="firstName" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="form-label">Apellido:</label>
+                            <input id="lastName" formControlName="lastName" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input id="email" formControlName="email" type="email" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="userName" class="form-label">Nombre de usuario:</label>
+                            <input id="userName" formControlName="userName" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phoneNumber" class="form-label"> Número de teléfono:</label>
+                            <input id="phoneNumber" formControlName="phoneNumber" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
+                            <input id="password" formControlName="password" type="password" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar contraseña:</label>
+                            <input id="confirmPassword" type="password" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Registrate</button>
+                </form>
+            </ng-template>
+        </div>
+    </div>
+</div>

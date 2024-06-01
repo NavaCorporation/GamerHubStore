@@ -1,0 +1,24 @@
+.container {
+    max-width: 600px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+button {
+    width: fit-content;
+}
+
+p {
+    margin-top: 20px;
+}
+.nav-link:hover {
+    cursor: pointer;
+}

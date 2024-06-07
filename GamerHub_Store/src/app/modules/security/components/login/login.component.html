@@ -36,7 +36,7 @@
                 <form [formGroup]="registerForm" (ngSubmit)="onRegister($event)">
                     <div class="mb-3 text-center">
 
-                        <img [src]="profilePicturePreview || 'https://via.placeholder.com/150'" alt="Profile picture"
+                        <img [src]="profilePicturePreview || perfilDefault" alt="Profile picture"
                             class="img-thumbnail rounded-circle" width="150" (click)="triggerFileInput()"
                             style="cursor: pointer;">
 
@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="confirmPassword" class="form-label">
-                                <input id="confirmPassword" type="password"
+                                <input id="confirmPassword" formControlName="confirmPassword" type="password"
                                     class="form-control" placeholder=" ">
                                 <span class="label_name">Confirmar Contraseña</span>
                                 </label>

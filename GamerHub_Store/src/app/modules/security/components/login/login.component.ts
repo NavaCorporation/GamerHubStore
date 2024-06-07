@@ -15,6 +15,7 @@ import { trigger } from '@angular/animations';
 export class LoginComponent  implements OnInit {
   showLogin: boolean = true;
   profilePicturePreview: string | ArrayBuffer | null = null;
+  perfilDefault: string = 'assets/img/fotoPerfil.jpg';
   loginForm!: FormGroup;
   registerForm!: FormGroup;
 
@@ -25,15 +26,16 @@ export class LoginComponent  implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+
     this.registerForm = this.fb.group({
       profilePicture: [null],
-      firsName: [''],
+      firstName: [''],
       lastName: [''],
       userName: [''],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required, Validators.pattern("^[0-9]*$")],
+      phoneNumber: ['', Validators.required],
       password: ['', Validators.required],
-      confirmPassword: ['']
+      confirmPassword: [''],
     });
   }
 
@@ -48,6 +50,9 @@ export class LoginComponent  implements OnInit {
   onLogin(): void {
     if (this.loginForm.valid) {
       console.log('Login data:', this.loginForm.value);
+      alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
+    } else {
+      alert('Error en algun lado');
     }
   }
 
@@ -55,6 +60,9 @@ export class LoginComponent  implements OnInit {
     event.preventDefault(); 
     if (this.registerForm.valid) {
       console.log('Register data:', this.registerForm.value);
+      alert('Registro exitoso!\n\n' + JSON.stringify(this.registerForm.value, null, 2));
+    } else { 
+      alert ('Por favor, rellene todos los campos');
     }
   }
 

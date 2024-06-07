@@ -19,6 +19,56 @@ button {
 p {
     margin-top: 20px;
 }
+
 .nav-link:hover {
     cursor: pointer;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.img-thumbnail {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.form-label {
+
+    display: grid;
+    grid-template-areas: "input";
+}
+
+.label_name {
+    grid-area: input;
+
+    z-index: 100;
+    width: max-content;
+    margin-left: 1rem;
+    padding: 0 .5rem;
+    align-self:  center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    transition: transform .2s;
+    transform-origin: center left;
+}
+
+input {
+    grid-area: input;
+    font: inherit;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: .7rem 1.5rem;
+}
+
+input:focus + .label_name, input:not(:placeholder-shown) + .label_name {
+    transform: translateY(-50%) scale(.7);
+    background-color: white;
 }

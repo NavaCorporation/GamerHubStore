@@ -12,67 +12,98 @@
         </div>
         <div class="card-body">
             <div *ngIf="showLogin; else registerTemplate">
-                <h2 class="card-title">Login</h2>
+                <h2 class="card-title text-center">Login</h2>
                 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input id="email" formControlName="email" type="email" class="form-control">
+                        <label for="email" class="form-label">
+                            <input id="email" formControlName="email" type="email" class="form-control" placeholder=" ">
+                            <span class="label_name">Email</span>
+                        </label>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password:</label>
-                        <input id="password" formControlName="password" type="password" class="form-control">
+                        <label for="password" class="form-label">
+                            <input id="password" formControlName="password" type="password" class="form-control"
+                                placeholder=" ">
+                            <span class="label_name">Contraseña</span>
+                        </label>
+
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
             <ng-template #registerTemplate>
-                <h2 class="card-title">Registro</h2>
+                <h2 class="card-title text-center">Registro</h2>
                 <form [formGroup]="registerForm" (ngSubmit)="onRegister($event)">
-                    <div class="mb-3">
-                        <label for="profilePicture" class="form-label">Foto de perfil:</label>
+                    <div class="mb-3 text-center">
+
+                        <img [src]="profilePicturePreview || 'https://via.placeholder.com/150'" alt="Profile picture"
+                            class="img-thumbnail rounded-circle" width="150" (click)="triggerFileInput()"
+                            style="cursor: pointer;">
+
                         <input id="profilePicture" type="file" (change)="onProfilePictureChange($event)"
-                            class="form-control">
-                        <div *ngIf="profilePicturePreview" class="mt-2">
-                            <img [src]="profilePicturePreview" alt="Profile Picture Preview" class="img-thumbnail"
-                                width="150">
-                        </div>
+                            class="form-control" accept="image/*" style="display: none;">
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName" class="form-label">Nombre:</label>
-                            <input id="firstName" formControlName="firstName" type="text" class="form-control">
+                            <label for="firstName" class="form-label">
+                                <input id="firstName" formControlName="firstName" type="text" class="form-control" placeholder=" ">
+                                <span class="label_name">Nombre</span>
+                            </label>
+
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="lastName" class="form-label">Apellido:</label>
-                            <input id="lastName" formControlName="lastName" type="text" class="form-control">
+                            <label for="lastName" class="form-label">
+                                <input id="lastName" formControlName="lastName"
+                                    type="text" class="form-control" placeholder=" ">
+                                <span class="label_name">Apellido</span>
+                            </label>
+
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input id="email" formControlName="email" type="email" class="form-control">
+                        <label for="email" class="form-label">
+                            <input id="email" formControlName="email" type="email"
+                                class="form-control" placeholder=" ">
+                            <span class="label_name">Email</span>
+                            </label>
+
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="userName" class="form-label">Nombre de usuario:</label>
-                            <input id="userName" formControlName="userName" type="text" class="form-control">
+                            <label for="userName" class="form-label">
+                                <input id="userName" formControlName="userName"
+                                    type="text" class="form-control" placeholder=" ">
+                                <span class="label_name">Nombre de Usuario</span>
+                                </label>
+
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="phoneNumber" class="form-label"> Número de teléfono:</label>
-                            <input id="phoneNumber" formControlName="phoneNumber" type="text" class="form-control">
+                            <label for="phoneNumber" class="form-label"> 
+                                <input id="phoneNumber"
+                                    formControlName="phoneNumber" type="text" class="form-control" placeholder=" ">
+                                <span class="label_name">Numero de Telefono</span>
+                                </label>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="password" class="form-label">Contraseña:</label>
-                            <input id="password" formControlName="password" type="password" class="form-control">
+                            <label for="password" class="form-label">
+                                <input id="password" formControlName="password"
+                                    type="password" class="form-control" placeholder=" ">
+                                <span class="label_name">Contraseña</span>
+                                </label>
+
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="confirmPassword" class="form-label">Confirmar contraseña:</label>
-                            <input id="confirmPassword" type="password" class="form-control">
+                            <label for="confirmPassword" class="form-label">
+                                <input id="confirmPassword" type="password"
+                                    class="form-control" placeholder=" ">
+                                <span class="label_name">Confirmar Contraseña</span>
+                                </label>
+
                         </div>
                     </div>
-
-
                     <button type="submit" class="btn btn-primary">Registrate</button>
                 </form>
             </ng-template>

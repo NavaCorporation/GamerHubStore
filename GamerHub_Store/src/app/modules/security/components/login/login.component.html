@@ -3,10 +3,10 @@
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" [class.active]="showLogin" (click)="showLogin = true">Login</a>
+                    <a class="nav-link" [class.active]="showLogin" (click)="showLogin = true">Login <i class="bi bi-person-circle"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [class.active]="!showLogin" (click)="showLogin = false">Registrate</a>
+                    <a class="nav-link" [class.active]="!showLogin" (click)="showLogin = false">Registrate <i class="bi bi-clipboard2-plus"></i></a>
                 </li>
             </ul>
         </div>
@@ -17,14 +17,14 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">
                             <input id="email" formControlName="email" type="email" class="form-control" placeholder=" ">
-                            <span class="label_name">Email</span>
+                            <span class="label_name"><i class="bi bi-envelope-at">    Email</i></span>
                         </label>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">
                             <input id="password" formControlName="password" type="password" class="form-control"
                                 placeholder=" ">
-                            <span class="label_name">Contraseña</span>
+                            <span class="label_name"><i class="bi bi-shield-lock">    Contraseña</i></span>
                         </label>
 
                     </div>
@@ -47,7 +47,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="firstName" class="form-label">
                                 <input id="firstName" formControlName="firstName" type="text" class="form-control" placeholder=" ">
-                                <span class="label_name">Nombre</span>
+                                <span class="label_name"><i class="bi bi-person">    Nombre</i></span>
                             </label>
 
                         </div>
@@ -55,7 +55,7 @@
                             <label for="lastName" class="form-label">
                                 <input id="lastName" formControlName="lastName"
                                     type="text" class="form-control" placeholder=" ">
-                                <span class="label_name">Apellido</span>
+                                <span class="label_name"><i class="bi bi-person">    Apellido</i></span>
                             </label>
 
                         </div>
@@ -64,7 +64,7 @@
                         <label for="email" class="form-label">
                             <input id="email" formControlName="email" type="email"
                                 class="form-control" placeholder=" ">
-                            <span class="label_name">Email</span>
+                            <span class="label_name"><i class="bi bi-envelope-at">    Email</i></span>
                             </label>
 
                     </div>
@@ -73,7 +73,7 @@
                             <label for="userName" class="form-label">
                                 <input id="userName" formControlName="userName"
                                     type="text" class="form-control" placeholder=" ">
-                                <span class="label_name">Nombre de Usuario</span>
+                                <span class="label_name"><i class="bi bi-person-badge">    Nombre de Usuario</i></span>
                                 </label>
 
                         </div>
@@ -81,7 +81,7 @@
                             <label for="phoneNumber" class="form-label"> 
                                 <input id="phoneNumber"
                                     formControlName="phoneNumber" type="text" class="form-control" placeholder=" ">
-                                <span class="label_name">Numero de Telefono</span>
+                                <span class="label_name"><i class="bi bi-phone">    Numero de Telefono</i></span>
                                 </label>
 
                         </div>
@@ -91,7 +91,7 @@
                             <label for="password" class="form-label">
                                 <input id="password" formControlName="password"
                                     type="password" class="form-control" placeholder=" ">
-                                <span class="label_name">Contraseña</span>
+                                <span class="label_name"><i class="bi bi-shield-lock">    Contraseña</i></span>
                                 </label>
 
                         </div>
@@ -99,7 +99,7 @@
                             <label for="confirmPassword" class="form-label">
                                 <input id="confirmPassword" formControlName="confirmPassword" type="password"
                                     class="form-control" placeholder=" ">
-                                <span class="label_name">Confirmar Contraseña</span>
+                                <span class="label_name"><i class="bi bi-shield-lock">    Confirmar Contraseña</i></span>
                                 </label>
 
                         </div>

@@ -22,11 +22,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">
-                            <input id="password" formControlName="password" type="password" class="form-control"
+                            <input id="password" formControlName="password" [type]="passwordVisible ? 'text' : 'password'" class="form-control"
                                 placeholder=" ">
                             <span class="label_name"><i class="bi bi-shield-lock">    Contraseña</i></span>
+                            
                         </label>
-
                     </div>
                     <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
                 </form>
@@ -90,7 +90,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="password" class="form-label">
                                 <input id="password" formControlName="password"
-                                    type="password" class="form-control" placeholder=" ">
+                                    type="password" class="form-control password-match" placeholder=" ">
                                 <span class="label_name"><i class="bi bi-shield-lock">    Contraseña</i></span>
                                 </label>
 
@@ -98,7 +98,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="confirmPassword" class="form-label">
                                 <input id="confirmPassword" formControlName="confirmPassword" type="password"
-                                    class="form-control" placeholder=" ">
+                                    class="form-control" placeholder=" " [ngClass]="{ 'password-match-invalid': !passwordMatch }">
                                 <span class="label_name"><i class="bi bi-shield-lock">    Confirmar Contraseña</i></span>
                                 </label>
 

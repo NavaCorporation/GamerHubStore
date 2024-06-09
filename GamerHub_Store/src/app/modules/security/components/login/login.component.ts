@@ -17,8 +17,10 @@ export class LoginComponent  implements OnInit {
   showLogin: boolean = true;
   profilePicturePreview: string | ArrayBuffer | null = null;
   perfilDefault: string = 'assets/img/fotoPerfil.jpg';
+  passwordMatch: boolean = false;
   loginForm!: FormGroup;
   registerForm!: FormGroup;
+  passwordVisible: boolean = false;
 
   constructor(private fb: FormBuilder) {}
 
@@ -38,6 +40,9 @@ export class LoginComponent  implements OnInit {
       password: ['', Validators.required],
       confirmPassword: ['', [Validators.required] ], 
     }, { validators: CustomValidators.noIgual('password', 'confirmPassword') });
+    this.registerForm.statusChanges.subscribe(() => {
+      this.passwordMatch = this.registerForm.get('confirmPassword')?.valid || false;
+    });
   }
 
   toggleForm(): void {
@@ -46,6 +51,9 @@ export class LoginComponent  implements OnInit {
       this.registerForm.reset();
       this.profilePicturePreview = null;
     }
+  }
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
   }
 
   onLogin(): void {

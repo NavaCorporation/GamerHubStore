@@ -42,11 +42,11 @@ p {
 
     display: grid;
     grid-template-areas: "input";
+    
 }
 
 .label_name {
     grid-area: input;
-
     z-index: 100;
     width: max-content;
     margin-left: 1rem;
@@ -55,9 +55,12 @@ p {
     height: 100%;
     display: flex;
     align-items: center;
-
     transition: transform .2s;
     transform-origin: center left;
+}
+
+.bi-eye-slash {
+    margin-left: 5rem;
 }
 
 input {
@@ -65,13 +68,20 @@ input {
     font: inherit;
     border-radius: 10px;
     border: 1px solid #ccc;
-    padding: .7rem 1.5rem;
+    padding: .7rem 1.5rem .7rem .5rem;
+
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 input:focus+.label_name,
 input:not(:placeholder-shown)+.label_name {
     transform: translateY(-50%) scale(.7);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.973);
 }
 
 input.ng-touched.ng-invalid {
@@ -80,4 +90,19 @@ input.ng-touched.ng-invalid {
 
 input.ng-touched.ng-valid {
     border-left: 3px solid green;
+}
+
+input.ng-touched.password-match-invalid {
+    border-left: 3px solid red;
+}
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 1.25rem;
+    cursor: pointer;
 }

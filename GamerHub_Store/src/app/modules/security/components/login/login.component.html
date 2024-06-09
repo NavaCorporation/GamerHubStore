@@ -28,7 +28,7 @@
                         </label>
 
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
                 </form>
             </div>
             <ng-template #registerTemplate>
@@ -104,7 +104,7 @@
 
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Registrate</button>
+                    <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Registrate</button>
                 </form>
             </ng-template>
         </div>

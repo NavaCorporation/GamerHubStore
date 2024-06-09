@@ -72,3 +72,6 @@ input:focus + .label_name, input:not(:placeholder-shown) + .label_name {
     transform: translateY(-50%) scale(.7);
     background-color: white;
 }
+input.ng-touched.ng-invalid {
+    border-left: 3px solid red;
+}

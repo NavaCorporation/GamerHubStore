@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AuthenticationService } from '../../services/authService/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { trigger } from '@angular/animations';
+import { CustomValidators } from '../../models/customValidators';
 
 @Component({
   selector: 'app-login',
@@ -35,8 +36,8 @@ export class LoginComponent  implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
       password: ['', Validators.required],
-      confirmPassword: [''],
-    });
+      confirmPassword: ['', [Validators.required] ], 
+    }, { validators: CustomValidators.noIgual('password', 'confirmPassword') });
   }
 
   toggleForm(): void {
@@ -90,6 +91,5 @@ export class LoginComponent  implements OnInit {
     const input = document.getElementById('profilePicture') as HTMLInputElement;
     input.click();
   }
-
 
 }

@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-purchase-history',
   standalone: true,
-  imports: [],
   templateUrl: './purchase-history.component.html',
-  styleUrl: './purchase-history.component.css'
+  styleUrls: ['./purchase-history.component.css']
 })
-export class PurchaseHistoryComponent {
+export class PurchaseHistoryComponent{};
 
-}
+

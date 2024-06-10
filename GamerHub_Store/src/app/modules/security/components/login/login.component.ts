@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AuthenticationService } from '../../services/authService/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { trigger } from '@angular/animations';
+import { CustomValidators } from '../../models/customValidators';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,10 @@ export class LoginComponent  implements OnInit {
   showLogin: boolean = true;
   profilePicturePreview: string | ArrayBuffer | null = null;
   perfilDefault: string = 'assets/img/fotoPerfil.jpg';
+  passwordMatch: boolean = false;
   loginForm!: FormGroup;
   registerForm!: FormGroup;
+  passwordVisible: boolean = false;
 
   constructor(private fb: FormBuilder) {}
 
@@ -29,13 +32,16 @@ export class LoginComponent  implements OnInit {
 
     this.registerForm = this.fb.group({
       profilePicture: [null],
-      firstName: [''],
-      lastName: [''],
-      userName: [''],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      userName: ['',Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
       password: ['', Validators.required],
-      confirmPassword: [''],
+      confirmPassword: ['', [Validators.required] ], 
+    }, { validators: CustomValidators.noIgual('password', 'confirmPassword') });
+    this.registerForm.statusChanges.subscribe(() => {
+      this.passwordMatch = this.registerForm.get('confirmPassword')?.valid || false;
     });
   }
 
@@ -45,6 +51,9 @@ export class LoginComponent  implements OnInit {
       this.registerForm.reset();
       this.profilePicturePreview = null;
     }
+  }
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
   }
 
   onLogin(): void {
@@ -90,4 +99,5 @@ export class LoginComponent  implements OnInit {
     const input = document.getElementById('profilePicture') as HTMLInputElement;
     input.click();
   }
+
 }

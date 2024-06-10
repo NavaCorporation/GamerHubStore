@@ -7,21 +7,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { trigger } from '@angular/animations';
 import { DatosUser } from '../../models/datosUser';
 import { RegisterComponent } from "../register/register.component";
+import { LoginAdmComponent } from "../login-adm/login-adm.component";
 
 @Component({
     selector: 'app-login',
     standalone: true,
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
-    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent]
+    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent]
 })
 export class LoginComponent  implements OnInit {
   showLogin: boolean = true;
   showAdminLogin: boolean = false;
   logueo: DatosUser[] = [];
   loginForm!: FormGroup;
-  adminLoginForm!: FormGroup;
-  passwordVisible: boolean = false;
 
   //Esto es una prueba
   private readonly adminEmail: string = 'admin@ghs.com';
@@ -35,9 +34,9 @@ export class LoginComponent  implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-    this.adminLoginForm = this.fb.group({
-      adminCode : ['', Validators.required]
-    })
+  }
+  toggleAdminLogin(): void {
+    this.showAdminLogin = !this.showAdminLogin;
   }
 
   toggleForm(): void {
@@ -55,7 +54,7 @@ export class LoginComponent  implements OnInit {
       if (this.loginForm.valid) {
       console.log('Login data:', this.loginForm.value);
       alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
-      this.router.navigate(['/order']);
+      this.router.navigate(['/product']);
 
     } else {
       alert('Error en algun lado');
@@ -64,16 +63,4 @@ export class LoginComponent  implements OnInit {
     
   }
 
-  // Solo es una prueba, manejar con el backend y en authService
-  onAdminLogin(): void {
-    const {adminCode} = this.adminLoginForm.value;
-
-    if (adminCode === this.adminAccessCode) {
-      console.log('Login Admin exitoso!');
-      alert('Login Admin exitoso!');
-      this.router.navigate(['/dashboard']);
-    } else {
-      alert('Código de acceso incorrecto');
-    }
-  }
 }

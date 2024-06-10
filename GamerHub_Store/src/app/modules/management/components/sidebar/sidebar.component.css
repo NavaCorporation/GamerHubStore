@@ -1,0 +1,42 @@
+.sidebar {
+    display: auto;
+    width: 256px;
+    min-width: 200px;
+    max-width: 300px; 
+    height:100vh;
+    overflow-y: auto;
+    padding: 20px;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    border-right: 1px solid #E4E2DE;
+    background: #F4F1ED;
+}
+  @media (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* Ajuste del ancho para pantallas más pequeñas */
+    }
+}
+
+/* divider */
+.hr {
+    border: none; /* Elimina el borde predeterminado */
+    height: px; /* Ajusta la altura del divisor */
+    background-color: #b81919; /* Cambia el color del divisor */
+    width: 80%; /* Ajusta el ancho del divisor */
+    margin: 10px 0; /* Añade margen arriba y abajo del divisor */
+}
+
+/* perfil */
+.company{ 
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: stretch;
+}
+
+
+

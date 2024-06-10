@@ -1,103 +1,79 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { trigger } from '@angular/animations';
-import { CustomValidators } from '../../models/customValidators';
+import { DatosUser } from '../../models/datosUser';
+import { RegisterComponent } from "../register/register.component";
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    standalone: true,
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css',
+    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent]
 })
 export class LoginComponent  implements OnInit {
   showLogin: boolean = true;
-  profilePicturePreview: string | ArrayBuffer | null = null;
-  perfilDefault: string = 'assets/img/fotoPerfil.jpg';
-  passwordMatch: boolean = false;
+  showAdminLogin: boolean = false;
+  logueo: DatosUser[] = [];
   loginForm!: FormGroup;
-  registerForm!: FormGroup;
+  adminLoginForm!: FormGroup;
   passwordVisible: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  //Esto es una prueba
+  private readonly adminEmail: string = 'admin@ghs.com';
+  private readonly adminPassword: string = 'admin123';
+  private readonly adminAccessCode: string = '12345';
+
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-
-    this.registerForm = this.fb.group({
-      profilePicture: [null],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      userName: ['',Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
-      password: ['', Validators.required],
-      confirmPassword: ['', [Validators.required] ], 
-    }, { validators: CustomValidators.noIgual('password', 'confirmPassword') });
-    this.registerForm.statusChanges.subscribe(() => {
-      this.passwordMatch = this.registerForm.get('confirmPassword')?.valid || false;
-    });
+    this.adminLoginForm = this.fb.group({
+      adminCode : ['', Validators.required]
+    })
   }
 
   toggleForm(): void {
     this.showLogin = !this.showLogin;
-    if (this.showLogin) {
-      this.registerForm.reset();
-      this.profilePicturePreview = null;
-    }
-  }
-  togglePasswordVisibility(): void {
-    this.passwordVisible = !this.passwordVisible;
   }
 
   onLogin(): void {
-    if (this.loginForm.valid) {
+    // Prueba de admin
+    const {email, password} = this.loginForm.value;
+    if (email === this.adminEmail && password === this.adminPassword) {
+      this.showAdminLogin = true;
+    } 
+    // sin el else 
+    else if (this.loginForm.valid) {
+      if (this.loginForm.valid) {
       console.log('Login data:', this.loginForm.value);
       alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
+      this.router.navigate(['/order']);
+
     } else {
       alert('Error en algun lado');
     }
+    }
+    
   }
 
-  onRegister(event: Event): void {
-    event.preventDefault(); 
-    if (this.registerForm.valid) {
-      console.log('Register data:', this.registerForm.value);
-      alert('Registro exitoso!\n\n' + JSON.stringify(this.registerForm.value, null, 2));
-    } else { 
-      alert ('Por favor, rellene todos los campos');
+  // Solo es una prueba, manejar con el backend y en authService
+  onAdminLogin(): void {
+    const {adminCode} = this.adminLoginForm.value;
+
+    if (adminCode === this.adminAccessCode) {
+      console.log('Login Admin exitoso!');
+      alert('Login Admin exitoso!');
+      this.router.navigate(['/dashboard']);
+    } else {
+      alert('Código de acceso incorrecto');
     }
   }
-
-  onProfilePictureChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const allowedMinetypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
-      
-      if (!allowedMinetypes.includes(file.type)) {
-        alert('El archivo seleccionado no es una imagen válida. Por favor, seleccione una imagen con una extensión válida. (jpg, jpeg, png, gif)');
-        return;
-      }
-
-      this.registerForm.patchValue({ profilePicture: file });
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.profilePicturePreview = reader.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-  triggerFileInput(): void {
-    const input = document.getElementById('profilePicture') as HTMLInputElement;
-    input.click();
-  }
-
 }

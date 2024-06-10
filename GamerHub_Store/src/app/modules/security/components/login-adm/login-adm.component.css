@@ -1,0 +1,108 @@
+.container {
+    max-width: 600px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+button {
+    width: fit-content;
+}
+
+p {
+    margin-top: 20px;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.img-thumbnail {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.form-label {
+
+    display: grid;
+    grid-template-areas: "input";
+    
+}
+
+.label_name {
+    grid-area: input;
+    z-index: 100;
+    width: max-content;
+    margin-left: 1rem;
+    padding: 0 .5rem;
+    align-self: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: transform .2s;
+    transform-origin: center left;
+}
+
+.bi-eye-slash {
+    margin-left: 5rem;
+}
+
+input {
+    grid-area: input;
+    font: inherit;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: .7rem 1.5rem .7rem .5rem;
+
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input:focus+.label_name,
+input:not(:placeholder-shown)+.label_name {
+    transform: translateY(-50%) scale(.7);
+    background-color: rgba(255, 255, 255, 0.973);
+}
+
+input.ng-touched.ng-invalid {
+    border-left: 3px solid red;
+}
+
+input.ng-touched.ng-valid {
+    border-left: 3px solid green;
+}
+
+input.ng-touched.password-match-invalid {
+    border-left: 3px solid red;
+}
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 1.25rem;
+    cursor: pointer;
+}

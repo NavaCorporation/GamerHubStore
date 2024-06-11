@@ -15,9 +15,10 @@ import { EncabezadoComprasComponent } from "./modules/shopping/components/encabe
 export class AppComponent {
   title = 'GameHub_Store';
 
-  constructor(private router: Router) {}
-
-  isLoginPage(): boolean {
+  constructor(private router: Router ) { }
+  
+  
+isLoginPage(): boolean {
     return this.router.url === '/login';
   }
 }

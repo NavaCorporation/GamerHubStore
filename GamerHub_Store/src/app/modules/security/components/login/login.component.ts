@@ -22,12 +22,16 @@ export class LoginComponent  implements OnInit {
   logueo: DatosUser[] = [];
   loginForm!: FormGroup;
 
-  //Esto es una prueba
+  //Esto es una prueba para el admin
   private readonly adminEmail: string = 'admin@ghs.com';
   private readonly adminPassword: string = 'admin123';
-  private readonly adminAccessCode: string = '12345';
+  //Esto es una prueba para user
+  userName= 'Usuario1';
+  userPassword= 'user123';
+  userEmail= 'user@gmail.com';
+  UserProfilePicture= 'assets/img/fotoPerfil.jpg';
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -52,7 +56,7 @@ export class LoginComponent  implements OnInit {
     // sin el else 
     else if (this.loginForm.valid) {
       if (this.loginForm.valid) {
-      console.log('Login data:', this.loginForm.value);
+              console.log('Login data:', this.loginForm.value);
       alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
       this.router.navigate(['/product']);
 

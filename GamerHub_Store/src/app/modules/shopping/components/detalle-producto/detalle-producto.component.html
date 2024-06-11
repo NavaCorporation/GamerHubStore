@@ -1,1 +1,111 @@
-<p>detalle-producto works!</p>
+<div class="container mt-5">
+    <h3>Detalle de Compra</h3>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="orderNumber" class="form-label">N° Orden</label>
+          <input type="text" class="form-control" id="orderNumber">
+        </div>
+        <div class="col-md-6">
+          <label for="orderDate" class="form-label">Fecha</label>
+          <input type="date" class="form-control" id="orderDate">
+        </div>
+      </div>
+      <br>
+  
+      <h5>Datos Comprador</h5>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="buyerName" class="form-label">Nombres</label>
+          <input type="text" class="form-control" id="buyerName">
+        </div>
+        <div class="col-md-6">
+          <label for="buyerUser" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="buyerUser">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="buyerAddress" class="form-label">Dirección</label>
+          <input type="text" class="form-control" id="buyerAddress">
+        </div>
+        <div class="col-md-6">
+          <label for="buyerPhone" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" id="buyerPhone">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="buyerEmail" class="form-label">Correo</label>
+          <input type="email" class="form-control" id="buyerEmail">
+        </div>
+      </div>
+  
+      <h5>Detalles de la Orden</h5>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio Unitario</th>
+              <th scope="col">Precio Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Producto A</td>
+              <td>1</td>
+              <td>$12.00</td>
+              <td>$12.00</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Producto B</td>
+              <td>1</td>
+              <td>$8.00</td>
+              <td>$8.00</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Producto C</td>
+              <td>1</td>
+              <td>$5.00</td>
+              <td>$5.00</td>
+            </tr>
+  
+  
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="row mb-3">
+          
+          <div class="col mb-6">
+            <label for="subtotal" class="form-label"><strong>Subtotal (USD)</strong></label>
+            <input type="number" class="form-control" id="subtotal" value="25" readonly>
+          </div>
+          <div class="col mb-6">
+            <label for="tax" class="form-label"><strong>IVA 15%</strong></label>
+            <input type="number" class="form-control" id="tax" value="3.75" readonly>
+          </div>
+          <div class="col mb-6">
+            <label for="shippingCost" class="form-label"><strong>Costo de Envío</strong></label>
+            <input type="number" class="form-control" id="shippingCost" value="4" readonly>
+          </div>
+          <div class="col mb-6">
+            <label for="total" class="form-label"><strong>Total a Pagar</strong></label>
+            <input type="number" class="form-control" id="total" value="32.75" readonly>
+          </div>
+  
+      </div>
+  
+  
+  
+      <button type="submit" class="btn btn-primary">Enviar Orden</button>
+    </form>
+    <br><br>
+  </div>
+

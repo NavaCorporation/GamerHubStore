@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
-import { trigger } from '@angular/animations';
 import { DatosUser } from '../../models/datosUser';
 import { RegisterComponent } from "../register/register.component";
 import { LoginAdmComponent } from "../login-adm/login-adm.component";
@@ -31,7 +30,7 @@ export class LoginComponent  implements OnInit {
   userEmail= 'user@gmail.com';
   UserProfilePicture= 'assets/img/fotoPerfil.jpg';
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

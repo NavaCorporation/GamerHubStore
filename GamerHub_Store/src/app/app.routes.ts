@@ -6,6 +6,7 @@ import { ProductosComponent } from './modules/shopping/components/productos/prod
 
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'client', component: ClientComponent },
     { path: 'dashboard', component: DashboardComponent },

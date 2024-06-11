@@ -58,9 +58,11 @@ export class LoginComponent  implements OnInit {
 
     } else {
       alert('Error en algun lado');
+      }
     }
-    }
-    
   }
-
+  resetForms (): void {
+      this.loginForm.reset();
+      this.showAdminLogin = false;
+    }
 }

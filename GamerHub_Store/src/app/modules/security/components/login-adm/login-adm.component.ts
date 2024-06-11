@@ -42,9 +42,5 @@ export class LoginAdmComponent implements OnInit {
       alert('Código de acceso incorrecto');
     }
   }
-  resetForms() {
-    this.adminLoginForm.reset();
-    this.showAdminLogin = false;
-  }
 
 }

@@ -15,5 +15,10 @@ export const routes: Routes = [
     { path: 'management', 
     loadChildren: () => import('./modules/management/management.routes').then(m => m.MANAGEMENT_ROUTES)},
 
+
+    //compras
+    
+
+
 ];
 

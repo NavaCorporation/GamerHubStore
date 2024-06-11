@@ -11,6 +11,9 @@ export const routes: Routes = [
     { path: 'client', component: ClientComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'product', component: ProductosComponent },
-    { path: '**', redirectTo: 'login', pathMatch: 'full' }
+    { path: '**', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'management', 
+    loadChildren: () => import('./modules/management/management.routes').then(m => m.MANAGEMENT_ROUTES)},
+
 ];
 

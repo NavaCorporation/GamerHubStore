@@ -3,13 +3,14 @@ import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { VerificacionService } from '../services/verificacion.service';
 import { verificacionClase } from '../models/verificacionClase';
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
-  selector: 'app-verificaciones',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './verificaciones.component.html',
-  styleUrl: './verificaciones.component.css'
+    selector: 'app-verificaciones',
+    standalone: true,
+    templateUrl: './verificaciones.component.html',
+    styleUrl: './verificaciones.component.css',
+    imports: [RouterLink, SidebarComponent]
 })
 export class VerificacionesComponent implements OnInit, OnDestroy {
 

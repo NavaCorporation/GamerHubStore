@@ -3,13 +3,14 @@ import { Router, RouterLink } from '@angular/router';
 import { Inventario } from '../models/inventario';
 import { InventarioService } from '../services/inventario.service';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
-  selector: 'app-inventario',
-  standalone: true,
-  imports: [RouterLink,FormsModule],
-  templateUrl: './inventario.component.html',
-  styleUrl: './inventario.component.css'
+    selector: 'app-inventario',
+    standalone: true,
+    templateUrl: './inventario.component.html',
+    styleUrl: './inventario.component.css',
+    imports: [RouterLink, FormsModule, SidebarComponent]
 })
 export class InventarioComponent {
 

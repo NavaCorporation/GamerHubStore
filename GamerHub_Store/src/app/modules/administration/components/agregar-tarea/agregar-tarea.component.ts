@@ -4,13 +4,14 @@ import { Router, RouterLink } from '@angular/router';
 
 import { Tarea } from '../models/tarea';
 import { AggTareaService } from '../services/agg-tarea.service';
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
-  selector: 'app-agregar-tarea',
-  standalone: true,
-  imports: [RouterLink,FormsModule ],
-  templateUrl: './agregar-tarea.component.html',
-  styleUrl: './agregar-tarea.component.css'
+    selector: 'app-agregar-tarea',
+    standalone: true,
+    templateUrl: './agregar-tarea.component.html',
+    styleUrl: './agregar-tarea.component.css',
+    imports: [RouterLink, FormsModule, SidebarComponent]
 })
 
 export class AgregarTareaComponent implements OnInit{

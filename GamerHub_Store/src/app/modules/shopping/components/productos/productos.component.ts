@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-compras.component";
 
 @Component({
     selector: 'app-productos',
     standalone: true,
-imports: [],
     templateUrl: './productos.component.html',
-    styleUrl: './productos.component.css'
+    styleUrl: './productos.component.css',
+    imports: [EncabezadoComprasComponent]
 })
 export class ProductosComponent {
 

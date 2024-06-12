@@ -7,13 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatosUser } from '../../models/datosUser';
 import { RegisterComponent } from "../register/register.component";
 import { LoginAdmComponent } from "../login-adm/login-adm.component";
+import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
 
 @Component({
     selector: 'app-login',
     standalone: true,
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
-    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent]
+    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent, EncabezadoComprasComponent]
 })
 export class LoginComponent  implements OnInit {
   @Output() userLoggedIn = new EventEmitter<DatosUser>();

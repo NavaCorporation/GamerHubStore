@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
@@ -16,21 +16,22 @@ import { LoginAdmComponent } from "../login-adm/login-adm.component";
     imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent]
 })
 export class LoginComponent  implements OnInit {
+  @Output() userLoggedIn = new EventEmitter<DatosUser>();
   showLogin: boolean = true;
   showAdminLogin: boolean = false;
-  logueo: DatosUser[] = [];
   loginForm!: FormGroup;
+  loggedInUser: DatosUser | null = null;
 
   //Esto es una prueba para el admin
   private readonly adminEmail: string = 'admin@ghs.com';
   private readonly adminPassword: string = 'admin123';
   //Esto es una prueba para user
-  userName= 'Usuario1';
+  useName= 'Usuario1';
   userPassword= 'user123';
   userEmail= 'user@gmail.com';
-  UserProfilePicture= 'assets/img/fotoPerfil.jpg';
+  userProfilePicture= 'assets/img/fotoPerfil.jpg';
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -54,17 +55,33 @@ export class LoginComponent  implements OnInit {
     } 
     // sin el else 
     else if (this.loginForm.valid) {
-      if (this.loginForm.valid) {
-              console.log('Login data:', this.loginForm.value);
+      // Autenticación exitosa, establece el usuario actual
+      const user: DatosUser = {
+        profilePicture: this.userProfilePicture,
+        firstName: this.useName,
+        lastName: this.useName,
+        userName: this.useName,
+        email: this.userEmail,
+        phoneNumber: '123456789',
+        password: this.userPassword
+      }
+      this.authService.loginUser(user);
+    
+      console.log('Login data:', this.loginForm.value);
       alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
       this.router.navigate(['/product']);
-
     } else {
-      alert('Error en algun lado');
-      }
+      alert('Error en algún lado');
     }
+    
+    
   }
-  resetForms (): void {
+  logoutUser(): void {
+    this.authService.logoutUser();
+  }
+  
+  
+    resetForms (): void {
       this.loginForm.reset();
       this.showAdminLogin = false;
     }

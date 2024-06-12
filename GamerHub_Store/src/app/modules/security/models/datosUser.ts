@@ -6,8 +6,7 @@ export class DatosUser {
     userName: string = '';
     phoneNumber: string = '';
     password: string = '';
-    confirmPassword: string = '';
-    constructor( profilePicture: string, firstName: string, lastName: string, email: string, userName: string, phoneNumber: string, password: string, confirmPassword: string) {
+    constructor( profilePicture: string, firstName: string, lastName: string, email: string, userName: string, phoneNumber: string, password: string) {
         this.profilePicture = profilePicture;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -15,6 +14,5 @@ export class DatosUser {
         this.userName = userName;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.confirmPassword = confirmPassword;
         }
 }

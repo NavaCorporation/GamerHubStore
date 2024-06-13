@@ -1,1 +1,199 @@
-<p>productos works!</p>
+<app-encabezado-compras></app-encabezado-compras>
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal text-body-emphasis"><strong>GamerHub</strong></h1>
+    <p class="fs-5 text-body-secondary">Explora nuestra variedad de artículos tecnológicos 
+    <br>y sumérgete en la experiencia hoy mismo.</p>
+  </div>
+  
+  <!-- LISTA DE PRODUCTOS -->
+  
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm h-100">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
+          </div>
+          <div class="card-body">
+            <img src="https://coretms.tecnomegastore.ec/assets/images/productos/largeW/KEYLOG920010715-1-lg.webp" alt="Descripción de la imagen" class="img-fluid">
+            <h1 class="card-title pricing-card-title">$12<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Teclado Logitech Pop Keys Mecánico</li>
+              <li>Inalámbrico Rosado</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto1">Mostrar Detalles</button>
+            <br><br>
+            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
+          </div>
+        </div>
+        <div id="floating-message" class="floating-message">
+          Producto añadido al carrito
+        </div>
+      </div>
+  
+  
+  
+  
+  
+      <!-- Producto 2 -->
+  
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm h-100">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
+          </div>
+          <div class="card-body">
+            <img src="https://www.profesionalreview.com/wp-content/uploads/2019/08/AORUS-CV27Q-Gaming-Monitor.jpg" alt="Descripción de la imagen" class="img-fluid">
+            <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Monitor samsung 24inc Curved 1.8m Full HD HDMI D-SUB Negro</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto2">Mostrar Detalles</button>
+            <br><br>
+            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
+          </div>
+        </div>
+        <div id="floating-message" class="floating-message">
+          Producto añadido al carrito
+        </div>
+      </div>
+      
+      
+      
+      
+      <!-- Producto 3 -->
+  
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm h-100">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
+          </div>
+          <div class="card-body">
+            <img src="https://mihome.ec/wp-content/uploads/2020/12/Mi_Dual_Mode_Silent_Mouse_white_1.jpg" alt="Descripción de la imagen" class="img-fluid">
+            <h1 class="card-title pricing-card-title">$8<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Mouse Logitech Inalámbrico</li>
+              <li>M185 Blanco</li>
+              <li>USB Bluetooth</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto3">Mostrar Detalles</button>
+            <br><br>
+            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
+          </div>
+        </div>
+        <div id="floating-message" class="floating-message">
+          Producto añadido al carrito
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      <!-- Producto 4 -->
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm h-100">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
+          </div>
+          
+          <div class="card-body">
+            <img src="https://i5.walmartimages.com.mx/mg/gm/3pp/asr/95b44175-8d68-442e-afb9-8694429fbcc0.3bc8c6ca8652901b9a89baf62092bb2d.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Descripción de la imagen" class="img-fluid">
+            <h1 class="card-title pricing-card-title">$35<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Auriculares Inalámbricos Bluetooth Negros</li>
+              <li>Con cancelación de Ruido Esquí</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto4">Mostrar Detalles</button>
+            <br><br>
+            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
+          </div>
+        </div>
+        <div id="floating-message" class="floating-message">
+          Producto añadido al carrito
+        </div>
+      </div>
+  
+  
+  
+  
+  
+  
+  
+    <!-- Modal 1 -->
+        <div class="modal fade" id="modalProducto1" tabindex="-1" aria-labelledby="modalProducto1Label" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalProducto1Label">Teclado Logitech Pop Keys Mecánico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nesciunt similique suscipit magni facere pariatur veniam saepe quas dolorum blanditiis. Dolor quasi consectetur temporibus ipsam! Repellat eius enim veniam eaque.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Modal 2 -->
+        <div class="modal fade" id="modalProducto2" tabindex="-1" aria-labelledby="modalProducto2Label" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalProducto2Label">Monitor samsung 24inc</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, dicta tempore molestias beatae perspiciatis, in totam reiciendis minima optio ipsa nisi sed quasi architecto, sunt quo quisquam. Nam, assumenda odit?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Modal 3 -->
+        <div class="modal fade" id="modalProducto3" tabindex="-1" aria-labelledby="modalProducto3Label" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalProducto3Label">Mouse Logitech Inalámbrico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem magnam alias aliquid minus! Dolore aliquid quibusdam error magni beatae fugiat, officia aut? Provident doloremque nesciunt accusamus, sapiente dignissimos neque alias?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Modal 4 -->
+        <div class="modal fade" id="modalProducto4" tabindex="-1" aria-labelledby="modalProducto4Label" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalProducto4Label">Auriculares Inalámbricos Bluetooth</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ratione eum ea dolorem culpa odio architecto fugiat error soluta, harum vel aperiam possimus similique optio omnis ad doloremque. Ipsum, laboriosam!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+  
+  
+  </div>
+  

@@ -15,6 +15,7 @@ export class ClientComponent implements OnInit {
     fotoProfilePicture= 'assets/img/fotoPerfil.jpeg';
     profileForm: FormGroup;
     isEditing: boolean = false;
+    showSuccessMessage: boolean = false;
   
     constructor(private fb: FormBuilder) {
       this.profileForm = this.fb.group({
@@ -48,6 +49,10 @@ export class ClientComponent implements OnInit {
     if (this.profileForm.valid) {
      
       console.log(this.profileForm.value);
+      this.showSuccessMessage = true;
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+      }, 3000);
       this.toggleEdit();
     }
   }

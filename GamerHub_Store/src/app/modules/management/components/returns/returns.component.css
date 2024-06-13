@@ -10,7 +10,7 @@
 .background{
     display: flex;
     background-color:#ffffff;
-    background-image: url('/assets/img/fondofinal.svg');
+    background-image: url('/assets/svg/fondofinal.svg');
     justify-content: center; 
     align-items: center;
     background-size: cover;

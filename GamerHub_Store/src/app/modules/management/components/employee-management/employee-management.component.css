@@ -4,12 +4,12 @@
 }
 .outit{
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 .background{
     display: flex;
     background-color:#ffffff;
-    background-image: url('/assets/img/fondofinal.svg');
+    background-image: url('/assets/svg/fondofinal.svg');
     justify-content: center; 
     align-items: center;
     background-size: cover;
@@ -47,7 +47,7 @@
     padding: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     
 }
 

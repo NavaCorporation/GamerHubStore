@@ -8,7 +8,7 @@ import { ManagerComponent } from '../manager/manager.component';
     standalone: true,
     templateUrl: './employee-management.component.html',
     styleUrl: './employee-management.component.css',
-    imports: [RouterOutlet, RouterLink, ManagerComponent]
+    imports: [RouterOutlet, RouterLink, ManagerComponent, SidebarComponent]
 })
 export class EmployeeManagementComponent {
 

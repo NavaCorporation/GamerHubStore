@@ -1,3 +1,11 @@
+.dashboard{
+    display: flex;
+
+}
+.outit{
+    width: 100%;
+    height: auto;
+}
 .background{
     display: flex;
     background-color:#ffffff;
@@ -28,6 +36,7 @@
 .dashboard2{
     padding-right: 40px;
     padding-left: 40px;
+    padding-bottom: 40px;
 
 }
 

@@ -1,9 +1,12 @@
+<div class="dashboard">
+<app-sidebar></app-sidebar>
+<div>
+<div class="outit">
 <div class="background">
     <div>
         <h1>Bienvenido a Productos
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-joystick" viewBox="0 0 16 16">
-                <path d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2"/>
-                <path d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
               </svg>
         </h1>
         
@@ -11,7 +14,8 @@
 </div>
 
 
-    <div>
+    <div class="dashboard1">
+        <h2>Añadir Productos</h2>
         <form class="row g-3 needs-validation" [formGroup]="eventsForm">
         
             <div class="col-md-4">
@@ -28,7 +32,7 @@
                 <label class="form-label">Marca</label>
                 <input type="text" class="form-control" formControlName="acargo">
                 <div class="text-danger" *ngIf="eventsForm.controls['acargo'].invalid &&  (eventsForm.controls['acargo'].touched || eventsForm.controls['acargo'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['acargo'].errors?.['required']">Persona Encargada</span>
+                    <span *ngIf="eventsForm.controls['acargo'].errors?.['required']">Especifique la marca</span>
                 </div>
             </div>
         
@@ -36,9 +40,8 @@
                 <label class="form-label">Cantidad</label>
                 <input type="text" class="form-control" formControlName="telefono">
                 <div class="text-danger" *ngIf="eventsForm.controls['telefono'].invalid && (eventsForm.controls['telefono'].touched || eventsForm.controls['telefono'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['telefono'].errors?.['required']">El N° de Telefono es obligatorio</span>
-                    <span *ngIf="eventsForm.controls['telefono'].errors?.['minlength']">El N° de Telefono es incorrecto</span>
-                    <span *ngIf="eventsForm.controls['telefono'].errors?.['pattern']">El N° de Telefono debe tener 10 digitos"</span>
+                    <span *ngIf="eventsForm.controls['telefono'].errors?.['required']">El Agregar la cantidad es obligatorio</span>
+                    <span *ngIf="eventsForm.controls['telefono'].errors?.['minlength']">Agregue la cantidad minima</span>
                 </div>
             </div>
         
@@ -47,15 +50,15 @@
                 <input type="string" class="form-control" formControlName="email">
                 <div class="text-danger" *ngIf="eventsForm.controls['email'].invalid &&  (eventsForm.controls['email'].touched || eventsForm.controls['email'].dirty || isFormSubmitted)">
                    <span *ngIf="eventsForm.controls['email'].errors?.['required']">El correo es obligatorio</span> 
-                    <span *ngIf="eventsForm.controls['email'].errors?.['email']">El correo es incorrecto</span>
+                    <span *ngIf="eventsForm.controls['email'].errors?.['email']">El precio debe ser agregado</span>
                 </div>
             </div>
         
             <div class="col-md-4">
                 <label class="form-label">Descripcion</label>
-                <input type="date" class="form-control" formControlName="date">
+                <input type="text" class="form-control" formControlName="date">
                 <div class="text-danger" *ngIf="eventsForm.controls['date'].invalid && (eventsForm.controls['date'].touched || eventsForm.controls['date'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['date'].errors?.['required']">La fecha es obligatoria</span>
+                    <span *ngIf="eventsForm.controls['date'].errors?.['required']">La descripcion es obligatoria</span>
                 </div>
             </div>
         
@@ -67,14 +70,6 @@
                 </select>
                 <div class="text-danger" *ngIf="eventsForm.controls['city'].invalid && (eventsForm.controls['city'].touched || eventsForm.controls['city'].dirty || isFormSubmitted)">
                     <span *ngIf="eventsForm.controls['city'].errors?.['required']">La El lugar no es correcto</span>
-                </div>
-            </div>
-        
-            <div class="col-md-4">
-                <label class="form-label">Acciones</label>
-                <input type="number" class="form-control" formControlName="horario">
-                <div class="text-danger" *ngIf="eventsForm.controls['horario'].invalid && (eventsForm.controls['horario'].touched || eventsForm.controls['horario'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['horario'].errors?.['required']">El horario es obligatorio</span>
                 </div>
             </div>
         
@@ -98,15 +93,25 @@
             </thead>
             <tbody>
             <!-- *ngFor: Es una directiva estructural en Angular que se utiliza para crear una instancia de un elemento del DOM para cada ítem en la colección. -->
-              <tr *ngFor="let event of events">
+              <tr *ngFor="let event of events; let i = index">
                 <td>{{ event.nameevent }}</td>
                 <td>{{ event.acargo }}</td>
                 <td>{{ event.telefono }}</td>
                 <td>{{ event.email }}</td>
                 <td>{{ event.date }}</td>
                 <td> sito N°{{ event.city }}</td>
-                <td>{{ event.horario }} horas</td>
+                <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-danger " (click)="deleteEvent(i)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                      </svg></button>
+                    <button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg></button>
+                  </div></td>
               </tr>
             </tbody>
           </table>
         </div>
+    </div>
+</div>

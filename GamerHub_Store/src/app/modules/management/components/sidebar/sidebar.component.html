@@ -22,11 +22,11 @@
     <div class="sidebar-sticky pt-1 flex-grow-1">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="[{ outlets: { secundario: ['employee'] } }]" routerLinkActive="active/">Manager
+          <a class="nav-link" routerLink="/management" routerLinkActive="active/">Manager
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" [routerLink]="[{ outlets: { secundario: ['add-product'] } }]"  >
+          <a class="nav-link active" routerLink="/addproduct" routerLinkActive="active/">
             Productos
           </a>
         </li>
@@ -36,7 +36,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="[{ outlets: { secundario: ['reports'] } }]"  routerLinkActive="active">
+          <a class="nav-link" routerLink="/returns" routerLinkActive="active">
             Reportes
           </a>
         </li>
@@ -47,7 +47,7 @@
         </li> -->
       </ul>
     </div>
-    <div class="sidebar-sticky mt-auto">
+    <div class="tp">
       <ul class="nav flex-column">
         <li >
         <a class="nav-link" href="#">Ayuda</a>
@@ -55,6 +55,8 @@
         <li>
         <a class="nav-link" href="#">Salir</a>
         </li>
+        <br>
+        <br>
       </ul>
     </div>
   </nav>

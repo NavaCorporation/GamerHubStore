@@ -14,7 +14,7 @@ import { DatosUser } from '../../../security/models/datosUser';
 export class EncabezadoComprasComponent implements OnInit {
   currentUser: DatosUser | null = null;
 
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService, private router: Router) {
     this.authService.currentUser.subscribe(user => this.currentUser = user);
   }
 
@@ -27,5 +27,9 @@ export class EncabezadoComprasComponent implements OnInit {
 
   logout(): void {
     this.currentUser = null;
+  }
+
+  userEdit(): void {
+    this.router.navigate(['/client']);
   }
 }

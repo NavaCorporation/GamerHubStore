@@ -33,7 +33,7 @@ export class LoginComponent  implements OnInit {
   useName= 'Usuario1';
   userPassword= 'user123';
   userEmail= 'user@gmail.com';
-  userProfilePicture= 'assets/img/fotoPerfil.jpg';
+  userProfilePicture= 'assets/img/userPerfil.jpeg';
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {}
 

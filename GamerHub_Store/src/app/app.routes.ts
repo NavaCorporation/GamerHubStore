@@ -4,15 +4,15 @@ import { ClientComponent } from './modules/clients/components/client/client.comp
 import { DashboardComponent } from './modules/administration/components/dashboard/dashboard.component';
 import { ProductosComponent } from './modules/shopping/components/productos/productos.component';
 
+import { ManagerComponent } from './modules/management/components/manager/manager.component';
+
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'client', component: ClientComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'product', component: ProductosComponent },
-    { path: '**', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'management', 
+    { path: 'management', component: ManagerComponent, 
     loadChildren: () => import('./modules/management/management.routes').then(m => m.MANAGEMENT_ROUTES)},
 
 ];

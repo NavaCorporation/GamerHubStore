@@ -1,1 +1,112 @@
-<p>add-product works!</p>
+<div class="background">
+    <div>
+        <h1>Bienvenido a Productos
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-joystick" viewBox="0 0 16 16">
+                <path d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2"/>
+                <path d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23"/>
+              </svg>
+        </h1>
+        
+    </div>
+</div>
+
+
+    <div>
+        <form class="row g-3 needs-validation" [formGroup]="eventsForm">
+        
+            <div class="col-md-4">
+                <label class="form-label">Nombre del Producto</label>
+                <input type="text" class="form-control" formControlName="nameevent">
+                <!-- (*ngIf) que se usa para mostrar o esconder el div basado en una condición. -->
+                <!--  el nombre nameevent es inválido (invalid) y si ha sido tocado (touched) o modificado (dirty). -->
+                <div class="text-danger" *ngIf="eventsForm.controls['nameevent'].invalid && (eventsForm.controls['nameevent'].touched || eventsForm.controls['nameevent'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['nameevent'].errors?.['required']">El nombre es obligatorio</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Marca</label>
+                <input type="text" class="form-control" formControlName="acargo">
+                <div class="text-danger" *ngIf="eventsForm.controls['acargo'].invalid &&  (eventsForm.controls['acargo'].touched || eventsForm.controls['acargo'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['acargo'].errors?.['required']">Persona Encargada</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Cantidad</label>
+                <input type="text" class="form-control" formControlName="telefono">
+                <div class="text-danger" *ngIf="eventsForm.controls['telefono'].invalid && (eventsForm.controls['telefono'].touched || eventsForm.controls['telefono'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['telefono'].errors?.['required']">El N° de Telefono es obligatorio</span>
+                    <span *ngIf="eventsForm.controls['telefono'].errors?.['minlength']">El N° de Telefono es incorrecto</span>
+                    <span *ngIf="eventsForm.controls['telefono'].errors?.['pattern']">El N° de Telefono debe tener 10 digitos"</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Precio</label>
+                <input type="string" class="form-control" formControlName="email">
+                <div class="text-danger" *ngIf="eventsForm.controls['email'].invalid &&  (eventsForm.controls['email'].touched || eventsForm.controls['email'].dirty || isFormSubmitted)">
+                   <span *ngIf="eventsForm.controls['email'].errors?.['required']">El correo es obligatorio</span> 
+                    <span *ngIf="eventsForm.controls['email'].errors?.['email']">El correo es incorrecto</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Descripcion</label>
+                <input type="date" class="form-control" formControlName="date">
+                <div class="text-danger" *ngIf="eventsForm.controls['date'].invalid && (eventsForm.controls['date'].touched || eventsForm.controls['date'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['date'].errors?.['required']">La fecha es obligatoria</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Categoria</label>
+                <select class="form-select" aria-label="Default select example" formControlName="city">
+                    <option value="" disabled selected>Selecciona un lugar</option>
+                    <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+                </select>
+                <div class="text-danger" *ngIf="eventsForm.controls['city'].invalid && (eventsForm.controls['city'].touched || eventsForm.controls['city'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['city'].errors?.['required']">La El lugar no es correcto</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Acciones</label>
+                <input type="number" class="form-control" formControlName="horario">
+                <div class="text-danger" *ngIf="eventsForm.controls['horario'].invalid && (eventsForm.controls['horario'].touched || eventsForm.controls['horario'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['horario'].errors?.['required']">El horario es obligatorio</span>
+                </div>
+            </div>
+        
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            </div>
+        
+        </form>
+        
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">Nombre del Producto</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+            <!-- *ngFor: Es una directiva estructural en Angular que se utiliza para crear una instancia de un elemento del DOM para cada ítem en la colección. -->
+              <tr *ngFor="let event of events">
+                <td>{{ event.nameevent }}</td>
+                <td>{{ event.acargo }}</td>
+                <td>{{ event.telefono }}</td>
+                <td>{{ event.email }}</td>
+                <td>{{ event.date }}</td>
+                <td> sito N°{{ event.city }}</td>
+                <td>{{ event.horario }} horas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>

@@ -3,7 +3,7 @@
         <ul class="nav flex-column">
           <li>
             <a class="navbar-brand" routerLink="/management/">
-              <img src="assets/icono.svg" class="img-fluid mb-3">
+              <img src="assets/svg/icono.svg" class="img-fluid mb-3">
             </a> 
           </li>
         </ul>
@@ -11,7 +11,7 @@
     
     <hr>
     <div class="company">
-        <img src="assets/icons/person-circle.svg" width="50" height="50">
+        <img src="assets/svg/person-circle.svg" width="50" height="50">
         <a class="nav-link " routerLink="/profile/">Perfil</a>
       <div>
         <p>cambiar foto</p>
@@ -22,29 +22,29 @@
     <div class="sidebar-sticky pt-1 flex-grow-1">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/management" routerLinkActive="active/">Manager
+          <a class="nav-link" [routerLink]="[{ outlets: { secundario: ['employee'] } }]" routerLinkActive="active/">Manager
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/addproduct/" >
-            Agregar Producto
+          <a class="nav-link active" [routerLink]="[{ outlets: { secundario: ['add-product'] } }]"  >
+            Productos
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/payment-history" routerLinkActive="active">
-            Historial de Pagos
+          <a class="nav-link" [routerLink]="[{ outlets: { secundario: ['saleshistory'] } }]" routerLinkActive="active">
+            Historiales
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/report" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="[{ outlets: { secundario: ['reports'] } }]"  routerLinkActive="active">
             Reportes
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/settings" routerLinkActive="active">
             Settings
           </a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="sidebar-sticky mt-auto">

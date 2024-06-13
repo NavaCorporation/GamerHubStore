@@ -1,12 +1,11 @@
 import { Component,OnInit } from '@angular/core';
-import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
-    selector: 'app-verificacion-detalles',
-    standalone: true,
-    templateUrl: './verificacion-detalles.component.html',
-    styleUrl: './verificacion-detalles.component.css',
-    imports: [SidebarComponent]
+  selector: 'app-verificacion-detalles',
+  standalone: true,
+  imports: [],
+  templateUrl: './verificacion-detalles.component.html',
+  styleUrl: './verificacion-detalles.component.css'
 })
 export class VerificacionDetallesComponent implements OnInit {
 

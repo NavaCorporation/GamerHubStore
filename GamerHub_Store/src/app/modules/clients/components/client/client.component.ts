@@ -12,6 +12,7 @@ import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angula
 })
 export class ClientComponent implements OnInit {
     userProfilePicture= 'assets/img/userPerfil.jpeg';
+    fotoProfilePicture= 'assets/img/fotoPerfil.jpeg';
     profileForm: FormGroup;
     isEditing: boolean = false;
   
@@ -49,6 +50,11 @@ export class ClientComponent implements OnInit {
       console.log(this.profileForm.value);
       this.toggleEdit();
     }
+  }
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    
+    console.log(file); 
   }
   }
   

@@ -3,7 +3,9 @@
   <div class="left box-primary">
     <img class="image" [src]="userProfilePicture" alt="" />
     <h3 class="username text-center" placeholder="username"></h3>
-    <a href="#" class="btn btn-primary btn-block"><b>Editar foto</b></a>
+    
+    <input type="file" id="inputFoto" accept="image/*" style="display: none" (change)="onFileSelected($event)" #fileInput />
+    <label for="inputFoto" class="btn btn-primary btn-block"><b>Editar foto</b></label>
   </div>
   <div class="right tab-content">
     <form [formGroup]="profileForm" class="form-horizontal">

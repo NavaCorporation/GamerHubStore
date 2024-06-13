@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-compras.component";
 
 @Component({
-  selector: 'app-detalle-producto',
-  standalone: true,
-  imports: [],
-  templateUrl: './detalle-producto.component.html',
-  styleUrl: './detalle-producto.component.css'
+    selector: 'app-detalle-producto',
+    standalone: true,
+    templateUrl: './detalle-producto.component.html',
+    styleUrl: './detalle-producto.component.css',
+    imports: [EncabezadoComprasComponent]
 })
 export class DetalleProductoComponent {
 

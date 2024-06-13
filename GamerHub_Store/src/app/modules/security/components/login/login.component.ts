@@ -72,7 +72,7 @@ export class LoginComponent  implements OnInit {
       this.authService.loginUser(user);
     
       console.log('Login data:', this.loginForm.value);
-      alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
+      //alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
       this.router.navigate(['/product']);
     } 
     else {

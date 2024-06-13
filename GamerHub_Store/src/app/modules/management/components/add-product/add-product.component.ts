@@ -1,13 +1,15 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { Eventopar } from '../../models/eventopar';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { ManagerComponent } from '../manager/manager.component';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NgIf, RouterOutlet],
+  imports: [ReactiveFormsModule, CommonModule, NgIf, RouterOutlet, SidebarComponent, ManagerComponent, RouterLink],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
@@ -17,20 +19,19 @@ export class AddProductComponent {
     isFormSubmitted: boolean = false;
     events: Eventopar[] = [];
     cities = [
-      { id: 1, name: 'Plaza de las Artes' },
-      { id: 2, name: 'Edificio Acasias' },
-      { id: 3, name: 'Piramides de la Republica' }
+      { id: 1, name: 'Monitor' },
+      { id: 2, name: 'Videojuego' },
+      { id: 3, name: 'Consola' }
     ];
     constructor () {
 
       this.eventsForm = new FormGroup({
         nameevent: new FormControl('', [Validators.required]),
         acargo: new FormControl('', [Validators.required]),
-        telefono: new FormControl('', [Validators.required, Validators.minLength(10), Validators.pattern('^[0-9]{10}$')]),
-        email: new FormControl('',[Validators.required, Validators.email]),
+        telefono: new FormControl('', [Validators.required, Validators.minLength(1)]),
+        email: new FormControl('',[Validators.required]),
         date: new FormControl('', [Validators.required]),
         city: new FormControl('', [Validators.required]),
-        horario: new FormControl('', [Validators.required]),
       });
     }
 
@@ -47,6 +48,9 @@ export class AddProductComponent {
     }
     }
 
+    deleteEvent(index: number) {
+      this.events.splice(index, 1);
+    }
 
 }
 

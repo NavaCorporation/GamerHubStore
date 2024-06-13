@@ -12,6 +12,8 @@ import { VerificacionesComponent } from './modules/administration/components/ver
 import { VerificacionDetallesComponent } from './modules/administration/components/verificacion-detalles/verificacion-detalles.component';
 import { EmployeeManagementComponent } from './modules/management/components/employee-management/employee-management.component';
 import { ManagerComponent } from './modules/management/components/manager/manager.component';
+import { AddProductComponent } from './modules/management/components/add-product/add-product.component';
+import { ReturnsComponent } from './modules/management/components/returns/returns.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'product', pathMatch: 'full' },
@@ -25,11 +27,12 @@ export const routes: Routes = [
     { path: 'verificaciones', component: VerificacionesComponent },
     { path: 'verificacion-detalles', component: VerificacionDetallesComponent },
 
+
+    //management
     { path: 'management', component: EmployeeManagementComponent },
+    { path: 'addproduct', component: AddProductComponent},
+    { path: 'returns', component: ReturnsComponent},
 
-
-    { path: 'management', 
-    loadChildren: () => import('./modules/management/management.routes').then(m => m.MANAGEMENT_ROUTES)},
 
 
     //compras

@@ -9,8 +9,8 @@
     align-items: flex-start;
     gap: 10px;
     flex-shrink: 0;
-    border-right: 1px solid #E4E2DE;
-    background: #F4F1ED;
+    border-right: 1px solid #ffffff;
+    background: linear-gradient(to right, #f8bbd0, #ffffff );
 }
   @media (max-width: 768px) {
     .sidebar {

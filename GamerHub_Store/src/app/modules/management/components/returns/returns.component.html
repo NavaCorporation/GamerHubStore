@@ -1,1 +1,179 @@
-<p>returns works!</p>
+<div class="dashboard">
+    <div>
+    <app-sidebar></app-sidebar>
+    </div>
+    <div class="outit">
+        <div class="background">
+            <div>
+                <h1>Bienvenido a Reportes
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
+                        <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"/>
+                      </svg>
+                </h1>
+                
+            </div>
+        </div>
+        
+
+    <div class="dashboard1">
+
+        <div>
+            <h2>Reportes</h2>
+            <table class="table mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">Titulo del Reporte</th>
+                    <th scope="col">Problema</th>
+                    <th scope="col">Sugerencia</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Caso</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Correciones</th>
+                        <td>Datos mal ingresados</td>
+                        <td>Cambiar los datos</td>
+                        <td>11/11/2021</td>
+                        <td>Los datos son de la Asus 27"</td>
+                        <td>Nuevo</td>
+                        <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-danger ">Cancelar</button>
+                            <button type="button" class="btn btn-success ">Terminar</button>
+                          </div></td>
+                    </tr>
+                <!-- *ngFor: Es una directiva estructural en Angular que se utiliza para crear una instancia de un elemento del DOM para cada ítem en la colección. -->
+                  <tr *ngFor="let event of events; let i = index">
+                    <td>{{ event.nameevent }}</td>
+                    <td>{{ event.acargo }}</td>
+                    <td>{{ event.telefono }}</td>
+                    <td>{{ event.email }}</td>
+                    <td>{{ event.date }}</td>
+                    <td> Tipo de caso: {{ event.city }}</td>
+                    <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-danger " (click)="deleteEvent(i)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                          </svg></button>
+                        <button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                          </svg></button>
+                      </div></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <div>
+        <h1>Registrar un Reporte</h1>
+
+        <form class="row g-3 needs-validation" [formGroup]="eventsForm">
+        
+            <div class="col-md-4">
+                <label class="form-label">Titulo del Reporte</label>
+                <input type="text" class="form-control" formControlName="nameevent">
+                <!-- (*ngIf) que se usa para mostrar o esconder el div basado en una condición. -->
+                <!--  el nombre nameevent es inválido (invalid) y si ha sido tocado (touched) o modificado (dirty). -->
+                <div class="text-danger" *ngIf="eventsForm.controls['nameevent'].invalid && (eventsForm.controls['nameevent'].touched || eventsForm.controls['nameevent'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['nameevent'].errors?.['required']">El nombre es obligatorio</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Problema</label>
+                <input type="text" class="form-control" formControlName="acargo">
+                <div class="text-danger" *ngIf="eventsForm.controls['acargo'].invalid &&  (eventsForm.controls['acargo'].touched || eventsForm.controls['acargo'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['acargo'].errors?.['required']">Persona Encargada</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Sugerencia</label>
+                <input type="text" class="form-control" formControlName="telefono">
+                <div class="text-danger" *ngIf="eventsForm.controls['telefono'].invalid && (eventsForm.controls['telefono'].touched || eventsForm.controls['telefono'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['telefono'].errors?.['required']">No has dicho la sugerencia</span>
+                    <span *ngIf="eventsForm.controls['telefono'].errors?.['minlength']">Escribe por favor </span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-control" formControlName="email">
+                <div class="text-danger" *ngIf="eventsForm.controls['email'].invalid &&  (eventsForm.controls['email'].touched || eventsForm.controls['email'].dirty || isFormSubmitted)">
+                   <span *ngIf="eventsForm.controls['email'].errors?.['required']"></span> 
+                    <span *ngIf="eventsForm.controls['email'].errors?.['email']">Introduzca la fecha en que paso</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Descripcion</label>
+                <input type="text" class="form-control" formControlName="date">
+                <div class="text-danger" *ngIf="eventsForm.controls['date'].invalid && (eventsForm.controls['date'].touched || eventsForm.controls['date'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['date'].errors?.['required']">La descripcion es obligatoria</span>
+                </div>
+            </div>
+        
+            <div class="col-md-4">
+                <label class="form-label">Categoria</label>
+                <select class="form-select" aria-label="Default select example" formControlName="city">
+                    <option value="" disabled selected>Selecciona el tipo de caso</option>
+                    <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+                </select>
+                <div class="text-danger" *ngIf="eventsForm.controls['city'].invalid && (eventsForm.controls['city'].touched || eventsForm.controls['city'].dirty || isFormSubmitted)">
+                    <span *ngIf="eventsForm.controls['city'].errors?.['required']">El caso no es valido</span>
+                </div>
+            </div>
+        
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            </div>
+        
+        </form>
+        <br>
+        <h2>Historial de Reportes</h2>
+        <table class="table mt-4">
+            <caption>Listado de Reportes Antiguos</caption>
+            <thead>
+              <tr>
+                <th scope="col">Titulo del Reporte</th>
+                <th scope="col">Problema</th>
+                <th scope="col">Sugerencia</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Caso</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Correciones</th>
+                    <td>Datos mal ingresados</td>
+                    <td>Cambiar los datos</td>
+                    <td>11/11/2021</td>
+                    <td>Los datos son de la Asus 27"</td>
+                    <td>Nuevo</td>
+                    <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-outline-secondary ">Revisar</button>
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Correciones</th>
+                    <td>Datos mal ingresados</td>
+                    <td>Cambiar los datos</td>
+                    <td>11/11/2021</td>
+                    <td>Los datos son de la Asus 27"</td>
+                    <td>Nuevo</td>
+                    <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-outline-secondary ">Revisar</button>
+                    </div>
+                    </td>
+                </tr>
+                
+         
+            </tbody>
+          </table>
+        </div>
+</div>

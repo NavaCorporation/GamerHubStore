@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
       if (this.registerForm.valid) {
         console.log('Register data:', this.registerForm.value);
         alert('Registro exitoso!\n\n' + JSON.stringify(this.registerForm.value, null, 2));
+        this.router.navigate(['/login']);
       } else { 
         alert ('Por favor, rellene todos los campos');
       }

@@ -4,11 +4,11 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ManagerComponent } from '../manager/manager.component';
 
 @Component({
-  selector: 'app-employee-management',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink],
-  templateUrl: './employee-management.component.html',
-  styleUrl: './employee-management.component.css'
+    selector: 'app-employee-management',
+    standalone: true,
+    templateUrl: './employee-management.component.html',
+    styleUrl: './employee-management.component.css',
+    imports: [RouterOutlet, RouterLink, ManagerComponent]
 })
 export class EmployeeManagementComponent {
 

@@ -10,7 +10,8 @@ import { InventarioComponent } from './modules/administration/components/inventa
 import { TareaPendienteComponent } from './modules/administration/components/tarea-pendiente/tarea-pendiente.component';
 import { VerificacionesComponent } from './modules/administration/components/verificaciones/verificaciones.component';
 import { VerificacionDetallesComponent } from './modules/administration/components/verificacion-detalles/verificacion-detalles.component';
-
+import { EmployeeManagementComponent } from './modules/management/components/employee-management/employee-management.component';
+import { ManagerComponent } from './modules/management/components/manager/manager.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'product', pathMatch: 'full' },
@@ -23,6 +24,8 @@ export const routes: Routes = [
     { path: 'tarea-pendiente', component: TareaPendienteComponent },
     { path: 'verificaciones', component: VerificacionesComponent },
     { path: 'verificacion-detalles', component: VerificacionDetallesComponent },
+
+    { path: 'management', component: EmployeeManagementComponent },
 
 
     { path: 'management', 

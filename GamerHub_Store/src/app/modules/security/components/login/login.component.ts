@@ -22,7 +22,7 @@ export class LoginComponent  implements OnInit {
   showAdminLogin: boolean = false;
   loginForm!: FormGroup;
   loggedInUser: DatosUser | null = null;
-  
+
   //Esto es una prueba para el admin
   private readonly adminEmail: string = 'admin@ghs.com';
   private readonly adminPassword: string = 'admin123';
@@ -54,7 +54,7 @@ export class LoginComponent  implements OnInit {
   onLogin(): void {
     // Prueba de admin
     const {email, password} = this.loginForm.value;
-    if (email === this.adminEmail && password === this.adminPassword) {
+    if (email === this.adminEmail && password === this.adminPassword || email === this.gestorEmail && password === this.gestorPassword) {
       this.showAdminLogin = true;
     } 
     // sin el else 

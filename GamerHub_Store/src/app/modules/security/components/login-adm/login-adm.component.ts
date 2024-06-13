@@ -16,9 +16,8 @@ export class LoginAdmComponent implements OnInit {
 
   adminLoginForm: FormGroup;
   showAdminLogin: boolean = false;
-  private readonly adminEmail: string = 'admin@ghs.com';
-  private readonly adminPassword: string = 'admin123';
   private readonly adminAccessCode: string = '12345';
+  private readonly gestorAccessCode: string = '67890';
   constructor(private fb: FormBuilder, private router: Router) {
     this.adminLoginForm = this.fb.group({
       adminCode : ['', Validators.required]
@@ -38,7 +37,13 @@ export class LoginAdmComponent implements OnInit {
       console.log('Login Admin exitoso!');
       alert('Login Admin exitoso!');
       this.router.navigate(['/dashboard']);
-    } else {
+    } else if (adminCode === this.gestorAccessCode) {
+      console.log('Login Gestor exitoso!');
+      alert('Login Gestor exitoso!');
+      this.router.navigate(['/management']);
+    }
+    
+    else {
       alert('Código de acceso incorrecto');
     }
   }

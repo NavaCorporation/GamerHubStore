@@ -26,6 +26,9 @@ export class LoginComponent  implements OnInit {
   //Esto es una prueba para el admin
   private readonly adminEmail: string = 'admin@ghs.com';
   private readonly adminPassword: string = 'admin123';
+  //Esto es una prueba para el gestor
+  private readonly gestorEmail: string = 'gestor@ghs.com';
+  private readonly gestorPassword: string = 'gestor123';
   //Esto es una prueba para user
   useName= 'Usuario1';
   userPassword= 'user123';
@@ -71,7 +74,8 @@ export class LoginComponent  implements OnInit {
       console.log('Login data:', this.loginForm.value);
       alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
       this.router.navigate(['/product']);
-    } else {
+    } 
+    else {
       alert('Error en algún lado');
     }
     

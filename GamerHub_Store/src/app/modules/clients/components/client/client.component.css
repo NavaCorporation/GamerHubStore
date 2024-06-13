@@ -1,183 +1,119 @@
-body {
-  background-color: #ddd;
-}
-
 .container {
-  margin: 0 auto;
-  display: table;
-  min-height: 100vh;
+  max-width: 600px;
 }
 
-.left {
-  float: left;
-  width: 214px;
-  height: 366px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.right {
-  float: right;
-  display: table;
-  width: 60%;
+div {
+  margin-bottom: 10px;
 }
-
-.fa {
-  display: inline-block;
-}
-
 .image {
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
+  
+  width: 175px;
+  height: 175px;
   border-radius: 50%;
   border: 1px solid gray;
-  display: inline-block;
-  padding: 3px;
   border: 3px solid #d2d6de;
+
+ 
+
+}
+
+p {
   margin-top: 20px;
-  margin-right: 57px;
-  margin-left: 57px;
-
 }
 
-.has-feedback .form-control {
-  padding-right: 42.5px;
+.nav-link:hover {
+  cursor: pointer;
 }
-
-select[multiple],
-select[size] {
-  height: auto;
+.imputFoto{
+  color: black;
 }
-
-.form-control {
-  border-radius: 0;
-  box-shadow: none;
-  border-color: #d2d6de;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-}
-
-label {
-  cursor: default;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-label {
-  display: inline-block;
-  max-width: 100%;
-  margin-bottom: 5px;
-  font-weight: 700;
-}
-
-.usuername {
-  font-size: 21px;
-  margin-top: 5px;
-}
-
 .text-center {
   text-align: center;
 }
 
-.btn {
-  margin: 0 auto;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-
-  touch-action: manipulation;
-  margin-top: 100px;
-}
-
-a {
-  color: #3c8dbc;
-}
-
-a {
-  color: #337ab7;
-  text-decoration: none;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #337ab7;
+.img-thumbnail {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-h3 {
-  font-family: 'Source Sans Pro', sans-serif;
+.form-label {
+
+  display: grid;
+  grid-template-areas: "input";
+  
 }
 
-.control-label {
-  float: left;
+.label_name {
+  grid-area: input;
+  z-index: 100;
+  width: max-content;
+  margin-left: 1rem;
+  padding: 0 .5rem;
+  align-self: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform .2s;
+  transform-origin: center left;
 }
 
-.form-horizontal .form-group {
-  margin-right: -15px;
-  margin-left: -15px;
+.bi-eye-slash {
+  margin-left: 5rem;
 }
 
-.form-group {
-  margin-bottom: 15px;
+input {
+  grid-area: input;
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: .7rem 1.5rem .7rem .5rem;
+
 }
 
-.btn-submit {
-  background-color: #dd4b39;
-  border-color: red;
-}
-
-.btn {
-  border-radius: 3px;
-  box-shadow: none;
-  border: 1px solid transparent;
-}
-
-.has-feedback {
+.input-container {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.form-group {
-  margin-bottom: 15px;
+input:focus+.label_name,
+input:not(:placeholder-shown)+.label_name {
+  transform: translateY(-50%) scale(.7);
+  background-color: rgba(255, 255, 255, 0.973);
 }
 
-.left.box-primary {
-  border-top-color: #3c8dbc;
 
+input.ng-touched.ng-invalid {
+  border-left: 3px solid red;
 }
 
-.left {
-  position: relative;
-  border-radius: 3px;
-  background: #ffffff;
-  border-top: 3px solid #d2d6de;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  padding: 10px;
+input.ng-touched.ng-valid {
+  border-left: 3px solid green;
 }
 
-button,
-meter,
-progress {
-
-  margin-right: 20px;
+input.ng-touched.password-match-invalid {
+  border-left: 3px solid red;
+}
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1.25rem;
+  cursor: pointer;
 }
 

@@ -1,13 +1,15 @@
 <app-encabezado-compras></app-encabezado-compras>
 <main>
+  
 <div class="container content-container" >
-  <div class="left box-primary">
+  <div class="left box-primary" style="padding-left: 120px;">
     <img class="image" [src]="userProfilePicture" alt="" />
     <h3 class="username text-center" placeholder="username"></h3>
     
     <input type="file" id="inputFoto" accept="image/*" style="display: none" (change)="onFileSelected($event)" #fileInput />
-    <label for="inputFoto" class="btn btn-primary btn-block"><b>Editar foto</b></label>
+    <label for="inputFoto" class="btn btn-primary btn-block" ><b>Editar foto</b></label>
   </div>
+  <body>
   <div class="right tab-content">
     <form [formGroup]="profileForm" class="form-horizontal">
       <div class="formgroup">
@@ -52,6 +54,7 @@
       ¡Perfil guardado con éxito!
     </div>
   </div>
+  </body>
 </div>
 </main>
     

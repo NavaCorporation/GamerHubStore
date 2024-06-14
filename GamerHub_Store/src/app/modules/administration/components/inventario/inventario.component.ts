@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Inventario } from '../models/inventario';
 import { InventarioService } from '../services/inventario.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -17,7 +17,9 @@ export class InventarioComponent {
   products: Producto[] = [];
   currentProduct: Producto | null = null;
 
-  constructor(private fb: FormBuilder, private productInventoryService: InventarioService) {
+  constructor(private fb: FormBuilder, private productInventoryService: InventarioService,
+    private router: Router,
+  ) {
     this.inventoryForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],

@@ -32,6 +32,7 @@ export class SecurityNotificationsComponent implements OnInit {
   markAsRead(index: number): void {
     if (index >= 0 && index < this.notifications.length) {
       this.ntserv.markAsRead(index);
+      this.notifications[index].read = true;
     }
   }
 }

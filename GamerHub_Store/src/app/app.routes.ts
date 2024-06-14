@@ -8,12 +8,14 @@ import { DetalleProductoComponent } from './modules/shopping/components/detalle-
 import { InventarioComponent } from './modules/administration/components/inventario/inventario.component';
 import { TareaPendienteComponent } from './modules/administration/components/tarea-pendiente/tarea-pendiente.component';
 import { EmployeeManagementComponent } from './modules/management/components/employee-management/employee-management.component';
-import { ManagerComponent } from './modules/management/components/manager/manager.component';
 import { AddProductComponent } from './modules/management/components/add-product/add-product.component';
 import { ReturnsComponent } from './modules/management/components/returns/returns.component';
 import { ProfileComponent } from './modules/administration/components/profile/profile.component';
 import { RestablecimientoCComponent } from './modules/administration/components/restablecimiento-c/restablecimiento-c.component';
 import { ReporteComponent } from './modules/administration/components/reporte/reporte.component';
+import { ContactsComponent } from './modules/clients/components/contacts/contacts.component';
+import { PreferencesComponent } from './modules/clients/components/preferences/preferences.component';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'product', pathMatch: 'full' },
@@ -39,7 +41,11 @@ export const routes: Routes = [
     { path: "carrito", component: CarritoComponent },
     { path: "productos", component: ProductosComponent},
     { path: "detalle-producto", component: DetalleProductoComponent },
-    { path: '**', redirectTo: 'product', pathMatch: 'full' }
+    { path: '**', redirectTo: 'product', pathMatch: 'full' },
+
+    //Clients
+    { path: 'contacts', component: ContactsComponent },
+    { path: 'preferences', component: PreferencesComponent },
 
 ];
 

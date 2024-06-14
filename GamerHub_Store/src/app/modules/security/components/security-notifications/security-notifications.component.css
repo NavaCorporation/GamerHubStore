@@ -1,13 +1,14 @@
 .notification-icon {
     position: relative;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .badge {
     position: absolute;
-    top: -15px;
-    right: -15px;
-    padding: 3px 5px;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
     border-radius: 50%;
 }
 
@@ -19,5 +20,42 @@
     border: 1px solid #ccc;
     padding: 10px;
     width: 300px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    cursor: pointer; 
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+}
+
+.notification-item.unread::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #40b4e4 ;
+}
+
+.notification-content {
+    flex: 1;
+    padding-left: 15px; 
+}
+
+.notification-item p {
+    margin: 0;
+}
+
+.notification-divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 0;
+    width: 90%;
+    align-self: center;
 }

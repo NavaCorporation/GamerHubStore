@@ -1,1 +1,25 @@
-<p>security-notifications works!</p>
+<div class="notification-icon d-flex justify-content-end"style="margin-right: 10px;" (click)="toggleNotifications()">
+    <i class="bi bi-bell" style="margin-right: 10px;"></i> <!-- Icono de campana con margen a la derecha -->
+    <span *ngIf="unreadNotificationsCount > 0" class="badge bg-danger">{{ unreadNotificationsCount }}</span>
+</div>
+
+<div *ngIf="showNotifications" class="notification-panel" style="margin-right: 10px;">
+    <div *ngIf="notifications.length > 0">
+        <div *ngFor="let notification of notifications; let i = index" class="row align-items-center ">
+            <div class="col">
+                <p [class.read]="notification.read">
+                    <i class="bi bi-bell" ></i> 
+                    {{ notification.type }}: {{ notification.message }}
+                </p>
+            </div>
+            <div class="col-auto">
+                <span *ngIf="!notification.read" (click)="markAsRead(i)" class="icon-container">
+                    <i class="bi bi-check-square" title="Marcar como leído"></i> 
+                </span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="notifications.length === 0">
+        <p>Sin notificaciones :D</p>
+    </div>
+</div>

@@ -1,7 +1,6 @@
 <app-encabezado-compras></app-encabezado-compras>
 <main class="">
-  <div class="">
-    <hr>
+  <div class="header-section">
     <h1 class="h2">Mis Compras</h1>
   </div>
 
@@ -14,13 +13,14 @@
       <h5>125</h5>
       <h4>Valor de puntos</h4>
       <hr>
-      <h5>1.25 $ </h5>
+      <h5>1.25 $</h5>
     </div>
+
     <div class="box">
       <h3>Devolución</h3>
       <form [formGroup]="devolucionForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="numero-factura">Codigo de Compra:</label>
+          <label for="numero-factura">Código de Compra:</label>
           <input type="text" id="numero-factura" formControlName="numeroFactura" placeholder="Ingrese el número de factura">
         </div>
         <div class="form-group">
@@ -35,141 +35,35 @@
     </div>
   </div>
 
-  <h2>Historial de compras </h2>
-<div class="table-responsive small">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col"># Factura</th>
-        <th scope="col">Código de Compra</th>
-        <th scope="col">Artículo</th>
-        <th scope="col">Costo</th>
-        <th scope="col">Fecha de Salida</th>
-        <th scope="col">Estado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1,001</td>
-        <td>A1001</td>
-        <td>Teclado Mecánico</td>
-        <td>$75.00</td>
-        <td>2023-05-12</td>
-        <td>Enviado</td>
-      </tr>
-      <tr>
-        <td>1,002</td>
-        <td>A1002</td>
-        <td>Audífonos Inalámbricos</td>
-        <td>$50.00</td>
-        <td>2023-05-13</td>
-        <td>Enviado</td>
-      </tr>
-      <tr>
-        <td>1,003</td>
-        <td>A1003</td>
-        <td>Parlantes Bluetooth</td>
-        <td>$60.00</td>
-        <td>2023-05-14</td>
-        <td>En camino</td>
-      </tr>
-      <tr>
-        <td>1,004</td>
-        <td>A1004</td>
-        <td>Mouse Pad RGB</td>
-        <td>$25.00</td>
-        <td>2023-05-15</td>
-        <td>Pendiente</td>
-      </tr>
-      <tr>
-        <td>1,005</td>
-        <td>A1005</td>
-        <td>Teclado Inalámbrico</td>
-        <td>$40.00</td>
-        <td>2023-05-16</td>
-        <td>Enviado</td>
-      </tr>
-      <tr>
-        <td>1,006</td>
-        <td>A1006</td>
-        <td>Audífonos con Micrófono</td>
-        <td>$35.00</td>
-        <td>2023-05-17</td>
-        <td>En camino</td>
-      </tr>
-      <tr>
-        <td>1,007</td>
-        <td>A1007</td>
-        <td>Parlantes para PC</td>
-        <td>$45.00</td>
-        <td>2023-05-18</td>
-        <td>Enviado</td>
-      </tr>
-      <tr>
-        <td>1,008</td>
-        <td>A1008</td>
-        <td>Mouse Pad Grande</td>
-        <td>$20.00</td>
-        <td>2023-05-19</td>
-        <td>Pendiente</td>
-      </tr>
-      <tr>
-        <td>1,009</td>
-        <td>A1009</td>
-        <td>Teclado Ergonómico</td>
-        <td>$55.00</td>
-        <td>2023-05-20</td>
-        <td>Enviado</td>
-      </tr>
-      <tr>
-        <td>1,010</td>
-        <td>A1010</td>
-        <td>Audífonos Deportivos</td>
-        <td>$30.00</td>
-        <td>2023-05-21</td>
-        <td>En camino</td>
-      </tr>
-      <tr>
-        <td>1,011</td>
-        <td>A1011</td>
-        <td>Parlantes de Alta Fidelidad</td>
-        <td>$70.00</td>
-        <td>2023-05-22</td>
-        <td>Enviado</td>
-      </tr>
-      <tr>
-        <td>1,012</td>
-        <td>A1012</td>
-        <td>Mouse Pad con Carga Inalámbrica</td>
-        <td>$35.00</td>
-        <td>2023-05-23</td>
-        <td>Pendiente</td>
-      </tr>
-      <tr>
-        <td>1,013</td>
-        <td>A1013</td>
-        <td>Teclado para Juegos</td>
-        <td>$80.00</td>
-        <td>2023-05-24</td>
-        <td>Enviado</td>
-      </tr>
-      <tr>
-        <td>1,014</td>
-        <td>A1014</td>
-        <td>Audífonos Cancelación Ruido</td>
-        <td>$90.00</td>
-        <td>2023-05-25</td>
-        <td>En camino</td>
-      </tr>
-      <tr>
-        <td>1,015</td>
-        <td>A1015</td>
-        <td>Parlantes Portátiles</td>
-        <td>$65.00</td>
-        <td>2023-05-26</td>
-        <td>Enviado</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="history-section">
+    <h2>Historial de compras</h2>
+    <div class="search-bar">
+      <label for="searchDate">Buscar por Fecha:</label>
+      <input type="date" id="searchDate" (input)="filterByDate($event)">
+    </div>
+    <div class="table-responsive small">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col"># Factura</th>
+            <th scope="col">Código de Compra</th>
+            <th scope="col">Artículo</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Fecha de Salida</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let purchase of filteredPurchases">
+            <td>{{ purchase.factura }}</td>
+            <td>{{ purchase.codigoCompra }}</td>
+            <td>{{ purchase.articulo }}</td>
+            <td>{{ purchase.costo }}</td>
+            <td>{{ purchase.fechaSalida }}</td>
+            <td>{{ purchase.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </main>

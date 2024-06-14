@@ -1,36 +1,175 @@
-main {
-  margin-left: 100px; /* Ajusta este valor según tus necesidades */
+body {
+  background-color: #ddd;
+  margin: 0; /* Eliminado margen predeterminado */
+  padding: 0; /* Eliminado padding predeterminado */
 }
+
 .container {
+  max-width: 600px;
+  margin: 20px auto;
   display: flex;
-  gap: 15px; /* Espaciado entre los contenedores */
-}
-.box {
-  border: 1px solid black;
+  justify-content: space-around;
+  gap: 20px;
   padding: 20px;
-  width: 45%; /* Ajusta el ancho según sea necesario */
-  box-sizing: border-box; /* Incluye el padding y el borde en el ancho */
-  margin-top: 25px;
-  margin-bottom: 50px;
+  background: #f9f9f9;
+  border-radius: 10px;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
 button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
+  width: fit-content;
+}
+
+p {
+  margin-top: 20px;
+}
+
+.nav-link:hover {
   cursor: pointer;
-  margin-top: 15px;
 }
-label {
+
+.text-center {
+  text-align: center;
+}
+
+.img-thumbnail {
   display: block;
-  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
 }
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 10px;
+
+.form-label {
+  display: grid;
+  grid-template-areas: "input";
+}
+
+.label_name {
+  grid-area: input;
+  z-index: 100;
+  width: max-content;
+  margin-left: 1rem;
+  padding: 0 .5rem;
+  align-self: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform .2s;
+  transform-origin: center left;
+}
+
+.bi-eye-slash {
+  margin-left: 5rem;
+}
+
+input {
+  grid-area: input;
+  font: inherit;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
-  resize: none;
+  padding: .7rem 1.5rem .7rem .5rem;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input:focus+.label_name,
+input:not(:placeholder-shown)+.label_name {
+  transform: translateY(-50%) scale(.7);
+  background-color: rgba(255, 255, 255, 0.973);
+}
+
+input.ng-touched.ng-invalid {
+  border-left: 3px solid red;
+}
+
+input.ng-touched.ng-valid {
+  border-left: 3px solid green;
+}
+
+input.ng-touched.password-match-invalid {
+  border-left: 3px solid red;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.history-section {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 10px;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+.header-section {
+  text-align: center;
+  margin: 20px 0;
 }

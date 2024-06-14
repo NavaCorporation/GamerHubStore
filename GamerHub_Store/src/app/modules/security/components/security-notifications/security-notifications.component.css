@@ -1,0 +1,23 @@
+.notification-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    padding: 3px 5px;
+    border-radius: 50%;
+}
+
+.notification-panel {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

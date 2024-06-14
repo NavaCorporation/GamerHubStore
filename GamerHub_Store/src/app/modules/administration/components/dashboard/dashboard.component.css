@@ -1,29 +1,58 @@
-/* Contenedor principal que incluye el sidebar y el contenido */
 .containerTodo {
     display: flex;
-  }
-
-  
-.content-container {
-    margin-left: 250px; /* Espacio dejado por el sidebar */
-    padding: 20px;
-    width: calc(100% - 250px); /* Ajusta el ancho para ocupar el resto del espacio */
 }
-  
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.content {
+    margin-left: 250px; /* Ajusta esto según el ancho de tu barra lateral */
+    width: calc(100% - 250px); /* Ajusta esto según el ancho de tu barra lateral */
+    padding: 20px;
+}
 
 .card-header {
-    background-color: #7E8EF1; /* Color gris oscuro para el header */
-    color: white;
+    background-color: #6c757d; /* Gris */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px; /* Borde redondeado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 20px;
 }
+
+.card-header img {
+    border-radius: 50%;
+    width: 60px; /* Tamaño de la imagen */
+    height: 60px; /* Tamaño de la imagen */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
 .card-body {
-    background-color: #f8f9fa; /* Color claro para el body */
+    background-color: #ffffff; /* Blanco */
+    color: #333333; /* Texto gris oscuro */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
 }
+
 .card-title {
-    color: #343a40; /* Color gris oscuro para el título */
+    color: #333333; /* Color de texto gris oscuro */
 }
+
 .btn-primary {
-    background-color: #F0ECE5;
-    color: black;
-    border-color: #343a40;
+    background-color: #6c757d; /* Gris */
+    color: #ffffff; /* Texto blanco */
+    border-color: #6c757d; /* Borde del mismo color que el fondo */
 }
+
 

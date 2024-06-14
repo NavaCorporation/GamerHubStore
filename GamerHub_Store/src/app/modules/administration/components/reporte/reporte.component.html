@@ -1,0 +1,27 @@
+<!-- reportes-detallados.component.html -->
+
+<h1>Reportes-detallados</h1>
+<button class="btn btn-secondary mb-4" (click)="goBack()">Back</button> <!-- Botón de regreso -->
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (reporte of reportes; track reporte) {
+        <tr>
+            <td>{{ reporte.id }}</td>
+            <td>{{ reporte.title }}</td>
+            <td>{{ reporte.description }}</td>
+            <td>
+                <button class="btn btn-danger btn-sm" (click)="eliminarReporte(reporte.id)">Eliminar</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

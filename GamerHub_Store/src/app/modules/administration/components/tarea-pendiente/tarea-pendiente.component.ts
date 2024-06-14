@@ -1,42 +1,54 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { TareasService } from '../services/tareas.service';
+
 import { Tarea } from '../models/tarea';
-import { FormsModule } from '@angular/forms';
-import { SidebarComponent } from "../sidebar/sidebar.component";
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TareaAgregar } from '../models/tareaAgregar';
+import { AggTareaService } from '../services/agg-tarea.service';
 
 @Component({
-    selector: 'app-tarea-pendiente',
-    standalone: true,
-    templateUrl: './tarea-pendiente.component.html',
-    styleUrl: './tarea-pendiente.component.css',
-    imports: [RouterLink, FormsModule, SidebarComponent]
+  selector: 'app-tarea-pendiente',
+  standalone: true,
+  imports: [RouterLink,ReactiveFormsModule],
+  templateUrl: './tarea-pendiente.component.html',
+  styleUrl: './tarea-pendiente.component.css'
 })
 export class TareaPendienteComponent {
 
+  taskForm: FormGroup;
+  tasks: TareaAgregar[] = [];
 
-  newTask: Tarea = new Tarea(0, '', '', 'Pendiente');
-  tasks: Tarea[] = [];
-  taskIdCounter: number = 1;
-
-  constructor(private taskService: TareasService,
-    private router: Router) { }
-
-  ngOnInit(): void {
-    this.taskService.getTasks().subscribe(tasks => {
-      this.tasks = tasks;
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private taskService: AggTareaService
+  ) {
+    this.taskForm = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      status: ['', Validators.required]
     });
   }
 
-  addTask(): void {
-    this.newTask.id = this.taskIdCounter++;
-    this.taskService.addTask(this.newTask);
-    this.newTask = new Tarea(0, '', '', 'Pendiente');
+  ngOnInit(): void {
+    this.tasks = this.taskService.getTasks();
   }
 
-  updateTaskStatus(id: number, status: string): void {
-    this.taskService.updateTaskStatus(id, status);
+  submitForm(): void {
+    if (this.taskForm.valid) {
+      const newTask = new TareaAgregar(
+        this.taskService.getNextId(),
+        this.taskForm.value.title,
+        this.taskForm.value.description,
+        this.taskForm.value.status
+      );
+      this.taskService.addTask(newTask);
+      this.tasks = this.taskService.getTasks(); // Update the task list
+      this.taskForm.reset();
+    }
   }
+
+
 
   goBack(): void {
     this.router.navigate(['/dashboard']);  // Navega a la ruta deseada, por ejemplo, '/admin'

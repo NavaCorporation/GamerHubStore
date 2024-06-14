@@ -8,7 +8,7 @@ import { DatosUser } from '../../models/datosUser';
 import { RegisterComponent } from "../register/register.component";
 import { LoginAdmComponent } from "../login-adm/login-adm.component";
 import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
-
+import { NotificationService } from '../../services/notifications/notification.service';
 @Component({
     selector: 'app-login',
     standalone: true,
@@ -35,7 +35,7 @@ export class LoginComponent  implements OnInit {
   userEmail= 'user@gmail.com';
   userProfilePicture= 'assets/img/userPerfil.jpeg';
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService, private notificationService: NotificationService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -54,11 +54,12 @@ export class LoginComponent  implements OnInit {
   onLogin(): void {
     // Prueba de admin
     const {email, password} = this.loginForm.value;
-    if (email === this.adminEmail && password === this.adminPassword || email === this.gestorEmail && password === this.gestorPassword) {
+
+    if ((email === this.adminEmail && password === this.adminPassword || email === this.gestorEmail && password === this.gestorPassword)) {
       this.showAdminLogin = true;
     } 
     // sin el else 
-    else if (this.loginForm.valid) {
+    else if (email === this.userEmail && password === this.userPassword) {
       // Autenticación exitosa, establece el usuario actual
       const user: DatosUser = {
         profilePicture: this.userProfilePicture,
@@ -70,13 +71,15 @@ export class LoginComponent  implements OnInit {
         password: this.userPassword
       }
       this.authService.loginUser(user);
-    
+      //this.notificationService.clearNotifications();
       console.log('Login data:', this.loginForm.value);
       //alert('Login exitoso!\n\n' + JSON.stringify(this.loginForm.value, null, 2));
       this.router.navigate(['/product']);
     } 
     else {
-      alert('Error en algún lado');
+      // Autenticación fallida, muestra un mensaje de error
+      this.notificationService.addNotification({type: 'Error de inicio de sesión', message: 'Se ha detectado un error al iniciar sesión'});
+      alert('Credenciales incorrectas');
     }
     
     
@@ -86,8 +89,11 @@ export class LoginComponent  implements OnInit {
   }
   
   
-    resetForms (): void {
-      this.loginForm.reset();
-      this.showAdminLogin = false;
-    }
+  resetForms (): void {
+    this.loginForm.reset();
+    this.showAdminLogin = false;
+  }
+  hasNotification(): boolean {
+    return this.notificationService.hasNotifications();
+  }
 }

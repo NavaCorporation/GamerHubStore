@@ -18,6 +18,7 @@ export class ProductosComponent {
         messageElement.style.display = 'none';
       }, 3000); // El mensaje desaparecerá después de 3 segundos
     }
-  } 
+  }
+
 
 }

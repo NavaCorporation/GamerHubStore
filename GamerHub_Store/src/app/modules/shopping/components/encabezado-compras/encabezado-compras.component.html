@@ -27,7 +27,7 @@
       <ul class="navbar-nav ms-auto">
         <!-- Mostrar solo si el usuario está autenticado -->
         <ng-container *ngIf="currentUser">
-          <li class="nav-item">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               <img [src]="currentUser.profilePicture" (click)="userEdit()" alt="Profile Picture" width="30" height="30"
@@ -35,7 +35,10 @@
               {{ currentUser.userName }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+              <li><a class="dropdown-item" routerLink="/client">Perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/historial">Historial</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a></li>
             </ul>
           </li>
         </ng-container>

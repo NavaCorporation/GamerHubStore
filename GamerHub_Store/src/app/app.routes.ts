@@ -15,6 +15,7 @@ import { RestablecimientoCComponent } from './modules/administration/components/
 import { ReporteComponent } from './modules/administration/components/reporte/reporte.component';
 import { ContactsComponent } from './modules/clients/components/contacts/contacts.component';
 import { PreferencesComponent } from './modules/clients/components/preferences/preferences.component';
+import { PurchaseHistoryComponent } from './modules/clients/components/purchase-history/purchase-history.component';
 
 
 export const routes: Routes = [
@@ -41,11 +42,12 @@ export const routes: Routes = [
     { path: "carrito", component: CarritoComponent },
     { path: "productos", component: ProductosComponent},
     { path: "detalle-producto", component: DetalleProductoComponent },
-    { path: '**', redirectTo: 'product', pathMatch: 'full' },
 
     //Clients
     { path: 'contacts', component: ContactsComponent },
     { path: 'preferences', component: PreferencesComponent },
+    { path: 'historial', component: PurchaseHistoryComponent },
 
+    { path: '**', redirectTo: 'product', pathMatch: 'full' },
 ];
 

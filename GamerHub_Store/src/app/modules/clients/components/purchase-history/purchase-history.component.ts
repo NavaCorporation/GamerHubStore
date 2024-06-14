@@ -1,12 +1,13 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
 @Component({
-  selector: 'app-purchase-history',
-  standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,CommonModule],
-  templateUrl: './purchase-history.component.html',
-  styleUrls: ['./purchase-history.component.css']
+    selector: 'app-purchase-history',
+    standalone: true,
+    templateUrl: './purchase-history.component.html',
+    styleUrls: ['./purchase-history.component.css'],
+    imports: [FormsModule, ReactiveFormsModule, CommonModule, EncabezadoComprasComponent]
 })
 export class PurchaseHistoryComponent{
   devolucionForm: FormGroup;

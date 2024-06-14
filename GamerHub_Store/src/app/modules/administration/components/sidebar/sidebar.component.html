@@ -1,33 +1,26 @@
+<nav class="d-flex flex-column p-3 sidebar fixed-top" >
+  <h3 class="pb-3 mb-3 border-bottom text-white text-center">Admin Panel</h3>
+  
+  <!-- User Profile Section -->
+  <div class="user-profile mb-3 d-flex flex-column align-items-center">
+    <img [src]="user.photoUrl" alt="Foto del Usuario" class="img-thumbnail rounded-circle mb-2 user-photo">
+    <div class="text-white text-center">
+      <p>{{ user.name }}</p>
+      <p>{{ user.email }}</p>
+    </div>
+  </div>
+  <!-- End User Profile Section -->
+  <h3 class="pb-3 mb-3 border-bottom text-white "></h3>
 
-<nav class="d-flex flex-column p-3 sidebar">
-
-  <h3 class="pb-3 mb-3 border-bottom text-white">Admin Panel</h3>
-
-  <ul class="nav nav-pills flex-column mb-auto">
+  <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      <a routerLink="/admin/verification" class="nav-link text-white">
-        Verificación
-      </a>
+      <a class="nav-link" href="/dashboard">Dashboard</a>
     </li>
-    <li>
-      <a routerLink="/admin/inventory" class="nav-link text-white">
-        Inventario
-      </a>
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">Profile</a>
     </li>
-    <li>
-      <a routerLink="/admin/completed-tasks" class="nav-link text-white">
-        Tareas Terminadas
-      </a>
-    </li>
-    <li>
-      <a routerLink="/admin/tasks" class="nav-link text-white">
-        Tareas
-      </a>
-    </li>
-    <li>
-      <a routerLink="/admin/manage-employees" class="nav-link text-white">
-        Gestión de Empleados
-      </a>
+    <li class="nav-item">
+      <a class="nav-link" href="">Logout</a>
     </li>
   </ul>
 

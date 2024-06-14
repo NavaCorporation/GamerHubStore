@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Tarea } from '../models/tarea';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { TareaAgregar } from '../models/tareaAgregar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AggTareaService {
 
-  private tareas: Tarea[] = [];
-  private tasksSubject: BehaviorSubject<Tarea[]> = new BehaviorSubject(this.tareas);
+  private tasks: TareaAgregar[] = [];
 
   constructor() {}
 
-  getTasks(): Observable<Tarea[]> {
-    return this.tasksSubject.asObservable();
+  addTask(task: TareaAgregar): void {
+    this.tasks.push(task);
   }
 
-  addTask(tarea: Tarea): void {
-    this.tareas.push(tarea);
-    this.tasksSubject.next(this.tareas);
+  getTasks(): TareaAgregar[] {
+    return this.tasks;
   }
 
-  getPendingTasksCount(): number {
-    return this.tareas.filter(tarea => tarea.status === 'Pendiente').length;
+  getPendingTasksCount2(): number {
+    return this.tasks.filter(task => task.status === 'Pendiente').length;
+  }
+
+  getNextId(): number {
+    return this.tasks.length + 1;
   }
 
 }

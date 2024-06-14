@@ -1,27 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Inventario } from '../models/inventario';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Producto } from '../models/producto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InventarioService {
-
- 
-
-  private inventory: Inventario[] = [];
-  private inventorySubject: BehaviorSubject<Inventario[]> = new BehaviorSubject(this.inventory);
+  private products: Producto[] = [];
 
   constructor() {}
 
-  getInventory(): Observable<Inventario[]> {
-    return this.inventorySubject.asObservable();
+  getProducts(): Producto[] {
+    return this.products;
   }
 
-  addItem(item: Inventario): void {
-    this.inventory.push(item);
-    this.inventorySubject.next(this.inventory);
+  addProduct(product: Producto): void {
+    this.products.push(product);
   }
 
+  updateProduct(updatedProduct: Producto): void {
+    const index = this.products.findIndex((p) => p.id === updatedProduct.id);
+    if (index !== -1) {
+      this.products[index] = updatedProduct;
+    }
+  }
+
+  verifyProduct(productId: number): void {
+    const product = this.products.find((p) => p.id === productId);
+    if (product) {
+      product.isVerified = !product.isVerified;
+      this.updateProduct(product);
+    }
+  }
+
+  removeProduct(productId: number): void {
+    this.products = this.products.filter((p) => p.id !== productId);
+  }
 
 }

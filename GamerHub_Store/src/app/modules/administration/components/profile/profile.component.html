@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            Perfil de Usuario
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="user-name">Nombre:</label>
+                    <input type="text" id="user-name" class="form-control" [(ngModel)]="user.name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="user-email">Email:</label>
+                    <input type="email" id="user-email" class="form-control" [(ngModel)]="user.email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="user-photo">Foto:</label>
+                    <input type="file" id="user-photo" class="form-control" (change)="onFileSelected($event)">
+                </div>
+                <div class="text-center">
+                    <img [src]="user.photoUrl" alt="Foto del Usuario" class="img-thumbnail rounded-circle mb-2 user-photo">
+                </div>
+                <button type="button" class="btn btn-primary mt-3" (click)="updateProfile()">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+</div>

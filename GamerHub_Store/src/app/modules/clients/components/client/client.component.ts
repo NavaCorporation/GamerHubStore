@@ -58,8 +58,13 @@ export class ClientComponent implements OnInit {
   }
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
-    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.userProfilePicture = e.target.result;
+      };
+    reader.readAsDataURL(file);
     console.log(file); 
   }
   }
-  
+}

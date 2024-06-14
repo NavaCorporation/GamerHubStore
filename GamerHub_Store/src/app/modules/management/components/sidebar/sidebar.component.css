@@ -10,22 +10,24 @@
     gap: 10px;
     flex-shrink: 0;
     border-right: 1px solid #ffffff;
-    background: linear-gradient(to right, #f8bbd0, #ffffff );
+    background-color: #1E1C1D;
 }
+.sidebar .navbar-brand {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center;    /* Centra el contenido verticalmente */
+}
+
+.sidebar .navbar-brand img {
+  margin: 0 auto; /* Asegura que la imagen esté centrada */
+}
+
   @media (max-width: 768px) {
     .sidebar {
         width: 200px; /* Ajuste del ancho para pantallas más pequeñas */
     }
 }
 
-/* divider */
-.hr {
-    border: none; /* Elimina el borde predeterminado */
-    height: px; /* Ajusta la altura del divisor */
-    background-color: #b81919; /* Cambia el color del divisor */
-    width: 80%; /* Ajusta el ancho del divisor */
-    margin: 10px 0; /* Añade margen arriba y abajo del divisor */
-}
 
 /* perfil */
 .company{ 
@@ -38,5 +40,35 @@
   align-self: stretch;
 }
 
+.company a {
+  color: #ffffff;
+}
 
 
+.menubar {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+.sidebar .nav-link {
+  color: white; 
+}
+
+.sidebar .nav-link:hover {
+  color: rgb(191, 204, 243); 
+}
+
+.sidebarbaja {
+
+  margin-top: auto; 
+}
+
+.nav.flex-column {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-item {
+  margin-bottom: 1rem;
+}

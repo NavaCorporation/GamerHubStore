@@ -11,10 +11,13 @@ import { UserService } from '../services/user.service';
     imports: []
 })
 export class SidebarComponent  implements OnInit {
+  nameAdmin: string = 'AdminSteven';
+  emailAdmin: string = 'admin@ghs.com';
+  ImgAdmin: string = 'assets/img/userPerfil.jpeg';
   user = {
-    name: '',
-    email: '',
-    photoUrl: ''
+    name: this.nameAdmin,
+    email: this.ImgAdmin,
+    photoUrl: this.ImgAdmin
   };
 
   constructor(private userService: UserService) {}

@@ -80,6 +80,19 @@ input {
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: .7rem 1.5rem .7rem .5rem;
+  display: block; /* Hace que el input sea un bloque y ocupe toda la línea */
+  width: 100%; /* Hace que el input ocupe todo el ancho del contenedor */
+}
+
+textarea {
+  grid-area: input;
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: .7rem 1.5rem .7rem .5rem;
+  display: block; /* Hace que el textarea sea un bloque y ocupe toda la línea */
+  width: 100%; /* Hace que el textarea ocupe todo el ancho del contenedor */
+  resize: none; /* Evita que el textarea se expanda */
 }
 
 .input-container {
@@ -94,16 +107,14 @@ input:not(:placeholder-shown)+.label_name {
   background-color: rgba(255, 255, 255, 0.973);
 }
 
-input.ng-touched.ng-invalid {
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
   border-left: 3px solid red;
 }
 
-input.ng-touched.ng-valid {
+input.ng-touched.ng-valid,
+textarea.ng-touched.ng-valid {
   border-left: 3px solid green;
-}
-
-input.ng-touched.password-match-invalid {
-  border-left: 3px solid red;
 }
 
 .password-toggle {
@@ -116,17 +127,6 @@ input.ng-touched.password-match-invalid {
   padding: 0;
   font-size: 1.25rem;
   cursor: pointer;
-}
-
-.container {
-  max-width: 600px;
-  margin: 20px auto;
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 10px;
 }
 
 .history-section {

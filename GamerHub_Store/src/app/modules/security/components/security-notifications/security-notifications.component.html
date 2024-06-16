@@ -1,8 +1,39 @@
 <div class="notification-icon d-flex justify-content-end" (click)="toggleNotifications()">
     <i class="bi bi-bell" style="margin-right: 10px;"></i>
-    <span *ngIf="unreadNotificationsCount > 0" class="badge bg-danger">{{ unreadNotificationsCount }}</span>
+    @if (unreadNotificationsCount > 0){
+        <span class="badge bg-danger">{{ unreadNotificationsCount }}</span>
+    }
 </div>
 
+@if (showNotifications){
+    <div class="notification-panel">
+        @if (notifications.length > 0){
+            <div>
+                @for (notification of notifications; track $index) {
+                    <div class="notification-item" [class.unread]="!notification.read" (mouseover)="markAsRead($index)">
+                        <div class="notification-content">
+                            <p [class.read]="notification.read">
+                                {{ notification.type }}: {{ notification.message }}
+                            </p>
+                            @if ($index < notifications.length - 1){<div class="notification-divider"></div>}
+                            
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    @if (notifications.length === 0){
+        <div class="notification-panel">
+            <p> Sin notificaciones :D</p>
+        </div>
+    }
+}
+
+
+
+
+<!-- 
 <div *ngIf="showNotifications" class="notification-panel">
     <div *ngIf="notifications.length > 0">
         <div *ngFor="let notification of notifications; let i = index" class="notification-item"
@@ -19,3 +50,5 @@
         <p>Sin notificaciones :D</p>
     </div>
 </div>
+-->
+

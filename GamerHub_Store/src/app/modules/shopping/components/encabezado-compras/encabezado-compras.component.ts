@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../../../security/services/authService/authentication.service';
 import { DatosUser } from '../../../security/models/datosUser';
+import { HttpClientModule } from '@angular/common/http';
 import { SecurityNotificationsComponent } from "../../../security/components/security-notifications/security-notifications.component";
 
 @Component({
@@ -10,7 +11,7 @@ import { SecurityNotificationsComponent } from "../../../security/components/sec
     standalone: true,
     templateUrl: './encabezado-compras.component.html',
     styleUrl: './encabezado-compras.component.css',
-    imports: [CommonModule, RouterLink, SecurityNotificationsComponent]
+    imports: [CommonModule, RouterLink, SecurityNotificationsComponent, HttpClientModule],
 })
 export class EncabezadoComprasComponent implements OnInit {
   currentUser: DatosUser | null = null;

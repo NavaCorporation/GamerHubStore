@@ -59,6 +59,9 @@ namespace GamerHub_Backend.Entities
             //Tabla VerificacionEnvio
             modelBuilder.Entity<VerificacionEnvio>();
 
+            // Nueva tabla de comentarios
+            modelBuilder.Entity<Comentario>();
+
         }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Rol>Roles { get; set; }
@@ -70,6 +73,8 @@ namespace GamerHub_Backend.Entities
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Sesion> Sesiones {  get; set; }
         public DbSet<VerificacionEnvio> VerificacionesEnvio { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
+        
     }
 
 }

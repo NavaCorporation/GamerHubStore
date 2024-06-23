@@ -27,6 +27,7 @@ namespace GamerHub_Backend.Entities
         public ICollection<HistorialVenta> HistorialVenta { get; set; } = new List<HistorialVenta>();
         public ICollection<OrdenCompra> ordenCompras { get; set; } = new List<OrdenCompra>();
         public ICollection<Sesion> Sesiones { get; set; } = new List<Sesion>();
+        public ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
 
     }
 }

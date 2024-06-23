@@ -4,6 +4,7 @@ using GamerHub_Backend.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GamerHub_Backend.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContexModelSnapshot : ModelSnapshot
+    [Migration("20240622015221_V0.3")]
+    partial class V03
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -415,13 +418,13 @@ namespace GamerHub_Backend.Migrations
             modelBuilder.Entity("GamerHub_Backend.Entities.Comentario", b =>
                 {
                     b.HasOne("GamerHub_Backend.Entities.Producto", "Producto")
-                        .WithMany("Comentarios")
+                        .WithMany()
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GamerHub_Backend.Entities.Usuario", "Usuario")
-                        .WithMany("Comentarios")
+                        .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -557,8 +560,6 @@ namespace GamerHub_Backend.Migrations
 
             modelBuilder.Entity("GamerHub_Backend.Entities.Producto", b =>
                 {
-                    b.Navigation("Comentarios");
-
                     b.Navigation("DetallesCompras");
 
                     b.Navigation("Devoluciones");
@@ -571,8 +572,6 @@ namespace GamerHub_Backend.Migrations
 
             modelBuilder.Entity("GamerHub_Backend.Entities.Usuario", b =>
                 {
-                    b.Navigation("Comentarios");
-
                     b.Navigation("HistorialVenta");
 
                     b.Navigation("Sesiones");

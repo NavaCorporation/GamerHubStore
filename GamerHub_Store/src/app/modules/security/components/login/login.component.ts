@@ -14,9 +14,65 @@ import { NotificationService } from '../../services/notifications/notification.s
     standalone: true,
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
-    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent, EncabezadoComprasComponent]
+    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent, EncabezadoComprasComponent],
 })
 
+export class LoginComponent implements OnInit {
+  @Output() userLoggedIn = new EventEmitter<DatosUser>();
+  showLogin: boolean = true;
+  showAdminLogin: boolean = false;
+  loginForm!: FormGroup;
+  loggedInUser: DatosUser | null = null;
+
+  constructor(private fb: FormBuilder, private router: Router, private _authService: AuthenticationService, private notificationService: NotificationService) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+    
+  }
+  toggleAdminLogin(): void {
+    this.showAdminLogin = !this.showAdminLogin;
+  }
+
+  toggleForm(): void {
+    this.showLogin = !this.showLogin;
+  }
+  onLogin(): void {
+    const { email, password } = this.loginForm.value;
+
+    this._authService.loginUser(email, password).subscribe(
+      user => {
+        if (user) {
+          this.userLoggedIn.emit(user);
+          this.router.navigate(['/product']);
+        } else {
+          this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Credenciales incorrectas' });
+        }
+      },
+      error => {
+        this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Error en el servidor. Por favor, inténtalo más tarde.' });
+      }
+    );
+  }
+  logoutUser(): void {
+    this._authService.logoutUser();
+}
+  resetForms(): void {
+    this.loginForm.reset();
+    this.showAdminLogin = false;
+  }
+  hasNotification(): boolean {
+    return this.notificationService.hasNotifications();
+  }
+}
+
+/* 
+  -------------------------------------------------------
+
+-----------------------------------------
 export class LoginComponent  implements OnInit {
   @Output() userLoggedIn = new EventEmitter<DatosUser>();
   showLogin: boolean = true;
@@ -99,59 +155,4 @@ export class LoginComponent  implements OnInit {
   }
 
 }
-
-/* 
-  -------------------------------------------------------
-  export class LoginComponent implements OnInit {
-  @Output() userLoggedIn = new EventEmitter<DatosUser>();
-  showLogin: boolean = true;
-  showAdminLogin: boolean = false;
-  loginForm!: FormGroup;
-  loggedInUser: DatosUser | null = null;
-
-  constructor(private fb: FormBuilder, private router: Router, private _authService: AuthenticationService, private notificationService: NotificationService) {}
-
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-    
-  }
-  toggleAdminLogin(): void {
-    this.showAdminLogin = !this.showAdminLogin;
-  }
-
-  toggleForm(): void {
-    this.showLogin = !this.showLogin;
-  }
-  onLogin(): void {
-    const { email, password } = this.loginForm.value;
-
-    this._authService.loginUser(email, password).subscribe(
-      user => {
-        if (user) {
-          this.userLoggedIn.emit(user);
-          this.router.navigate(['/product']);
-        } else {
-          this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Credenciales incorrectas' });
-        }
-      },
-      error => {
-        this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Error en el servidor. Por favor, inténtalo más tarde.' });
-      }
-    );
-  }
-  logoutUser(): void {
-    this._authService.logoutUser();
-}
-  resetForms(): void {
-    this.loginForm.reset();
-    this.showAdminLogin = false;
-  }
-  hasNotification(): boolean {
-    return this.notificationService.hasNotifications();
-  }
-}
-  
 */

@@ -10,7 +10,7 @@ namespace GamerHub_Backend.Entities
 
         public string Descripcion { get; set; } = null!;
 
-        public ICollection<Producto> Productos { get; set; } = new List<Producto>();
+        public List<Producto>? Productos { get; set; }
 
     }
 }

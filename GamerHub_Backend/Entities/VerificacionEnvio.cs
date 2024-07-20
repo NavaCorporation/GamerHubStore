@@ -15,6 +15,6 @@ namespace GamerHub_Backend.Entities
         [Required]
         public string Estado { get; set; } = null!;
         public int IdOrden { get; set; }
-        public OrdenCompra OrdenCompra { get; set; } = null!;
+        public OrdenCompra? OrdenCompra { get; set; }
     }
 }

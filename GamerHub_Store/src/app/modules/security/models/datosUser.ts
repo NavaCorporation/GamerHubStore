@@ -1,5 +1,5 @@
 export class DatosUser {
-    profilePicture: string = '';
+    profilePicture?: string = '';
     firstName: string = '';
     lastName: string = '';
     email: string = '';

@@ -17,8 +17,8 @@ namespace GamerHub_Backend.Entities
         public int stock { get; set; }
         public int IdCategoria { get; set; }
         public Categoria Categoria { get; set; }=null!;
-        public ICollection<DetallesCompra> DetallesCompras { get; set; } = new List<DetallesCompra>();
-        public ICollection<Devolucion> Devoluciones { get; set; } = new List<Devolucion>();
-        public ICollection<Comentario > Comentarios { get; set; } = new List<Comentario>();
+        public List<DetallesCompra>? DetallesCompras { get; set; }
+        public List<Devolucion>? Devoluciones { get; set; }
+        public List<Comentario>? Comentarios { get; set; }
     }   
 }

@@ -15,53 +15,69 @@ namespace GamerHub_Backend.Entities
                 optionsBuilder.UseSqlServer(_config.GetConnectionString("Connection"));
             }
         }
+        ///////////////
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //Datos de roles
+
+            // Datos de roles
             modelBuilder.Entity<Rol>().HasData(
-                    new Rol { Id = 1, TipoRol = "cliente"},
-                    new Rol { Id = 2, TipoRol = "gestor"},
-                    new Rol { Id = 3, TipoRol = "administrador"}
-                );
-            //Tabla de Usuario
+                new Rol { Id = 1, TipoRol = "cliente" },
+                new Rol { Id = 2, TipoRol = "gestor" },
+                new Rol { Id = 3, TipoRol = "administrador" }
+            );
+
+            // Tabla de Usuario
             modelBuilder.Entity<Usuario>()
                 .HasOne(u => u.Rol)
                 .WithMany(r => r.Usuarios)
                 .HasForeignKey(u => u.RolId);
 
-            //Tabla de Categoria
+            // Tabla de Categoria
             modelBuilder.Entity<Categoria>();
 
-            //Tabla de Devolucion
+            // Tabla de Devolucion
             modelBuilder.Entity<Devolucion>()
-                .Property(d  => d.FechaDevolucion)
+                .Property(d => d.FechaDevolucion)
                 .HasColumnType("Date");
-            //Tabla DetalleCompra
-            modelBuilder.Entity<DetallesCompra>();
 
-            //Tabla Historia Venta
+            // Tabla DetallesCompra
+            modelBuilder.Entity<DetallesCompra>()
+                .Property(d => d.Precio)
+                .HasColumnType("decimal(18,2)");
+
+            // Tabla HistorialVenta
             modelBuilder.Entity<HistorialVenta>()
                 .Property(h => h.FechaVenta)
                 .HasColumnType("Date");
 
-            //Tabla Orden Compra
+            modelBuilder.Entity<HistorialVenta>()
+                .Property(h => h.MontoTotal)
+                .HasColumnType("decimal(18,2)");
+
+            // Tabla OrdenCompra
             modelBuilder.Entity<OrdenCompra>()
                 .Property(o => o.FechaOrden)
                 .HasColumnType("Date");
-            
-            //Tabla Producto
-            modelBuilder.Entity<Producto>();
 
-            //Tabla Sesion
+            modelBuilder.Entity<OrdenCompra>()
+                .Property(o => o.MontoTotal)
+                .HasColumnType("decimal(18,2)");
+
+            // Tabla Producto
+            modelBuilder.Entity<Producto>()
+                .Property(p => p.Precio)
+                .HasColumnType("decimal(18,2)");
+
+            // Tabla Sesion
             modelBuilder.Entity<Sesion>();
 
-            //Tabla VerificacionEnvio
+            // Tabla VerificacionEnvio
             modelBuilder.Entity<VerificacionEnvio>();
 
             // Nueva tabla de comentarios
             modelBuilder.Entity<Comentario>();
-
         }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Rol>Roles { get; set; }

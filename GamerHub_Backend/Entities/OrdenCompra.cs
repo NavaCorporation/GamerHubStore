@@ -15,10 +15,10 @@ namespace GamerHub_Backend.Entities
         public string Estado { get; set; } = null!;
         public string? TipoPaga {  get; set; }
         
-        public ICollection<VerificacionEnvio> VerificacionEnvios { get; set; } = new List<VerificacionEnvio>();
-        public ICollection<DetallesCompra> DetallesCompras { get; set; } = new List<DetallesCompra>();
-        public ICollection<HistorialVenta> HistorialVenta { get; set; } = new List<HistorialVenta>();
-        public ICollection<Devolucion> Devoluciones { get; set; } = new List<Devolucion>();
+        public List<VerificacionEnvio>? VerificacionEnvios { get; set; }
+        public List<DetallesCompra>? DetallesCompras { get; set; } 
+        public List<HistorialVenta>? HistorialVenta { get; set; } 
+        public List<Devolucion>? Devoluciones { get; set; }
         
     }
 }

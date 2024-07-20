@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace GamerHub_Backend.Entities
 {
@@ -7,7 +8,8 @@ namespace GamerHub_Backend.Entities
         public int Id { get; set; }
         [Required]
         public string TipoRol {  get; set; } = null!;
-        public ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        [JsonIgnore]
+        public List<Usuario>? Usuarios { get; set; }
 
     }
 }

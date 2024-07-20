@@ -9,7 +9,7 @@ import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-com
     imports: [EncabezadoComprasComponent]
 })
 export class ProductosComponent {
-
+  constructor () { }
   addToCart() {
     const messageElement = document.getElementById('floating-message');
     if (messageElement) {

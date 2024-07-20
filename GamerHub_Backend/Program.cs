@@ -3,9 +3,19 @@ using GamerHub_Backend.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+//Cors
+builder.Services.AddCors(options => options.AddPolicy("AllowWebApp",
+    builder => builder.AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod()));
+// WithOrigins("http://localhost:4200")   
+
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 // Add services to the container.
+
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
 builder.Services.AddScoped<RolRepository>();
 builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddControllers();
@@ -14,11 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Cors
-builder.Services.AddCors(options => options.AddPolicy("AllowWebapp", 
-    builder => builder.AllowAnyOrigin()
-                      .AllowAnyHeader()
-                      .AllowAnyMethod()));
+ 
 
 var app = builder.Build();
 
@@ -28,11 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowWebApp");
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

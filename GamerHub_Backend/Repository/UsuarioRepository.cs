@@ -1,43 +1,34 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using GamerHub_Backend.Entities;
+using Microsoft.Identity.Client;
 
 namespace GamerHub_Backend.Repository
 {
-    public class UsuarioRepository
+    public class UsuarioRepository: IUsuarioRepository
     {
-        private readonly ApplicationDBContext _context;
+        private readonly ApplicationDBContext _dbContext;
 
-        public UsuarioRepository(ApplicationDBContext context)
+        public UsuarioRepository(ApplicationDBContext dbContext)
         {
-            _context = context;
-        }
-
-        public async Task<IEnumerable<Usuario>> GetAll()
-        {
-            return await _context.Usuarios.ToListAsync();
+            _dbContext = dbContext;
         }
 
-        public async Task<Usuario> GetById(int id)
+        public async Task <Usuario?> GetByEmailAsync(string email)
         {
-            return await _context.Usuarios.FindAsync(id);
-        }
-        public async Task Add(Usuario entity)
-        {
-            await _context.Usuarios.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            return await _dbContext.Usuarios.SingleOrDefaultAsync(u => u.Correo == email);
         }
 
-        public async Task Update(Usuario entity)
+        public async Task AddAsync (Usuario usuario)
         {
-            _context.Usuarios.Update(entity);
-            await _context.SaveChangesAsync();
+            await _dbContext.Usuarios.AddAsync(usuario);
+            await _dbContext.SaveChangesAsync();
         }
-        public async Task Delete(int id)
+        public async Task <Usuario?> LlamarPorNombre(string nombreUsuario)
         {
-            var entity = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(entity);
-            await _context.SaveChangesAsync();
+            return await _dbContext.Usuarios.SingleOrDefaultAsync(u => u.NombreUsuario == nombreUsuario);
+
         }
     }
 }
+

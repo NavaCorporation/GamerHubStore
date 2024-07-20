@@ -4,14 +4,14 @@ import { HeaderComponent } from "./modules/shared/components/header/header.compo
 import { FooterComponent } from "./modules/shared/components/footer/footer.component";
 import { SidebarComponent } from './modules/management/components/sidebar/sidebar.component';
 import { EncabezadoComprasComponent } from "./modules/shopping/components/encabezado-compras/encabezado-compras.component";
-import { HttpClientModule } from '@angular/common/http';
+import { SecurityModule } from './modules/security/security.module';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, RouterLink, HeaderComponent, FooterComponent, EncabezadoComprasComponent, SidebarComponent, HttpClientModule],
+    imports: [RouterOutlet, RouterLink, HeaderComponent, FooterComponent, EncabezadoComprasComponent, SidebarComponent, SecurityModule],
 })
 export class AppComponent {
   title = 'GameHub_Store';

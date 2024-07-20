@@ -18,16 +18,16 @@ namespace GamerHub_Backend.Entities
         [Required, MaxLength(50)]
         public string Contrasena { get; set; } = null!;
         [Required, MaxLength(10)]
-        public string? Telefono {  get; set; }
+        public string Telefono { get; set; } = null!;
         [Required, MaxLength(7)]
         public string Estado { get; set; } = null!;
         public byte[]? FotoPerfil { get; set; }
         public int RolId { get; set; }
-        public Rol Rol { get; set; } = null!; 
-        public ICollection<HistorialVenta> HistorialVenta { get; set; } = new List<HistorialVenta>();
-        public ICollection<OrdenCompra> ordenCompras { get; set; } = new List<OrdenCompra>();
-        public ICollection<Sesion> Sesiones { get; set; } = new List<Sesion>();
-        public ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
+        public Rol? Rol { get; set; } = null!; 
+        public List<HistorialVenta>? HistorialVenta { get; set; } 
+        public List<OrdenCompra>? ordenCompras { get; set; } 
+        public List<Sesion>? Sesiones { get; set; } 
+        public List<Comentario>? Comentarios { get; set; }
 
     }
 }

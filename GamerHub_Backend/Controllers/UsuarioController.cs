@@ -1,54 +1,53 @@
 ﻿using GamerHub_Backend.Entities;
 using GamerHub_Backend.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.CodeAnalysis.Scripting;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+using NuGet.Protocol.Plugins;
 
 namespace GamerHub_Backend.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
 
     public class UsuarioController : ControllerBase
     {
-        private readonly UsuarioRepository _usuarioRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IConfiguration _configuration;
 
-        public UsuarioController(UsuarioRepository usuarioRepository)
+
+        public UsuarioController(IUsuarioRepository usuarioRepository, IConfiguration configuration)
         {
             _usuarioRepository = usuarioRepository;
+            _configuration = configuration;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<Usuario>> GetUsuarios()
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel login)
         {
-            return await _usuarioRepository.GetAll();
-        }
-        [HttpGet("{id}")]
-        public async Task<Usuario> GetUsuario(int id)
-        {
-            return await _usuarioRepository.GetById(id);
-        }
-        [HttpPost]
-        public async Task<IActionResult> PostUsuario([FromBody] Usuario usuario)
-        {
-            await _usuarioRepository.Add(usuario);
-            return CreatedAtAction(nameof(GetUsuario), new { id = usuario.Id }, usuario);
-        }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, [FromBody] Usuario usuario)
-        {
-            if (id != usuario.Id)
+            var user = await _usuarioRepository.GetByEmailAsync(login.Correo);
+            if (user == null || user.Contrasena != login.Contrasena)
             {
-                return BadRequest();
+                return Unauthorized(new { message = "Correo o contraseña inválidos" });
             }
-            await _usuarioRepository.Update(usuario);
-            return NoContent();
-        }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(int id)
-        {
-            await _usuarioRepository.Delete(id);
-            return NoContent();
+            return Ok(new { message = "Login exitoso" });
         }
 
+        
+
+        public class LoginModel
+        {
+        public string Correo { get; set; } = null!;
+        public string Contrasena { get; set; } = null!;
+        }
     }
+
+    
+
 }
+

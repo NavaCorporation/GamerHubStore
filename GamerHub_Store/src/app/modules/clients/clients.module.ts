@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
-import { DatosUser } from '../security/models/datosUser';
+import { DatosUser } from '../security/interface/datosUser';
 
 @NgModule({
   declarations: [],

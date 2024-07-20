@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
-import { DatosUser } from '../../models/datosUser';
+import { Usuario } from '../../../../interface/Usuario';
 import { RegisterComponent } from "../register/register.component";
 import { LoginAdmComponent } from "../login-adm/login-adm.component";
 import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
@@ -18,11 +18,11 @@ import { NotificationService } from '../../services/notifications/notification.s
 })
 
 export class LoginComponent implements OnInit {
-  @Output() userLoggedIn = new EventEmitter<DatosUser>();
+  @Output() userLoggedIn = new EventEmitter<Usuario>();
   showLogin: boolean = true;
   showAdminLogin: boolean = false;
   loginForm!: FormGroup;
-  loggedInUser: DatosUser | null = null;
+  loggedInUser: Usuario | null = null;
 
   constructor(private fb: FormBuilder, private router: Router, private _authService: AuthenticationService, private notificationService: NotificationService) {}
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     const { email, password } = this.loginForm.value;
 
-    this._authService.loginUser(email, password).subscribe(
+    this._authService.login(email, password).subscribe(
       user => {
         if (user) {
           this.userLoggedIn.emit(user);
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
   }
   logoutUser(): void {
     this._authService.logoutUser();
-}
+  }
   resetForms(): void {
     this.loginForm.reset();
     this.showAdminLogin = false;

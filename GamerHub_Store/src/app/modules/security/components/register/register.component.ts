@@ -4,8 +4,6 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CustomValidators } from '../../models/customValidators';
-import { DatosUser } from '../../models/datosUser';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +30,7 @@ export class RegisterComponent implements OnInit {
       phoneNumber: ['', [Validators.required, Validators.minLength(9)]],
       password: ['', Validators.required],
       confirmPassword: ['', [Validators.required] ], 
-    }, { validators: CustomValidators.noIgual('password', 'confirmPassword') });
+    });
     this.registerForm.statusChanges.subscribe(() => {
       this.passwordMatch = this.registerForm.get('confirmPassword')?.valid || false;
     });

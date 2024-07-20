@@ -27,6 +27,7 @@ div {
 
 button {
   width: fit-content;
+  width: -moz-fit-content; /* Firefox prueba*/
 }
 
 p {
@@ -173,3 +174,4 @@ textarea.ng-touched.ng-valid {
   text-align: center;
   margin: 20px 0;
 }
+

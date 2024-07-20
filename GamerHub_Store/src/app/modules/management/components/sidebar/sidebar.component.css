@@ -10,7 +10,6 @@
     gap: 10px;
     flex-shrink: 0;
     border-right: 1px solid #ffffff;
-    background-color: #1E1C1D;
 }
 .sidebar .navbar-brand {
   display: flex;

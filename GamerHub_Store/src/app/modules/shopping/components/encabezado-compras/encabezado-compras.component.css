@@ -1,3 +1,51 @@
+.navbar-css{
+    background-color: #457b9d;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #457B9D;
+    box-shadow: 0 4px 4px -2px #457B9D;
+
+}
+
+.navbar-css .navbartitle{
+    color: #F1FAEE;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.navbar-css a{
+    color: white;
+    text-decoration: none;
+    padding: 2px;
+    margin: 10px;
+    position: relative;
+}
+
+.navbar-css .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-css .menu li {      
+    margin-right: 20px;
+}
+
+.navbar-css .menu li a {
+    font-size: 18px;
+    color: #F1FAEE;
+
+}
+
+.navbar-css .menu li a:hover {
+    color: #E63946;
+    border-bottom: 1px solid #E63946;
+}
+
+/* parte antes del 19/06 */
 .navbar-nav .nav-item .nav-link {
     position: relative;
 }

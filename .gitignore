@@ -10,3 +10,5 @@ GamerHub_Backend/appsettings.json
 *.vs/
 .vscode/
 Migrations/
+# Ignore settings files
+appsettings.json

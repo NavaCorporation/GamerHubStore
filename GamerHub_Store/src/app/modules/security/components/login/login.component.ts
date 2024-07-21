@@ -31,6 +31,11 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+
+    // Detectar cambios en el formulario de login
+    this.loginForm.get('email')?.valueChanges.subscribe(value => {
+      this.checkAdminEmail(value);
+    });
     
   }
   toggleAdminLogin(): void {
@@ -46,6 +51,7 @@ export class LoginComponent implements OnInit {
     this._authService.login(email, password).subscribe(
       user => {
         if (user) {
+          this.loggedInUser = user;
           this.userLoggedIn.emit(user);
           this.router.navigate(['/product']);
         } else {
@@ -59,6 +65,7 @@ export class LoginComponent implements OnInit {
   }
   logoutUser(): void {
     this._authService.logoutUser();
+    this.loggedInUser = null;
   }
   resetForms(): void {
     this.loginForm.reset();
@@ -66,6 +73,14 @@ export class LoginComponent implements OnInit {
   }
   hasNotification(): boolean {
     return this.notificationService.hasNotifications();
+  }
+
+  private checkAdminEmail(email: string): void {
+    if (email.endsWith('@ghs.com')) {
+      this.showAdminLogin = true;
+    } else {
+      this.showAdminLogin = false;
+    }
   }
 }
 

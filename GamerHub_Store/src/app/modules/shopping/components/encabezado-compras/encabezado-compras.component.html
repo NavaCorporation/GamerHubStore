@@ -2,7 +2,8 @@
 
   <div class="container-fluid">
     <div class="nav-img navbar-brand">
-      <img src="assets/svg/icono_gamerhub.svg" alt="logo" width="55px" height="55px" class="d-inline-block align-text-top">  
+      <img src="assets/svg/icono_gamerhub.svg" alt="logo" width="55px" height="55px"
+        class="d-inline-block align-text-top">
     </div>
     <a class="navbartitle navbar-brand" href="#">GamerHub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -29,38 +30,47 @@
 
       <ul class="navbar-nav ms-auto">
         <!-- Mostrar solo si el usuario está autenticado -->
-        <ng-container *ngIf="">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <img [src]="" (click)="userEdit()" alt="Profile Picture" width="30" height="30"
-                class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" routerLink="/client">Perfil</a></li>
-              <li><a class="dropdown-item" routerLink="/historial">Historial</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a></li>
-            </ul>
-          </li>
-        </ng-container>
-        
+        @if(currentUser){
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img [src]="getProfileImage()" (click)="userEdit()" alt="Profile Picture" width="30" height="30" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" routerLink="/client">Perfil</a></li>
+            <li><a class="dropdown-item" routerLink="/historial">Historial</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a></li>
+          </ul>
+        </li>
+        }
+
+
         <!-- Mostrar solo si el usuario NO está autenticado -->
-        <ng-container >
+        @if (!currentUser) {
+        <ng-container>
           <li class="nav-item">
             <a class="nav-link" routerLink="/login">Login</a>
           </li>
         </ng-container>
-        
+        }
+
+
         <!-- Notificaciones -->
-        
+
 
       </ul>
       <!-- Arreglar -->
-      <ng-container>
 
+      @if (currentUser) {
+      <ng-container>
         <app-security-notifications></app-security-notifications>
-    </ng-container>
+      </ng-container>
+      }
+
+
     </div>
 
   </div>

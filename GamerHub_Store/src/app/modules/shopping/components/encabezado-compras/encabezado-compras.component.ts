@@ -24,9 +24,6 @@ export class EncabezadoComprasComponent implements OnInit {
     this._authService.currentUser.subscribe(user  => this.currentUser = user );
   }
 
-  onUserLoggedIn(): void {
-  }
-
   logout(): void {
     this._authService.logoutUser();
     this.router.navigate(['/login']);
@@ -39,7 +36,10 @@ export class EncabezadoComprasComponent implements OnInit {
 
   getProfileImage(): string {
     const defaultImage = 'assets/img/fotoPerfil.jpg';
-    return this.loggedInUser && this.loggedInUser.fotoProfile ? `data:image/jpeg;base64,${this.loggedInUser.fotoProfile}` : defaultImage;
+    if (this.currentUser && this.currentUser.fotoProfile) {
+      return `data:image/jpeg;base64,${this.currentUser.fotoProfile}`;
+    }
+    return defaultImage;
   }
 
 }

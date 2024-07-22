@@ -11,6 +11,6 @@ export interface Usuario {
     estado: string;
     fotoProfile: string;
     rolId: number;
-    rol: Rol;
+    rol?: Rol;
 
 }

@@ -20,7 +20,10 @@ namespace GamerHub_Backend.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.Property(e => e.FotoPerfil).HasColumnType("varbinary(max)");
+            });
             // Datos de roles
             modelBuilder.Entity<Rol>().HasData(
                 new Rol { Id = 1, TipoRol = "cliente" },

@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Usuario } from '../../../../interface/Usuario';
+import { RegisterService } from '../../services/registerService/register.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +21,7 @@ export class RegisterComponent implements OnInit {
   passwordMatch: boolean = false;
   registerForm!: FormGroup;
 
-  constructor( private fb: FormBuilder, private router: Router) {}
+  constructor( private fb: FormBuilder, private router: Router, private _registerService: RegisterService) {}
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       profilePicture: [null],
@@ -32,19 +34,31 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', [Validators.required] ], 
     });
     this.registerForm.statusChanges.subscribe(() => {
-      this.passwordMatch = this.registerForm.get('confirmPassword')?.valid || false;
+      this.passwordMatch = this.registerForm.get('password')?.value === this.registerForm.get('confirmPassword')?.value;
     });
     }
 
     onRegister(event: Event): void {
-      event.preventDefault(); 
-      if (this.registerForm.valid) {
-        console.log('Register data:', this.registerForm.value);
-        alert('Registro exitoso!\n\n' + JSON.stringify(this.registerForm.value, null, 2));
-        this.router.navigate(['/login']);
-      } else { 
-        alert ('Por favor, rellene todos los campos');
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append('nombre', this.registerForm.get('firstName')?.value);
+      formData.append('apellido', this.registerForm.get('lastName')?.value);
+      formData.append('correo', this.registerForm.get('email')?.value);
+      formData.append('nombreUsuario', this.registerForm.get('userName')?.value);
+      formData.append('contrasena', this.registerForm.get('password')?.value);
+      formData.append('telefono', this.registerForm.get('phoneNumber')?.value);
+      formData.append('rolId','1');
+      formData.append('estado', 'A');
+      if (this.registerForm.get('profilePicture')?.value) {
+        formData.append('profilePicture', this.registerForm.get('profilePicture')?.value);
       }
+    
+      this._registerService.register(formData).subscribe(response => {
+        console.log('Registro exitoso', response);
+        this.router.navigate(['/login']);
+      }, error => {
+        console.error('Error al registrar', error);
+      });
     }
     onProfilePictureChange(event: Event): void {
       const input = event.target as HTMLInputElement;
@@ -53,12 +67,12 @@ export class RegisterComponent implements OnInit {
         const allowedMinetypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
         
         if (!allowedMinetypes.includes(file.type)) {
-          alert('El archivo seleccionado no es una imagen válida. Por favor, seleccione una imagen con una extensión válida. (jpg, jpeg, png, gif)');
+          alert('El archivo seleccionado no es una imagen válida. Por favor, seleccione una imagen con una extensión válida. (jpg, jpeg, png, gif)');
           return;
         }
-  
+    
         this.registerForm.patchValue({ profilePicture: file });
-  
+    
         const reader = new FileReader();
         reader.onload = () => {
           this.profilePicturePreview = reader.result;

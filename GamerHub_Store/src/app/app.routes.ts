@@ -17,7 +17,7 @@ import { ReporteComponent } from './modules/administration/components/reporte/re
 import { ContactsComponent } from './modules/clients/components/contacts/contacts.component';
 import { PreferencesComponent } from './modules/clients/components/preferences/preferences.component';
 import { PurchaseHistoryComponent } from './modules/clients/components/purchase-history/purchase-history.component';
-
+import { ReviewsComponent } from './modules/clients/components/reviews/reviews.component'; 
 
 
 export const routes: Routes = [
@@ -49,6 +49,7 @@ export const routes: Routes = [
     { path: 'contacts', component: ContactsComponent },
     { path: 'preferences', component: PreferencesComponent },
     { path: 'historial', component: PurchaseHistoryComponent },
+    {path:'comentarios', component: ReviewsComponent},
 
     { path: '**', redirectTo: 'product', pathMatch: 'full' },
 ];

@@ -1,7 +1,7 @@
 body {
   background-color: #ddd;
-  margin: 0; /* Eliminado margen predeterminado */
-  padding: 0; /* Eliminado padding predeterminado */
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -21,113 +21,22 @@ form {
   gap: 10px;
 }
 
-div {
-  margin-bottom: 10px;
-}
-
 button {
   width: fit-content;
-  width: -moz-fit-content; /* Firefox prueba*/
+  width: -moz-fit-content; /* Firefox */
 }
 
-p {
-  margin-top: 20px;
-}
-
-.nav-link:hover {
-  cursor: pointer;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.img-thumbnail {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.form-label {
-  display: grid;
-  grid-template-areas: "input";
-}
-
-.label_name {
-  grid-area: input;
-  z-index: 100;
-  width: max-content;
-  margin-left: 1rem;
-  padding: 0 .5rem;
-  align-self: center;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  transition: transform .2s;
-  transform-origin: center left;
-}
-
-.bi-eye-slash {
-  margin-left: 5rem;
-}
-
-input {
-  grid-area: input;
+input, textarea {
   font: inherit;
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: .7rem 1.5rem .7rem .5rem;
-  display: block; /* Hace que el input sea un bloque y ocupe toda la línea */
-  width: 100%; /* Hace que el input ocupe todo el ancho del contenedor */
+  display: block; /* Hace que el input y textarea sean bloques y ocupen toda la línea */
+  width: 100%; /* Hace que el input y textarea ocupen todo el ancho del contenedor */
 }
 
 textarea {
-  grid-area: input;
-  font: inherit;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  padding: .7rem 1.5rem .7rem .5rem;
-  display: block; /* Hace que el textarea sea un bloque y ocupe toda la línea */
-  width: 100%; /* Hace que el textarea ocupe todo el ancho del contenedor */
   resize: none; /* Evita que el textarea se expanda */
-}
-
-.input-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-input:focus+.label_name,
-input:not(:placeholder-shown)+.label_name {
-  transform: translateY(-50%) scale(.7);
-  background-color: rgba(255, 255, 255, 0.973);
-}
-
-input.ng-touched.ng-invalid,
-textarea.ng-touched.ng-invalid {
-  border-left: 3px solid red;
-}
-
-input.ng-touched.ng-valid,
-textarea.ng-touched.ng-valid {
-  border-left: 3px solid green;
-}
-
-.password-toggle {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: none;
-  padding: 0;
-  font-size: 1.25rem;
-  cursor: pointer;
 }
 
 .history-section {
@@ -139,10 +48,13 @@ textarea.ng-touched.ng-valid {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
+
 .search-bar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .search-bar input {
@@ -174,4 +86,3 @@ textarea.ng-touched.ng-valid {
   text-align: center;
   margin: 20px 0;
 }
-

@@ -44,7 +44,6 @@ export class PurchaseHistoryComponent implements OnInit {
     { factura: '1,028', codigoCompra: 'A1028', articulo: 'Altavoces de Escritorio', costo: '$45.00', fechaSalida: '2023-06-09', estado: 'Enviado' },
     { factura: '1,029', codigoCompra: 'A1029', articulo: 'Lámpara LED de Escritorio', costo: '$25.00', fechaSalida: '2023-06-10', estado: 'Enviado' },
     { factura: '1,030', codigoCompra: 'A1030', articulo: 'Cable HDMI 2.1', costo: '$15.00', fechaSalida: '2023-06-11', estado: 'Enviado' }
-    
   ];
   filteredPurchases = [...this.purchases];
 
@@ -68,11 +67,28 @@ export class PurchaseHistoryComponent implements OnInit {
   }
 
   filterByDate(event: any): void {
-    const date = event.target.value;
-    if (date) {
-      this.filteredPurchases = this.purchases.filter(purchase => purchase.fechaSalida === date);
-    } else {
-      this.filteredPurchases = [...this.purchases];
-    }
+    this.applyFilters();
+  }
+
+  filterByProductName(event: any): void {
+    this.applyFilters();
+  }
+
+  filterByInvoiceNumber(event: any): void {
+    this.applyFilters();
+  }
+
+  applyFilters(): void {
+    const dateFilter = (document.getElementById('searchDate') as HTMLInputElement).value;
+    const productFilter = (document.getElementById('searchProductName') as HTMLInputElement).value.toLowerCase();
+    const invoiceFilter = (document.getElementById('searchInvoiceNumber') as HTMLInputElement).value;
+
+    this.filteredPurchases = this.purchases.filter(purchase => {
+      const matchesDate = !dateFilter || purchase.fechaSalida === dateFilter;
+      const matchesProduct = !productFilter || purchase.articulo.toLowerCase().includes(productFilter);
+      const matchesInvoice = !invoiceFilter || purchase.factura.includes
+      (invoiceFilter);
+      return matchesDate && matchesProduct && matchesInvoice;
+    });
   }
 }

@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Controllers",
-    "\\Entities",
-    "\\Views\\Rol"
+    "\\Entities"
   ],
-  "SelectedNode": "\\Entities\\Rol.cs",
+  "SelectedNode": "\\Controllers\\UsuarioController.cs",
   "PreviewInSolutionExplorer": false
 }

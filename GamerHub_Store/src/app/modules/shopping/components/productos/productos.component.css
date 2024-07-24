@@ -11,3 +11,19 @@
     z-index: 1000;
 }
 
+.borders{
+    border: 2px solid #4d65a1;
+    
+    border-radius: 10px;
+    
+}
+.bordersabajo{
+    border-bottom: 2px solid #4d65a1;
+}
+.cartaFondo{
+    background-color: #4d65a175;
+    
+}
+.hr{
+    color:  #1F2536;
+}

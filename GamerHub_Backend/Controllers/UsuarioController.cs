@@ -86,7 +86,53 @@ namespace GamerHub_Backend.Controllers
             return Ok(user);
         }
 
-        
+        [HttpPut("update")]
+        public async Task<IActionResult> ModificarUsuario([FromBody] Usuario usuario)
+        {
+            try
+            {
+                var usuarioExistente = await _usuarioRepository.ModificarUsuario(usuario);
+                if (usuarioExistente == null)
+                {
+                    return NotFound(new { message = "Usuario no encontrado." });
+                }
+                return Ok(new { message = "Usuario actualizado exitosamente." });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException?.Message ?? ex.Message);
+                return StatusCode(500, new { message = "Error al actualizar el usuario.", details = ex.InnerException?.Message ?? ex.Message });
+            }
+        }
+
+        [HttpPut("update-photo/{id}")]
+        public async Task<IActionResult> ModificarFoto(int id, [FromForm] IFormFile profilePicture)
+        {
+            try
+            {
+                if (profilePicture == null || profilePicture.Length == 0)
+                {
+                    return BadRequest(new { message = "Archivo de foto no proporcionado." });
+                }
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await profilePicture.CopyToAsync(memoryStream);
+                    var nuevaFoto = memoryStream.ToArray();
+                    var usuarioActualizado = await _usuarioRepository.ModificarFoto(id, nuevaFoto);
+                    if (usuarioActualizado == null)
+                    {
+                        return NotFound(new { message = "Usuario no encontrado." });
+                    }
+                    return Ok(new { message = "Foto de perfil actualizada exitosamente." });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException?.Message ?? ex.Message);
+                return StatusCode(500, new { message = "Error al actualizar la foto de perfil.", details = ex.InnerException?.Message ?? ex.Message });
+            }
+        }
 
         public class LoginModel
         {

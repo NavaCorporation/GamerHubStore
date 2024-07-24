@@ -1,6 +1,12 @@
-﻿namespace GamerHub_Backend.Repository
+﻿using GamerHub_Backend.Entities;
+
+namespace GamerHub_Backend.Repository
 {
-    public class IDevolucionRepository
+    public interface IDevolucionRepository
     {
+        Task<Devolucion?> ObtenerPorId(int id);
+        Task<int?> Crear(Devolucion devolucion);
+        Task<bool> Actualizar(Devolucion devolucion);
+        Task<bool> Eliminar(int id);
     }
 }

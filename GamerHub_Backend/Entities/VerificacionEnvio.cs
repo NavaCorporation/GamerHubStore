@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace GamerHub_Backend.Entities
 {
@@ -15,6 +16,7 @@ namespace GamerHub_Backend.Entities
         [Required]
         public string Estado { get; set; } = null!;
         public int IdOrden { get; set; }
+        [JsonIgnore]
         public OrdenCompra? OrdenCompra { get; set; }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using GamerHub_Backend.Entities;
-using Microsoft.Identity.Client;
-using Microsoft.Extensions.DependencyModel;
 
 namespace GamerHub_Backend.Repository
 {

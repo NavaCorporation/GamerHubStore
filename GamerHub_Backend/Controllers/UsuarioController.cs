@@ -1,14 +1,6 @@
 ﻿using GamerHub_Backend.Entities;
 using GamerHub_Backend.Repository;
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.CodeAnalysis.Scripting;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.DotNet.Scaffolding.Shared.Messaging;
-using NuGet.Protocol.Plugins;
-using Microsoft.EntityFrameworkCore;
 
 namespace GamerHub_Backend.Controllers
 {

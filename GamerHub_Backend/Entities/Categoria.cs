@@ -1,4 +1,5 @@
 ﻿using Microsoft.Build.Framework;
+using System.Text.Json.Serialization;
 
 namespace GamerHub_Backend.Entities
 {
@@ -9,6 +10,7 @@ namespace GamerHub_Backend.Entities
         public string NombreCategoria { get; set; } = null!;
 
         public string Descripcion { get; set; } = null!;
+        [JsonIgnore]
 
         public List<Producto>? Productos { get; set; }
 

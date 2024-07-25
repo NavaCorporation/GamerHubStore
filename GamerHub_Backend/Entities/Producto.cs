@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace GamerHub_Backend.Entities
 {
@@ -17,8 +18,11 @@ namespace GamerHub_Backend.Entities
         public int stock { get; set; }
         public int IdCategoria { get; set; }
         public Categoria Categoria { get; set; }=null!;
+        [JsonIgnore]
         public List<DetallesCompra>? DetallesCompras { get; set; }
+        [JsonIgnore]
         public List<Devolucion>? Devoluciones { get; set; }
+        [JsonIgnore]
         public List<Comentario>? Comentarios { get; set; }
     }   
 }

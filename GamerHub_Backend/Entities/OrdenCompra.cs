@@ -1,5 +1,6 @@
 ﻿using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace GamerHub_Backend.Entities
 {
@@ -14,10 +15,13 @@ namespace GamerHub_Backend.Entities
         public decimal MontoTotal { get; set; }
         public string Estado { get; set; } = null!;
         public string? TipoPaga {  get; set; }
-        
+        [JsonIgnore]
         public List<VerificacionEnvio>? VerificacionEnvios { get; set; }
-        public List<DetallesCompra>? DetallesCompras { get; set; } 
-        public List<HistorialVenta>? HistorialVenta { get; set; } 
+        [JsonIgnore]
+        public List<DetallesCompra>? DetallesCompras { get; set; }
+        [JsonIgnore]
+        public List<HistorialVenta>? HistorialVenta { get; set; }
+        [JsonIgnore]
         public List<Devolucion>? Devoluciones { get; set; }
         
     }

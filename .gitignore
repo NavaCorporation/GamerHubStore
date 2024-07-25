@@ -12,3 +12,4 @@ GamerHub_Backend/appsettings.json
 Migrations/
 # Ignore settings files
 appsettings.json
+GamerHub_Backend/bin/Debug/net8.0/appsettings.json

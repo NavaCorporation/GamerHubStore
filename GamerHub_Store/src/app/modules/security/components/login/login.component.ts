@@ -54,12 +54,10 @@ export class LoginComponent implements OnInit {
           this.loggedInUser = user;
           this.userLoggedIn.emit(user);
           this.router.navigate(['/product']);
-        } else {
-          this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Credenciales incorrectas' });
-        }
+        } 
       },
       error => {
-        this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Error en el servidor. Por favor, inténtalo más tarde.' });
+        this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Se ha detectado un error al iniciar sesión' });
       }
     );
   }

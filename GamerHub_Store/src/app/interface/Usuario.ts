@@ -13,4 +13,5 @@ export interface Usuario {
     rolId: number;
     rol?: Rol;
 
+
 }

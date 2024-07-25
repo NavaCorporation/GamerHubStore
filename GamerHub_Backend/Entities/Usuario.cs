@@ -33,6 +33,5 @@ namespace GamerHub_Backend.Entities
         public List<Sesion>? Sesiones { get; set; }
         [JsonIgnore]
         public List<Comentario>? Comentarios { get; set; }
-
     }
 }

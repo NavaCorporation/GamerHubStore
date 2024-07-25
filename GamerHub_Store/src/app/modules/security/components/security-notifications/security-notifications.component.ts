@@ -13,15 +13,19 @@ import { NotificationService } from '../../services/notifications/notification.s
 })
 export class SecurityNotificationsComponent implements OnInit {
 
-  notifications: { type : string, message: string, read: boolean }[] = [];
+  notifications: { type: string, message: string, read: boolean, date: Date }[] = [];
   showNotifications: boolean = false;
+  readFilter: boolean | null = null; 
+  sortOrder: 'asc' | 'desc' = 'desc';
 
   constructor( private ntserv: NotificationService) {}
 
   ngOnInit(): void {
-    this.notifications = this.ntserv.getNotifications();
+    this.loadNotifications();
   }
-
+  loadNotifications(): void {
+    this.notifications = this.ntserv.getNotifications(this.readFilter, this.sortOrder);
+  }
   toggleNotifications(): void {
     this.showNotifications = !this.showNotifications;
   }
@@ -34,5 +38,23 @@ export class SecurityNotificationsComponent implements OnInit {
       this.ntserv.markAsRead(index);
       this.notifications[index].read = true;
     }
+  }
+  applyReadFilter(): void {
+    this.readFilter = this.readFilter === null ? true : (this.readFilter === true ? false : null);
+    this.loadNotifications();
+  }
+  toggleSortOrder(): void {
+    this.sortOrder = this.sortOrder === 'desc' ? 'asc' : 'desc';
+    this.loadNotifications();
+  }
+
+  applyDateFilter(): void {
+    this.loadNotifications();
+  }
+
+  clearFilters(): void {
+    this.readFilter = null;
+    this.sortOrder = 'desc';
+    this.loadNotifications();
   }
 }

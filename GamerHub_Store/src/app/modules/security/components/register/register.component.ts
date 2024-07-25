@@ -79,6 +79,7 @@ export class RegisterComponent implements OnInit {
         };
         reader.readAsDataURL(file);
       }
+
     }
     triggerFileInput(): void {
       const input = document.getElementById('profilePicture') as HTMLInputElement;

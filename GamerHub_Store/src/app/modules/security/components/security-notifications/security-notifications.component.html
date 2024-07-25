@@ -6,9 +6,22 @@
 </div>
 
 @if (showNotifications){
+    
     <div class="notification-panel">
+        
         @if (notifications.length > 0){
             <div>
+                <div class="filter-controls d-flex justify-content-center mb-3">
+                    <button class="btn btn-outline-primary filter-btn" (click)="applyReadFilter()">
+                        <i class="bi" [ngClass]="readFilter === true ? 'bi-check-circle' : 'bi-circle'"></i>
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn mx-2" (click)="toggleSortOrder()">
+                        <i class="bi" [ngClass]="sortOrder === 'desc' ? 'bi-sort-down' : 'bi-sort-up'"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary filter-btn" (click)="clearFilters()">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                </div>
                 @for (notification of notifications; track $index) {
                     <div class="notification-item" [class.unread]="!notification.read" (mouseover)="markAsRead($index)">
                         <div class="notification-content">

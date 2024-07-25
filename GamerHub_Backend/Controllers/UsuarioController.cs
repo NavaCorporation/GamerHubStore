@@ -1,5 +1,6 @@
 ﻿using GamerHub_Backend.Entities;
 using GamerHub_Backend.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamerHub_Backend.Controllers
@@ -124,6 +125,19 @@ namespace GamerHub_Backend.Controllers
                 Console.WriteLine(ex.InnerException?.Message ?? ex.Message);
                 return StatusCode(500, new { message = "Error al actualizar la foto de perfil.", details = ex.InnerException?.Message ?? ex.Message });
             }
+
+        }
+        [HttpGet("GetImagen/{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetImagen(int id)
+        {
+            var usuario = await _usuarioRepository.ObtenerPorId(id);
+            if (usuario == null || usuario.FotoPerfil == null)
+            {
+                return NotFound();
+            }
+
+            return File(usuario.FotoPerfil, "image/png");
         }
 
         public class LoginModel

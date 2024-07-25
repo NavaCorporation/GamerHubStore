@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../../security/services/authService/au
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SecurityNotificationsComponent } from "../../../security/components/security-notifications/security-notifications.component";
 import { Usuario } from '../../../../interface/Usuario';
+import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-encabezado-compras',
@@ -17,11 +18,12 @@ export class EncabezadoComprasComponent implements OnInit {
   @Input() loggedInUser: Usuario | null = null;
   currentUser: Usuario | null = null;
 
-  constructor(private _authService: AuthenticationService, private router: Router) {
+  constructor(private _authService: AuthenticationService, private router: Router, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
     this._authService.currentUser.subscribe(user  => this.currentUser = user );
+    
   }
 
   logout(): void {
@@ -33,13 +35,11 @@ export class EncabezadoComprasComponent implements OnInit {
   userEdit(): void {
     this.router.navigate(['/client']);
   }
-
-  getProfileImage(): string {
-    const defaultImage = 'assets/img/fotoPerfil.jpg';
+  getProfileImage(): SafeUrl | string {
     if (this.currentUser && this.currentUser.fotoProfile) {
-      return `data:image/jpeg;base64,${this.currentUser.fotoProfile}`;
+      return this.sanitizer.bypassSecurityTrustUrl(`data:image/png;base64,${this.currentUser.fotoProfile}`);
     }
-    return defaultImage;
+    return 'assets/img/fotoPerfil.jpg';
   }
 
 }

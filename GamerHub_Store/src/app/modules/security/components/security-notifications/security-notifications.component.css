@@ -6,24 +6,27 @@
 
 .badge {
     position: absolute;
-    top: -10px;
+    top: -5px;
     right: -5px;
-    padding: 3px 5px;
+    padding: 3px 6px;
     border-radius: 50%;
+    background-color: #dc3545; 
+    color: white;
+    font-size: 0.75rem; 
 }
 
 .notification-panel {
     position: absolute;
     right: 0;
-    top: 50px;
+    top: 60px; 
     background-color: white;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     padding: 10px;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    cursor: pointer; 
+    cursor: auto; 
 }
 
 .notification-item {
@@ -39,23 +42,58 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background-color: #40b4e4 ;
+    width: 4px;
+    background-color: #007bff; 
+    border-radius: 4px 0 0 4px; 
 }
 
 .notification-content {
     flex: 1;
-    padding-left: 15px; 
+    padding-left: 15px;
 }
 
 .notification-item p {
     margin: 0;
+    font-size: 0.875rem; 
 }
 
 .notification-divider {
     height: 1px;
     background-color: #e0e0e0;
-    margin: 0;
-    width: 90%;
-    align-self: center;
+    margin: 10px 0; 
+    width: 100%;
+}
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px; 
+}
+
+.filter-btn {
+    font-size: 1rem; 
+    padding: 6px 12px; 
+}
+
+.filter-btn i {
+    font-size: 0.9rem; 
+}
+
+.filter-btn .btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.filter-btn .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.filter-btn .btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.filter-btn .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
 }

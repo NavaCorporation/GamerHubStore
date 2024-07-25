@@ -43,4 +43,8 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+  getUserImage(id: number): Observable<string> {
+    const url = `${this.myAppUrl}api/Usuario/GetImagen/${id}`;
+    return this.http.get(url, { responseType: 'text' });
+  }
 }

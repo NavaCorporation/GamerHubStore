@@ -39,4 +39,18 @@ export class NotificationService {
       this.notifications[index].read = true;
     }
   }
+  createOfferNotifications(): void {
+    if (localStorage.getItem('offersCreated')) {
+      return; 
+    }
+    const offers = [
+      { message: '¡50% de descuento en todos los accesorios para juegos!', type: 'Oferta' },
+      { message: '¡Compre 1 y obtenga 1 gratis en juegos seleccionados', type: 'Oferta' },
+      { message: '¡Descuentos exclusivos para pedidos anticipados disponibles ahora!', type: 'Oferta' }
+    ];
+
+    offers.forEach(offer => this.addNotification(offer));
+    
+    localStorage.setItem('offersCreated', 'true'); 
+  }
 }

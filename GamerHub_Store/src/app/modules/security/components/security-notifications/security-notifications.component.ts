@@ -21,6 +21,7 @@ export class SecurityNotificationsComponent implements OnInit {
   constructor( private ntserv: NotificationService) {}
 
   ngOnInit(): void {
+    this.ntserv.createOfferNotifications();
     this.loadNotifications();
   }
   loadNotifications(): void {

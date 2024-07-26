@@ -15,10 +15,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 // Add services to the container.
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-<<<<<<< Updated upstream
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
-=======
->>>>>>> Stashed changes
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
 // Navarrete
@@ -34,7 +31,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
- 
+
 
 var app = builder.Build();
 

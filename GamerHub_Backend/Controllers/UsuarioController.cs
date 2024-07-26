@@ -62,7 +62,8 @@ namespace GamerHub_Backend.Controllers
         public async Task<ActionResult<Usuario>> ObtenerUsuarioPorId(int id)
         {
             var usuario = await _usuarioRepository.ObtenerPorId(id);
-            if (usuario == null) {
+            if (usuario == null)
+            {
                 return NotFound();
             }
             return usuario;
@@ -142,12 +143,12 @@ namespace GamerHub_Backend.Controllers
 
         public class LoginModel
         {
-        public string Correo { get; set; } = null!;
-        public string Contrasena { get; set; } = null!;
+            public string Correo { get; set; } = null!;
+            public string Contrasena { get; set; } = null!;
         }
     }
 
-    
+
 
 }
 

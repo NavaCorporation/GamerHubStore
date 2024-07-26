@@ -17,12 +17,12 @@ namespace GamerHub_Backend.Entities
         [Required]
         public int stock { get; set; }
         public int IdCategoria { get; set; }
-        public Categoria Categoria { get; set; }=null!;
+        public Categoria Categoria { get; set; } = null!;
         [JsonIgnore]
         public List<DetallesCompra>? DetallesCompras { get; set; }
         [JsonIgnore]
         public List<Devolucion>? Devoluciones { get; set; }
         [JsonIgnore]
         public List<Comentario>? Comentarios { get; set; }
-    }   
+    }
 }

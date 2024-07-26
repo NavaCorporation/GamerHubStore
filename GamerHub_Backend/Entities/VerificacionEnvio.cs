@@ -10,7 +10,7 @@ namespace GamerHub_Backend.Entities
         [Column(TypeName = "Date")]
         public DateTime FechaEnvio { get; set; }
         [Column(TypeName = "Date")]
-        public DateTime FechaFinal {  get; set; }
+        public DateTime FechaFinal { get; set; }
         [Required]
         public int NumeroSeguimiento { get; set; }
         [Required]

@@ -12,6 +12,6 @@ namespace GamerHub_Backend.Entities
         [Column(TypeName = "Date")]
         public DateTime CierreSesion { get; set; }
         public string Estado { get; set; } = null!;
-        
+
     }
 }

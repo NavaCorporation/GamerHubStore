@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using GamerHub_Backend.Entities;
+﻿using GamerHub_Backend.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamerHub_Backend.Repository
 {

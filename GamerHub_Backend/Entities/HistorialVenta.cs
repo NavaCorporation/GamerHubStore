@@ -14,7 +14,7 @@ namespace GamerHub_Backend.Entities
         public DateTime? FechaVenta { get; set; }
         [Required]
         public decimal? MontoTotal { get; set; }
-        
-        
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace GamerHub_Backend.Entities
         [Required]
         public decimal MontoTotal { get; set; }
         public string Estado { get; set; } = null!;
-        public string? TipoPaga {  get; set; }
+        public string? TipoPaga { get; set; }
         [JsonIgnore]
         public List<VerificacionEnvio>? VerificacionEnvios { get; set; }
         [JsonIgnore]
@@ -23,6 +23,6 @@ namespace GamerHub_Backend.Entities
         public List<HistorialVenta>? HistorialVenta { get; set; }
         [JsonIgnore]
         public List<Devolucion>? Devoluciones { get; set; }
-        
+
     }
 }

@@ -13,7 +13,7 @@ namespace GamerHub_Backend.Entities
         [Column(TypeName = "Date")]
         public DateTime FechaDevolucion { get; set; }
         [Required]
-        public string? Razon {  get; set; }
+        public string? Razon { get; set; }
         [Required]
         public string Estado { get; set; } = null!;
     }

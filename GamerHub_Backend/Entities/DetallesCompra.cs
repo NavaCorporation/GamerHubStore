@@ -10,12 +10,12 @@ namespace GamerHub_Backend.Entities
         public OrdenCompra? OrdenCompra { get; set; }
         [Required]
         public int IdProducto { get; set; }
-        public Producto? Producto { get; set;} 
+        public Producto? Producto { get; set; }
         [Required]
         public int Cantidad { get; set; }
         [Required]
         public decimal Precio { get; set; }
-        
-        
+
+
     }
 }

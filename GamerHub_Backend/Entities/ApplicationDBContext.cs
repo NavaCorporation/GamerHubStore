@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 namespace GamerHub_Backend.Entities
 {
-    public class ApplicationDBContext: DbContext
+    public class ApplicationDBContext : DbContext
     {
-        public IConfiguration _config {  get; set; }
+        public IConfiguration _config { get; set; }
         public ApplicationDBContext(IConfiguration config)
         {
             _config = config;
@@ -83,17 +83,17 @@ namespace GamerHub_Backend.Entities
             modelBuilder.Entity<Comentario>();
         }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Rol>Roles { get; set; }
+        public DbSet<Rol> Roles { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<DetallesCompra> DetallesCompras { get; set; }
         public DbSet<Devolucion> Devolucions { get; set; }
         public DbSet<HistorialVenta> HistorialVentas { get; set; }
         public DbSet<OrdenCompra> OrdenCompras { get; set; }
         public DbSet<Producto> Productos { get; set; }
-        public DbSet<Sesion> Sesiones {  get; set; }
+        public DbSet<Sesion> Sesiones { get; set; }
         public DbSet<VerificacionEnvio> VerificacionesEnvio { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
-        
+
     }
 
 }

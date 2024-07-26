@@ -7,7 +7,7 @@ namespace GamerHub_Backend.Entities
     {
         public int Id { get; set; }
         [Required]
-        public string TipoRol {  get; set; } = null!;
+        public string TipoRol { get; set; } = null!;
         [JsonIgnore]
         public List<Usuario>? Usuarios { get; set; }
 

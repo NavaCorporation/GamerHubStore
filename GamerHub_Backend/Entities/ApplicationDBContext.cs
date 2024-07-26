@@ -15,7 +15,6 @@ namespace GamerHub_Backend.Entities
                 optionsBuilder.UseSqlServer(_config.GetConnectionString("Connection"));
             }
         }
-        ///////////////
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

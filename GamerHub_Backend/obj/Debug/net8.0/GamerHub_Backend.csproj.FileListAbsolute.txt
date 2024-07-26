@@ -253,7 +253,6 @@ C:\Users\nava\Documents\GitHub\GamerHubStore\GamerHub_Backend\bin\Debug\net8.0\r
 C:\Users\nava\Documents\GitHub\GamerHubStore\GamerHub_Backend\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\nava\Documents\GitHub\GamerHubStore\GamerHub_Backend\obj\Debug\net8.0\GamerHub_Backend.RazorAssemblyInfo.cache
 C:\Users\nava\Documents\GitHub\GamerHubStore\GamerHub_Backend\obj\Debug\net8.0\GamerHub_Backend.RazorAssemblyInfo.cs
-<<<<<<< Updated upstream
 C:\Users\juanv\OneDrive\Documentos\GitHub\GamerHubStore\GamerHub_Backend\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\juanv\OneDrive\Documentos\GitHub\GamerHubStore\GamerHub_Backend\bin\Debug\net8.0\appsettings.json
 C:\Users\juanv\OneDrive\Documentos\GitHub\GamerHubStore\GamerHub_Backend\bin\Debug\net8.0\GamerHub_Backend.exe
@@ -765,4 +764,3 @@ C:\Users\leamf\OneDrive\Documentos\github2\GamerHubStore\GamerHub_Backend\obj\De
 C:\Users\leamf\OneDrive\Documentos\github2\GamerHubStore\GamerHub_Backend\obj\Debug\net8.0\GamerHub_Backend.pdb
 C:\Users\leamf\OneDrive\Documentos\github2\GamerHubStore\GamerHub_Backend\obj\Debug\net8.0\GamerHub_Backend.genruntimeconfig.cache
 C:\Users\leamf\OneDrive\Documentos\github2\GamerHubStore\GamerHub_Backend\obj\Debug\net8.0\ref\GamerHub_Backend.dll
->>>>>>> Stashed changes

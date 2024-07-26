@@ -12,4 +12,22 @@ GamerHub_Backend/appsettings.json
 Migrations/
 # Ignore settings files
 appsettings.json
+<<<<<<< Updated upstream
 GamerHub_Backend/bin/Debug/net8.0/appsettings.json
+=======
+GamerHub_Backend/.vs/GamerHub_Backend/DesignTimeBuild/.dtbcache.v2
+GamerHub_Backend/.vs/GamerHub_Backend/DesignTimeBuild/.dtbcache.v2
+GamerHub_Backend/.vs/GamerHub_Backend/DesignTimeBuild/.dtbcache.v2
+GamerHub_Backend/.vs/GamerHub_Backend/DesignTimeBuild/.dtbcache.v2
+GamerHub_Backend/.vs/GamerHub_Backend/DesignTimeBuild/.dtbcache.v2
+GamerHub_Backend/.vs/GamerHub_Backend/DesignTimeBuild/.dtbcache.v2
+GamerHub_Backend/.vs/GamerHub_Backend/v17/.suo
+GamerHub_Backend/.vs/GamerHub_Backend/v17/DocumentLayout.json
+
+GamerHub_Backend/.vs/GamerHub_Backend/v17/.futdcache.v2
+GamerHub_Backend/GamerHub_Backend.csproj.user
+GamerHub_Backend/Program.cs
+GamerHub_Backend/obj/Debug/net8.0/GamerHub_Backend.dll
+GamerHub_Backend/bin/Debug/net8.0/GamerHub_Backend.exe
+>>>>>>> Stashed changes
+GamerHub_Backend/GamerHub_Backend.csproj.user

@@ -9,7 +9,6 @@ namespace GamerHub_Backend.Entities
         [Required]
         public string NombreProducto { get; set; } = null!;
         [Required]
-        public byte[]? Imagen { get; set; }
         public decimal Precio { get; set; }
         [Required]
         public string? Caracteristicas { get; set; }

@@ -240,6 +240,9 @@ namespace GamerHub_Backend.Migrations
                     b.Property<int>("IdCategoria")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("NombreProducto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

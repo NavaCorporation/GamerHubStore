@@ -16,67 +16,47 @@
 
     <div class="dashboard1">
         <h2>Añadir Productos</h2>
-        <form class="row g-3 needs-validation" [formGroup]="eventsForm">
+        <form class="row g-3 needs-validation" [formGroup]="productoForm">
         
             <div class="col-md-4">
-                <label class="form-label">Nombre del Producto</label>
-                <input type="text" class="form-control" formControlName="nameevent">
-                <!-- (*ngIf) que se usa para mostrar o esconder el div basado en una condición. -->
-                <!--  el nombre nameevent es inválido (invalid) y si ha sido tocado (touched) o modificado (dirty). -->
-                <div class="text-danger" *ngIf="eventsForm.controls['nameevent'].invalid && (eventsForm.controls['nameevent'].touched || eventsForm.controls['nameevent'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['nameevent'].errors?.['required']">El nombre es obligatorio</span>
+                <label for="nombreproducto" class="form-label">Nombre de la Categoria</label>
+                <input type="text" class="form-control" formControlName="nombreproducto" placeholder="Ingrese el nombre del Producto">
+                <div class="text-danger" *ngIf="productoForm.controls['nombreproducto'].invalid && (productoForm.controls['nombreproducto'].touched || productoForm.controls['nombreproducto'].dirty || isFormSubmitted)" >
+                    <span *ngIf="productoForm.controls['nombreproducto'].errors?.['required']">El nombre es obligatorio</span>    
+                </div>
+            </div>   
+            
+            <div class="col-md-4">
+                <label for="precioprducto" class="form-label">Precio</label>
+                <input type="text" class="form-control" formControlName="precioprducto" placeholder="Ingrese el precio">
+                <div class="text-danger" *ngIf="productoForm.controls['precioprducto'].invalid && (productoForm.controls['precioprducto'].touched || productoForm.controls['precioprducto'].dirty || isFormSubmitted)" >
+                    <span *ngIf="productoForm.controls['precioprducto'].errors?.['required']">El precio es obligatorio</span>
                 </div>
             </div>
-        
+
             <div class="col-md-4">
-                <label class="form-label">Marca</label>
-                <input type="text" class="form-control" formControlName="acargo">
-                <div class="text-danger" *ngIf="eventsForm.controls['acargo'].invalid &&  (eventsForm.controls['acargo'].touched || eventsForm.controls['acargo'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['acargo'].errors?.['required']">Especifique la marca</span>
+                <label for="stockproducto" class="form-label">stock</label>
+                <input type="text" class="form-control" formControlName="stockproducto" placeholder="Ingrese el stockproducto">
+                <div class="text-danger" *ngIf="productoForm.controls['stockproducto'].invalid && (productoForm.controls['stockproducto'].touched || productoForm.controls['stockproducto'].dirty || isFormSubmitted)" >
+                    <span *ngIf="productoForm.controls['stockproducto'].errors?.['required']">El stock es obligatorio</span>
                 </div>
             </div>
-        
+            
             <div class="col-md-4">
-                <label class="form-label">Cantidad</label>
-                <input type="text" class="form-control" formControlName="telefono">
-                <div class="text-danger" *ngIf="eventsForm.controls['telefono'].invalid && (eventsForm.controls['telefono'].touched || eventsForm.controls['telefono'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['telefono'].errors?.['required']">El Agregar la cantidad es obligatorio</span>
-                    <span *ngIf="eventsForm.controls['telefono'].errors?.['minlength']">Agregue la cantidad minima</span>
+                <label for="descripcionproducto" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" formControlName="descripcionproducto" placeholder="Ingrese la descripcion">
+                <div class="text-danger" *ngIf="productoForm.controls['descripcionproducto'].invalid && (productoForm.controls['descripcionproducto'].touched || productoForm.controls['descripcionproducto'].dirty || isFormSubmitted)" >
+                    <span *ngIf="productoForm.controls['descripcionproducto'].errors?.['required']">La descripcion es obligatoria</span>    
                 </div>
             </div>
-        
+
             <div class="col-md-4">
-                <label class="form-label">Precio</label>
-                <input type="string" class="form-control" formControlName="email">
-                <div class="text-danger" *ngIf="eventsForm.controls['email'].invalid &&  (eventsForm.controls['email'].touched || eventsForm.controls['email'].dirty || isFormSubmitted)">
-                   <span *ngIf="eventsForm.controls['email'].errors?.['required']">El correo es obligatorio</span> 
-                    <span *ngIf="eventsForm.controls['email'].errors?.['email']">El precio debe ser agregado</span>
-                </div>
-            </div>
-        
-            <div class="col-md-4">
-                <label class="form-label">Descripcion</label>
-                <input type="text" class="form-control" formControlName="date">
-                <div class="text-danger" *ngIf="eventsForm.controls['date'].invalid && (eventsForm.controls['date'].touched || eventsForm.controls['date'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['date'].errors?.['required']">La descripcion es obligatoria</span>
-                </div>
-            </div>
-        
-            <div class="col-md-4">
-                <label class="form-label">Categoria</label>
-                <select class="form-select" aria-label="Default select example" formControlName="city">
-                    <option value="" disabled selected>Selecciona un lugar</option>
-                    <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+                <label for="nombrecategoria" class="form-label" >Nombre de la Categoria</label>
+                <select class="form-select" formControlName="nombrecategoria" title="Nombre de la Categoria">
+                    <option selected disabled value="">Seleccionar</option>
+                    <option *ngFor="let categoria of categorias" value="{{categoria.nombrecategoria}}">{{categoria.nombrecategoria}}</option>
                 </select>
-                <div class="text-danger" *ngIf="eventsForm.controls['city'].invalid && (eventsForm.controls['city'].touched || eventsForm.controls['city'].dirty || isFormSubmitted)">
-                    <span *ngIf="eventsForm.controls['city'].errors?.['required']">La El lugar no es correcto</span>
-                </div>
             </div>
-        
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
-            </div>
-        
         </form>
         
         <table class="table mt-4">

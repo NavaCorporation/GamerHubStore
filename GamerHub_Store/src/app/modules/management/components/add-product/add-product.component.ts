@@ -2,9 +2,9 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { Eventopar } from '../../models/eventopar';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ManagerComponent } from '../manager/manager.component';
+import { Producto } from '../../../../interface/Producto';
 
 @Component({
   selector: 'app-add-product',
@@ -14,42 +14,35 @@ import { ManagerComponent } from '../manager/manager.component';
   styleUrl: './add-product.component.css'
 })
 export class AddProductComponent {
-  eventsForm: FormGroup;
+  productoForm: FormGroup;
   //iniciamos las variables en el contructor para tener un buen codigo si hubieramos quedio podian haber estado en la parte de arriba 
     isFormSubmitted: boolean = false;
-    events: Eventopar[] = [];
-    cities = [
-      { id: 1, name: 'Monitor' },
-      { id: 2, name: 'Videojuego' },
-      { id: 3, name: 'Consola' }
-    ];
+    productos: Producto[] = [];
     constructor () {
 
-      this.eventsForm = new FormGroup({
-        nameevent: new FormControl('', [Validators.required]),
-        acargo: new FormControl('', [Validators.required]),
-        telefono: new FormControl('', [Validators.required, Validators.minLength(1)]),
-        email: new FormControl('',[Validators.required]),
-        date: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
+      this.productoForm = new FormGroup({
+        nombreproducto: new FormControl('', [Validators.required]),
+        precioproducto: new FormControl('', [Validators.required]),
+        imagenproducto: new FormControl('', [Validators.required]),
+        categoria: new FormControl('', [Validators.required]),
+        stockproducto: new FormControl('', [Validators.required])
       });
     }
 
     onSubmit() {
-      const isformValid = this.eventsForm.valid;    
+      const isformValid = this.productoForm.valid;
       this.isFormSubmitted = true;
-      this.eventsForm.markAllAsTouched ;
-
-      if (this.eventsForm.valid) {
-        const newEvent: Eventopar = this.eventsForm.value;
-        this.events.push(newEvent);
-        this.eventsForm.reset();
+      this.productoForm.markAllAsTouched ;
+      if (this.productoForm.valid) {
+        const newProducto: Producto = this.productoForm.value;
+        this.productos.push(newProducto);
+        this.productoForm.reset();
         this.isFormSubmitted = false;
-    }
+      }
     }
 
     deleteEvent(index: number) {
-      this.events.splice(index, 1);
+      this.productos.splice(index, 1);
     }
 
 }

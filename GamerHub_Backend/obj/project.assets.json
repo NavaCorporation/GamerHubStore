@@ -8261,11 +8261,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leamf\\Documents\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
+      "projectUniqueName": "C:\\Users\\leamf\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
       "projectName": "GamerHub_Backend",
-      "projectPath": "C:\\Users\\leamf\\Documents\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
+      "projectPath": "C:\\Users\\leamf\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
       "packagesPath": "C:\\Users\\leamf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leamf\\Documents\\GamerHubStore\\GamerHub_Backend\\obj\\",
+      "outputPath": "C:\\Users\\leamf\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\leamf\\AppData\\Roaming\\NuGet\\NuGet.Config",

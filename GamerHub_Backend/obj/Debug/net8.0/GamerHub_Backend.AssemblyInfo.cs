@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+632ca80d93599371990a32b9ee9612735eaa7d49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+909be5e416b15da14a9fa8ec58f19415fea71941")]
 [assembly: System.Reflection.AssemblyProductAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

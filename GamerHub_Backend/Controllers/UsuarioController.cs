@@ -128,9 +128,8 @@ namespace GamerHub_Backend.Controllers
             }
 
         }
-        [HttpGet("GetImagen/{id}")]
-        [Authorize]
-        public async Task<IActionResult> GetImagen(int id)
+        [HttpGet("{id}/fotoPerfil")]
+        public async Task<IActionResult> GetFotoPerfil(int id)
         {
             var usuario = await _usuarioRepository.ObtenerPorId(id);
             if (usuario == null || usuario.FotoPerfil == null)
@@ -138,15 +137,17 @@ namespace GamerHub_Backend.Controllers
                 return NotFound();
             }
 
-            return File(usuario.FotoPerfil, "image/png");
+            string base64Image = Convert.ToBase64String(usuario.FotoPerfil);
+            return Content(base64Image, "text/plain");
         }
+    }
 
         public class LoginModel
         {
             public string Correo { get; set; } = null!;
             public string Contrasena { get; set; } = null!;
         }
-    }
+    
 
 
 

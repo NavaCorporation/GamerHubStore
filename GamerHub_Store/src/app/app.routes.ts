@@ -9,7 +9,7 @@ import { InventarioComponent } from './modules/administration/components/inventa
 import { TareaPendienteComponent } from './modules/administration/components/tarea-pendiente/tarea-pendiente.component';
 import { EmployeeManagementComponent } from './modules/management/components/employee-management/employee-management.component';
 import { AddProductComponent } from './modules/management/components/add-product/add-product.component';
-import { ReturnsComponent } from './modules/management/components/returns/returns.component';
+//import { ReturnsComponent } from './modules/management/components/returns/returns.component';
 import { ProfileComponent } from './modules/administration/components/profile/profile.component';
 import { RestablecimientoCComponent } from './modules/administration/components/restablecimiento-c/restablecimiento-c.component';
 import { ReporteComponent } from './modules/administration/components/reporte/reporte.component';
@@ -35,7 +35,7 @@ export const routes: Routes = [
     //management
     { path: 'management', component: EmployeeManagementComponent },
     { path: 'addproduct', component: AddProductComponent},
-    { path: 'returns', component: ReturnsComponent},
+    //{ path: 'returns', component: ReturnsComponent},
 
 
 

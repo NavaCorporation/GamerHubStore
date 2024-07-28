@@ -45,7 +45,8 @@ export class LoginAdmComponent implements OnInit {
     }
     
     else {
-      alert('Código de acceso incorrecto');
+      alert('Solo personal autorizado');
+      this.showAdminLogin = false;
     }
   }
 

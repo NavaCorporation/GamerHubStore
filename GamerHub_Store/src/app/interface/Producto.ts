@@ -1,11 +1,19 @@
 import { Categoria } from "./Categoria";
+import { Comentario } from "./Comentario";
+import { DetallesCompra } from "./DetallesCompra";
+import { Devolucion } from "./Devolucion";
 
-export interface Producto{
+export interface Producto {
     id?: number;
-    nombreproducto: string;
-    precioprducto: string;
-    imagenproducto: string;
-    nombrecategoria: string;
-    categoria?: Categoria;
-    stockproducto: number;
+    nombreProducto: string;
+    imagen?: Uint8Array;
+    precio: number;
+    caracteristicas: string;
+    descripcion: string;
+    stock: number;
+    idCategoria: number;
+    categoria: Categoria;
+    detallesCompras?: DetallesCompra[];
+    devoluciones?: Devolucion[];
+    comentarios?: Comentario[];
 }

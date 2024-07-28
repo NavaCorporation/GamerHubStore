@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Eventopar } from '../../models/eventopar';
 import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
@@ -52,3 +51,4 @@ export class ReturnsComponent {
     }
 
 }
+*/

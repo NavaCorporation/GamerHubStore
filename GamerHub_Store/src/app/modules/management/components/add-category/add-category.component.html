@@ -16,21 +16,24 @@
     
         <div class="dashboard1">
             <h2>Añadir Categoria</h2>
-            <form class="row g-3 needs-validation" [formGroup]="CategoriaForm">
+            <form class="row g-3 needs-validation" [formGroup]="categoriaForm">
                 <div class="col-md-4">
                     <label for="nombrecategoria" class="form-label">Nombre de la Categoria</label>
                     <input type="text" class="form-control" formControlName="nombrecategoria" placeholder="Ingrese el nombre de la Categoria">
-                    <div class="text-danger" *ngIf="CategoriaForm.controls['nombrecategoria'].invalid && (CategoriaForm.controls['nombrecategoria'].touched || categoriaForm.controls['nombrecategoria'].dirty || isFormSubmitted)" >
+                    <div class="text-danger" *ngIf="categoriaForm.controls['nombrecategoria'].invalid && (categoriaForm.controls['nombrecategoria'].touched || categoriaForm.controls['nombrecategoria'].dirty || isFormSubmitted)" >
                         <span *ngIf="categoriaForm.controls['nombrecategoria'].errors?.['required']">El nombre es obligatorio</span>    
                     </div>
                 </div>  
                 <div class="col-md-4">
                     <label for="descripcioncategoria" class="form-label">Descripcion</label>
                     <input type="text" class="form-control" formControlName="descripcioncategoria" placeholder="Ingrese la descripcion">
-                    <div class="text-danger" *ngIf="CategoriaForm.controls['descripcioncategoria'].invalid && (CategoriaForm.controls['descripcioncategoria'].touched || categoriaForm.controls['descripcioncategoria'].dirty || isFormSubmitted)" >
+                    <div class="text-danger" *ngIf="categoriaForm.controls['descripcioncategoria'].invalid && (categoriaForm.controls['descripcioncategoria'].touched || categoriaForm.controls['descripcioncategoria'].dirty || isFormSubmitted)" >
                         <span *ngIf="categoriaForm.controls['descripcioncategoria'].errors?.['required']">La descripcion es obligatoria</span>    
                     </div> 
-
+                </div>    
+                <div class="col-12">
+                    <button title="Guardar" type="submit" class="btn btn-primary">Guardar Categoria</button>
+                </div>
             </form>
             
             

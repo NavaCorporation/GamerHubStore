@@ -4,6 +4,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Categoria } from '../../../../interface/Categoria';
+import { CategoriaService } from '../../services/Categoria/categoria.service';
+import { Producto } from '../../../../interface/Producto';
 
 @Component({
   selector: 'app-add-category',
@@ -16,23 +18,33 @@ export class AddCategoryComponent {
 categoriaForm: FormGroup;
 isFormSubmitted: boolean = false;
 categories: Categoria[] = [];
-  constructor () {
+  constructor (private categoriaService: CategoriaService) {
     this.categoriaForm = new FormGroup({
       nombrecategoria: new FormControl('', [Validators.required]),
       descripcioncategoria: new FormControl('', [Validators.required])
     });
   }                        
   
-  OnSubmit() {
-    const isformValid = this.categoriaForm.valid;
+  ngOnInit()  {
+    this.loadCategorias();
+  }
+  loadCategorias() {
+    this.categoriaService.getCategorias().subscribe(categorias => {
+      this.categories = categorias;
+    });
+  }
+
+  onSubmit() {
     this.isFormSubmitted = true;
-    this.categoriaForm.markAllAsTouched ;
+    this.categoriaForm.markAllAsTouched();
 
     if (this.categoriaForm.valid) {
-      const newCategoria: Categoria = this.categoriaForm.value;
-      this.categories.push(newCategoria);
-      this.categoriaForm.reset();
-      this.isFormSubmitted = false;
+      const nuevaCategoria: Categoria = this.categoriaForm.value;
+      this.categoriaService.addCategoria(nuevaCategoria).subscribe(() => {
+        this.loadCategorias();
+        this.categoriaForm.reset();
+        this.isFormSubmitted = false;
+      });
     }
   }
 }

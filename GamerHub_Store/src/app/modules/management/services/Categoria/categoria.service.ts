@@ -11,23 +11,15 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class CategoriaService {
-  private myAppUrl: string = environment.endpoint;
-  private myApiUrl: string = 'api/Categoria/';
+  private apiUrl = `${environment.endpoint}api/Categorias`;
+
+  
   private categoriasser = new BehaviorSubject<Categoria[]>([]);
   categoria$ = this.categoriasser.asObservable();
 
   constructor(private http: HttpClient) { }
-  
-  getCategorias(): Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(`${this.myAppUrl}${this.myApiUrl}`);
-  }
 
-  setCategorias(categorias: Categoria[]) {
-    this.categoriasser.next(categorias);
+  getCategorias(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
   }
-
-  addCategoria(categoria: Categoria): Observable<Categoria> {
-    return this.http.post<Categoria>(this.myApiUrl, categoria);
-  }
-
 }

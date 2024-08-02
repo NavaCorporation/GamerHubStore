@@ -16,7 +16,7 @@
     
         <div class="dashboard1">
             <h2>Añadir Categoria</h2>
-            <form class="row g-3 needs-validation" [formGroup]="categoriaForm">
+            <form class="row g-3 needs-validation" [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
                 <div class="col-md-4">
                     <label for="nombrecategoria" class="form-label">Nombre de la Categoria</label>
                     <input type="text" class="form-control" formControlName="nombrecategoria" placeholder="Ingrese el nombre de la Categoria">
@@ -35,6 +35,22 @@
                     <button title="Guardar" type="submit" class="btn btn-primary">Guardar Categoria</button>
                 </div>
             </form>
+             
+            <h2>Lista de Categorías</h2>
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let categoria of categories">
+                    <td>{{ categoria.nombrecategoria }}</td>
+                    <td>{{ categoria.descripcioncategoria }}</td>
+                    </tr>
+                </tbody>
+                </table>
             
             
             </div>

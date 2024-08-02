@@ -14,7 +14,7 @@ import { Producto } from '../../../../interface/Producto';
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css'
 })
-export class AddCategoryComponent {
+export class AddCategoryComponent  {
 categoriaForm: FormGroup;
 isFormSubmitted: boolean = false;
 categories: Categoria[] = [];
@@ -24,27 +24,24 @@ categories: Categoria[] = [];
       descripcioncategoria: new FormControl('', [Validators.required])
     });
   }                        
-  
-  ngOnInit()  {
-    this.loadCategorias();
+
+  ngOnInit(): void {
+    this.loadCategorias(); 
   }
-  loadCategorias() {
-    this.categoriaService.getCategorias().subscribe(categorias => {
-      this.categories = categorias;
+
+  loadCategorias(): void {
+    this.categoriaService.getCategorias().subscribe(response => {
+      this.categories = response;
     });
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    this.categoriaForm.markAllAsTouched();
-
     if (this.categoriaForm.valid) {
-      const nuevaCategoria: Categoria = this.categoriaForm.value;
-      this.categoriaService.addCategoria(nuevaCategoria).subscribe(() => {
-        this.loadCategorias();
-        this.categoriaForm.reset();
-        this.isFormSubmitted = false;
-      });
+      const newCategory: Categoria = this.categoriaForm.value;
+      
+
     }
+
   }
 }

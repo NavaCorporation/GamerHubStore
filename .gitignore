@@ -19,3 +19,15 @@ GamerHub_Backend/Properties/launchSettings.json
 GamerHub_Backend/.vs/GamerHub_Backend/v17/.suo
 GamerHub_Backend/GamerHub_Backend.csproj.user
 GamerHub_Backend/.vs/GamerHub_Backend/v17/.suo
+GamerHub_Backend/bin/Debug/net8.0/GamerHub_Backend.dll
+GamerHub_Backend/obj/project.nuget.cache
+GamerHub_Backend/obj/project.assets.json
+GamerHub_Backend/obj/GamerHub_Backend.csproj.nuget.g.targets
+GamerHub_Backend/obj/GamerHub_Backend.csproj.nuget.g.props
+GamerHub_Backend/obj/GamerHub_Backend.csproj.nuget.dgspec.json
+GamerHub_Backend/obj/Debug/net8.0/GamerHub_Backend.GeneratedMSBuildEditorConfig.editorconfig
+GamerHub_Backend/obj/Debug/net8.0/GamerHub_Backend.csproj.AssemblyReference.cache
+GamerHub_Backend/obj/Debug/net8.0/GamerHub_Backend.assets.cache
+GamerHub_Backend/obj/Debug/net8.0/GamerHub_Backend.AssemblyInfoInputs.cache
+GamerHub_Backend/obj/Debug/net8.0/GamerHub_Backend.AssemblyInfo.cs
+/GamerHub_Backend/obj/Debug/net8.0

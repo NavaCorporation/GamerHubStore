@@ -12,14 +12,18 @@ namespace GamerHub_Backend.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Producto>> ObtenerTodosLosProductosAsync()
+        public async Task<IEnumerable<Producto>> ObtenerTodos()
         {
-            return await _dbContext.Productos.Include(p => p.Categoria).ToListAsync();
+            return await _dbContext.Productos
+                .Include(p => p.Categoria)
+                .ToListAsync();
         }
 
-        public async Task<Producto> ObtenerProductoPorIdAsync(int id)
+        public async Task<Producto?> ObtenerPorId(int id)
         {
-            return await _dbContext.Productos.Include(p => p.Categoria).FirstOrDefaultAsync(p => p.Id == id);
+            return await _dbContext.Productos
+                .Include(p => p.Categoria)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Producto> AgregarProductoAsync(Producto producto)

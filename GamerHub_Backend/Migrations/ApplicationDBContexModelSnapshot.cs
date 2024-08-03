@@ -41,6 +41,50 @@ namespace GamerHub_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Todo tipo de accesorios para tu set-up gamer",
+                            NombreCategoria = "Accesorios"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Consolas de última generación y retro",
+                            NombreCategoria = "Consolas"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Juegos para todas las plataformas",
+                            NombreCategoria = "Juegos"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descripcion = "Componentes de hardware para mejorar tu PC",
+                            NombreCategoria = "Hardware"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Descripcion = "Productos de merchandising de tus juegos favoritos",
+                            NombreCategoria = "Merchandising"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Descripcion = "Muebles ergonómicos y setups completos",
+                            NombreCategoria = "Muebles"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Descripcion = "Software especializado para gaming y creación de contenido",
+                            NombreCategoria = "Software"
+                        });
                 });
 
             modelBuilder.Entity("GamerHub_Backend.Entities.Comentario", b =>
@@ -230,9 +274,6 @@ namespace GamerHub_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoriaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -255,7 +296,7 @@ namespace GamerHub_Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriaId");
+                    b.HasIndex("IdCategoria");
 
                     b.ToTable("Productos");
                 });
@@ -494,7 +535,7 @@ namespace GamerHub_Backend.Migrations
                 {
                     b.HasOne("GamerHub_Backend.Entities.Categoria", "Categoria")
                         .WithMany("Productos")
-                        .HasForeignKey("CategoriaId")
+                        .HasForeignKey("IdCategoria")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

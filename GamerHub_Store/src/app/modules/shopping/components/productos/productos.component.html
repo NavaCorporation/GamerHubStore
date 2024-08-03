@@ -34,36 +34,42 @@
 
   <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
-      <div class="col">
-        <div class=" rounded-3 shadow-sm h-100 borders">
-          <div class=" py-3 bordersabajo cartaFondo">
-            <h4 class="my-0 fw-normal clienteh4"><strong>STOCK</strong></h4>
-          </div>
-          <div class="py-5 cartaFondo2 ">
-            <img src="https://th.bing.com/th/id/R.45e8b55abf1788b6a7a0b04aae0a333e?rik=aO%2bNdLFXmhSf4w&pid=ImgRaw&r=0" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$12<small class="text-body-secondary fw-light"></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Teclado Logitech Pop Keys Mecánico</li>
-              <li>Inalámbrico Rosado</li>
-            </ul>
-            <button type="button" class="w-75 btn-save btn-min-size " data-bs-toggle="modal" data-bs-target="#modalProducto1">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-75  btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3" *ngFor="let producto of productos">
+            <div class="rounded-3 shadow-sm h-100 borders">
+              <div class="py-3 bordersabajo cartaFondo">
+                <h4 class="my-0 fw-normal clienteh4"><strong>STOCK</strong></h4>
+              </div>
+              <div class="py-5 cartaFondo2 ">
+                <img [src]="ImagenProduct" alt="Descripción de la imagen" class="img-fluid">
+                <h1 class="card-title pricing-card-title">{{ producto.precio | currency }}</h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>{{ producto.nombreProducto }}</li>
+                  <li>{{ producto.caracteristicas }}</li>
+                </ul>
+                <button type="button" class="w-75 btn-save btn-min-size" data-bs-toggle="modal" data-bs-target="#modalProducto1">Mostrar Detalles</button>
+                <br><br>
+                <button type="button" class="w-75 btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
+              </div>
+            </div>
           </div>
         </div>
+      
         <div id="floating-message" class="floating-message">
           Producto añadido al carrito
         </div>
-      </div>
+      
 
-      <!-- Producto 2 -->
+      <!--
   
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm h-100">
           <div class="card-header py-3">
             <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
           </div>
-          <div class="card-body">
+          <div class="py-5 cartaFondo2">
             <img src="https://www.profesionalreview.com/wp-content/uploads/2019/08/AORUS-CV27Q-Gaming-Monitor.jpg" alt="Descripción de la imagen" class="img-fluid">
             <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light"></small></h1>
             <ul class="list-unstyled mt-3 mb-4">
@@ -80,7 +86,6 @@
         </div>
       </div>
 
-      <!-- Producto 3 -->
   
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm h-100">
@@ -105,7 +110,6 @@
         </div>
       </div>
 
-      <!-- Producto 4 -->
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm h-100">
           <div class="card-header py-3">
@@ -129,7 +133,7 @@
         </div>
       </div>
   
-  
+    -->
   
   
   

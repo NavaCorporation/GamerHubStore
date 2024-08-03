@@ -47,10 +47,15 @@ namespace GamerHub_Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Producto>> AgregarProducto([FromForm] Producto producto, [FromForm] IFormFile? imagen)
+        public async Task<IActionResult> AgregarProducto([FromForm] Producto producto, [FromForm] IFormFile? imagen)
         {
             try
             {
+                var categoria = await _productoRepository.VerificarCat(producto.CategoriaId);
+                if (categoria == null)
+                {
+                    return BadRequest(new { message = "Categoria no valida" });
+                }
                 if (imagen != null && imagen.Length > 0)
                 {
                     using (var memoryStream = new MemoryStream())
@@ -60,9 +65,9 @@ namespace GamerHub_Backend.Controllers
                     }
                 }
 
-                producto.Categoria = null;  
+                producto.Categoria = null;
                 await _productoRepository.AgregarProductoAsync(producto);
-                return CreatedAtAction(nameof(ObtenerProducto), new { id = producto.Id }, producto);
+                return Ok(new {message = "Producto registrado" } );
             }
             catch (Exception ex)
             {

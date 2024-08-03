@@ -8,27 +8,24 @@ namespace GamerHub_Backend.Controllers
     [ApiController]
     public class CategoriasController : ControllerBase
     {
-        private readonly ICategoriaRepository _categoriasRepository;
-        private readonly IConfiguration _configuration;
+        private readonly CategoriaRepository _categoriaRepository;
 
-        public CategoriasController(ICategoriaRepository categoriasRepository, IConfiguration configuration)
+        public CategoriasController(CategoriaRepository categoriaRepository)
         {
-            _categoriasRepository = categoriasRepository;
-            _configuration = configuration;
+            _categoriaRepository = categoriaRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Categoria>>> ObtenerCategorias()
+        public async Task<IEnumerable<Categoria>> ObtenerCategorias()
         {
-            var categorias = await _categoriasRepository.ObtenerTodasLasCategoriasAsync();
-            return Ok(categorias);
+            return await _categoriaRepository.ObtenerTodasLasCategoriasAsync();
         }
 
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ObtenerCategoria(int id)
         {
-            var categoria = await _categoriasRepository.ObtenerCategoriaPorIdAsync(id);
+            var categoria = await _categoriaRepository.ObtenerCategoriaPorIdAsync(id);
             if (categoria == null)
             {
                 return NotFound();
@@ -40,7 +37,7 @@ namespace GamerHub_Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Categoria>> AgregarCategoria(Categoria categoria)
         {
-            await _categoriasRepository.AgregarCategoriaAsync(categoria);
+            await _categoriaRepository.AgregarCategoriaAsync(categoria);
             return CreatedAtAction(nameof(ObtenerCategoria), new { id = categoria.Id }, categoria);
         }
 
@@ -52,7 +49,7 @@ namespace GamerHub_Backend.Controllers
                 return BadRequest();
             }
 
-            await _categoriasRepository.ActualizarCategoriaAsync(categoria);
+            await _categoriaRepository.ActualizarCategoriaAsync(categoria);
             return Ok(categoria);
         }
 
@@ -64,14 +61,14 @@ namespace GamerHub_Backend.Controllers
                 return BadRequest("Categoria is null.");
             }
 
-            await _categoriasRepository.ActualizarCategoriaAsync(categoria);
+            await _categoriaRepository.ActualizarCategoriaAsync(categoria);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarCategoria(int id)
         {
-            await _categoriasRepository.EliminarCategoriaAsync(id);
+            await _categoriaRepository.EliminarCategoriaAsync(id);
             return NoContent();
         }
     }

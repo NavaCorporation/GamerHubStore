@@ -26,11 +26,11 @@ namespace GamerHub_Backend.Repository
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<Producto> AgregarProductoAsync(Producto producto)
+        public async Task<int?> AgregarProductoAsync(Producto producto)
         {
             _dbContext.Productos.Add(producto);
             await _dbContext.SaveChangesAsync();
-            return producto;
+            return producto.Id;
         }
 
         public async Task ActualizarProductoAsync(Producto producto)
@@ -44,6 +44,11 @@ namespace GamerHub_Backend.Repository
             var producto = await _dbContext.Productos.FindAsync(id);
             _dbContext.Productos.Remove(producto);
             await _dbContext.SaveChangesAsync();
+        }
+        public async Task<Categoria?> VerificarCat(int categoriaId)
+        {
+            return await _dbContext.Categorias.FindAsync(categoriaId);
+
         }
 
     }

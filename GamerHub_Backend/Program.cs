@@ -16,7 +16,6 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
-builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
 // Navarrete
 builder.Services.AddScoped<RolRepository>();

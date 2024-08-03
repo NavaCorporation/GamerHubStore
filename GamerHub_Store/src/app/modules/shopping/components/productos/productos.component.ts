@@ -15,13 +15,17 @@ import { ProductServicesService } from '../../services/products/product-services
 export class ProductosComponent implements OnInit {
 [x: string]: any;
   productos: Producto[] = [];
-  ImagenProduct: { [key: number]: SafeUrl  } = {};
+  ImagenProduct: { [key: number]: SafeUrl | null  } = {};
   pagina: number = 1;
   paginaSize: number = 10;
   totalItems: number = 0;
   paginas: number[] = [];
+  defaultImage: SafeUrl;
+  
 
-  constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer) { }
+  constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer) {
+    this.defaultImage = this.sanitizer.bypassSecurityTrustUrl('assets/img/noImagenP.jpg');
+  }
   ngOnInit(): void {
     this.loadProductos();
     this.calculatePages();
@@ -32,8 +36,9 @@ export class ProductosComponent implements OnInit {
         this.productos = productos;
         this.totalItems = productos.length; 
         this.calculatePages();
-        this.productos.forEach(producto => {(producto: { id: number; }) => this.loadProductImage(producto.id)
-        });
+        this.productos.forEach(producto => {
+          this.loadProductImage(producto.id);
+      });
 
       },
       (error: any) => console.error('Error al obtener los productos', error)
@@ -42,12 +47,19 @@ export class ProductosComponent implements OnInit {
   calculatePages(): void {
     this.paginas = Array(Math.ceil(this.totalItems / this.paginaSize)).fill(0).map((x, i) => i + 1);
   }
-  loadProductImage(id: number): void {
+
+  loadProductImage(id: number | undefined): void {
+    if (id === undefined) {
+      return;
+  }
     this.productService.getFotoProducto(id).subscribe(
       (base64Image: string) => {
         this.ImagenProduct[id] = this.sanitizer.bypassSecurityTrustUrl(`data:image/jpeg;base64,${base64Image}`);
       },
-      (error: any) => console.error('Error al obtener la imagen del producto', error)
+      (error: any) => {
+        this.ImagenProduct[id] = this.defaultImage;
+                console.error('Error al obtener la imagen del producto', error);
+      }
     )
   }
 

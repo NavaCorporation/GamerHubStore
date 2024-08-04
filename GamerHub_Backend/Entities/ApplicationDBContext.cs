@@ -49,7 +49,7 @@ namespace GamerHub_Backend.Entities
     {
         Id = 1,
         NombreProducto = "Teclado Mecánico RGB",
-        Imagen = null, // Imagen vacía
+        Imagen = null, 
         Precio = 89.99m,
         Caracteristicas = "Teclado mecánico con retroiluminación RGB y switches Cherry MX.",
         Descripcion = "Ideal para juegos y escritura, con retroiluminación ajustable.",
@@ -60,7 +60,7 @@ namespace GamerHub_Backend.Entities
     {
         Id = 2,
         NombreProducto = "Consola de Juegos Next-Gen",
-        Imagen = null, // Imagen vacía
+        Imagen = null, 
         Precio = 499.99m,
         Caracteristicas = "Consola de última generación con soporte para 4K y ray tracing.",
         Descripcion = "Experiencia de juego inmersiva con la última tecnología.",
@@ -71,7 +71,7 @@ namespace GamerHub_Backend.Entities
     {
         Id = 3,
         NombreProducto = "Ratón Gamer Ultra Preciso",
-        Imagen = null, // Imagen vacía
+        Imagen = null, 
         Precio = 59.99m,
         Caracteristicas = "Ratón con alta precisión de 16000 DPI y botones programables.",
         Descripcion = "Diseñado para juegos competitivos con alta precisión y personalización.",
@@ -82,7 +82,7 @@ namespace GamerHub_Backend.Entities
     {
         Id = 4,
         NombreProducto = "Monitor Curvo 144Hz",
-        Imagen = null, // Imagen vacía
+        Imagen = null,
         Precio = 349.99m,
         Caracteristicas = "Monitor curvo con tasa de refresco de 144Hz y resolución Full HD.",
         Descripcion = "Mejora tu experiencia de juego con una visualización fluida y envolvente.",

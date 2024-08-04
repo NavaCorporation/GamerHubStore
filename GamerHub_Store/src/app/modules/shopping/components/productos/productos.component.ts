@@ -15,6 +15,7 @@ import { ProductServicesService } from '../../services/products/product-services
 export class ProductosComponent implements OnInit {
 [x: string]: any;
   productos: Producto[] = [];
+  selectedProduct: Producto | null = null;
   ImagenProduct: { [key: number]: SafeUrl | null  } = {};
   pagina: number = 1;
   paginaSize: number = 10;
@@ -30,6 +31,7 @@ export class ProductosComponent implements OnInit {
     this.loadProductos();
     this.calculatePages();
   }
+
   loadProductos(): void {
     this.productService.getProductos(this.pagina, this.paginaSize).subscribe(
       (productos: Producto[]) => {
@@ -66,6 +68,10 @@ export class ProductosComponent implements OnInit {
   changePage(pagina: number): void {
     this.pagina = pagina;
     this.loadProductos();
+  }
+
+  setSelectedProducto(producto: Producto): void {
+    this.selectedProduct = producto;
   }
 
 

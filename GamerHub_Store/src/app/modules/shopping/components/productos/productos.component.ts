@@ -4,19 +4,24 @@ import { CommonModule } from '@angular/common';
 import { Producto } from '../../../../interface/Producto';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ProductServicesService } from '../../services/products/product-services.service';
+import { Categoria } from '../../../../interface/Categoria';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-productos',
     standalone: true,
     templateUrl: './productos.component.html',
     styleUrl: './productos.component.css',
-    imports: [EncabezadoComprasComponent, CommonModule]
+    imports: [EncabezadoComprasComponent, CommonModule, FormsModule]
 })
 export class ProductosComponent implements OnInit {
 [x: string]: any;
   productos: Producto[] = [];
+  filtrarProductos: Producto[] = [];
   selectedProduct: Producto | null = null;
   ImagenProduct: { [key: number]: SafeUrl | null  } = {};
+  selectCategoria: number | null = null;
+  categorias: Categoria[] = [];
   pagina: number = 1;
   paginaSize: number = 10;
   totalItems: number = 0;
@@ -29,6 +34,7 @@ export class ProductosComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadProductos();
+    this.loadCategorias();
     this.calculatePages();
   }
 
@@ -36,6 +42,7 @@ export class ProductosComponent implements OnInit {
     this.productService.getProductos(this.pagina, this.paginaSize).subscribe(
       (productos: Producto[]) => {
         this.productos = productos;
+        this.filtrarProductos = productos;
         this.totalItems = productos.length; 
         this.calculatePages();
         this.productos.forEach(producto => {
@@ -74,6 +81,16 @@ export class ProductosComponent implements OnInit {
     this.selectedProduct = producto;
   }
 
+  loadCategorias(): void {
+    this.productService.getCategorias().subscribe(
+      (categorias: Categoria[]) => {
+        console.log('Categorías recibidas:', categorias);
+        this.categorias = categorias;
+      },
+      (error: any) => console.error('Error al obtener las categorías', error)
+    );
+  }
+
 
 
   addToCart() {
@@ -82,9 +99,16 @@ export class ProductosComponent implements OnInit {
       messageElement.style.display = 'block';
       setTimeout(() => {
         messageElement.style.display = 'none';
-      }, 3000); // El mensaje desaparecerá después de 3 segundos
+      }, 3000); 
     }
   }
 
 
+  filtrarPorCategoria(): void {
+    if (this.selectCategoria === null) {
+      this.filtrarProductos = this.productos;
+    } else {
+      this.filtrarProductos = this.productos.filter(producto => producto.categoriaId === this.selectCategoria);
+    }
+  }
 }

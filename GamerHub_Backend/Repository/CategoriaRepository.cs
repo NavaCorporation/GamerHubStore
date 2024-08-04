@@ -12,9 +12,9 @@ namespace GamerHub_Backend.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Categoria>> ObtenerTodasLasCategoriasAsync()
+        public async Task<List<Categoria>> ObtenerTodasLasCategoriasAsync()
         {
-            return await _dbContext.Categorias.Include(c => c.Productos).ToListAsync();
+            return  _dbContext.Categorias.ToList();
         }
 
         public async Task<Categoria> ObtenerCategoriaPorIdAsync(int id)

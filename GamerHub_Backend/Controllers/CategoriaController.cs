@@ -16,9 +16,10 @@ namespace GamerHub_Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Categoria>> ObtenerCategorias()
+        public async Task<ActionResult<List<Categoria>>> ObtenerCategorias()
         {
-            return await _categoriaRepository.ObtenerTodasLasCategoriasAsync();
+            var categorias = await _categoriaRepository.ObtenerTodasLasCategoriasAsync();
+            return categorias; 
         }
 
 

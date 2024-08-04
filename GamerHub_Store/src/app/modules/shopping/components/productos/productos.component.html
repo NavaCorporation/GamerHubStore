@@ -35,7 +35,7 @@
 
       <div class="container">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
-          <div class="col" *ngFor="let producto of productos">
+          <div class="col mb-4" *ngFor="let producto of productos">
             <div class="rounded-3 shadow-sm h-100 borders">
               <div class="py-3 bordersabajo cartaFondo">
                 <h4 class="my-0 fw-normal clienteh4"><strong>STOCK</strong></h4>
@@ -53,7 +53,7 @@
                 <h1 class="card-title pricing-card-title">{{ producto.precio | currency }}</h1>
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>{{ producto.nombreProducto }}</li>
-                  <li>{{ producto.caracteristicas }}</li>
+                  <li>{{ producto.descripcion }}</li>
                 </ul>
                 <button type="button" class="w-75 btn-save btn-min-size" data-bs-toggle="modal" data-bs-target="#modalProducto1">Mostrar Detalles</button>
                 <br><br>
@@ -68,83 +68,6 @@
         </div>
       
 
-      <!--
-  
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm h-100">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
-          </div>
-          <div class="py-5 cartaFondo2">
-            <img src="https://www.profesionalreview.com/wp-content/uploads/2019/08/AORUS-CV27Q-Gaming-Monitor.jpg" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light"></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Monitor samsung 24inc Curved 1.8m</li>
-              <li>Full HD HDMI D-SUB Negro</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto2">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
-          </div>
-        </div>
-        <div id="floating-message" class="floating-message">
-          Producto añadido al carrito
-        </div>
-      </div>
-
-  
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm h-100">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
-          </div>
-          <div class="card-body">
-            <img src="https://mihome.ec/wp-content/uploads/2020/12/Mi_Dual_Mode_Silent_Mouse_white_1.jpg" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$8<small class="text-body-secondary fw-light"></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Mouse Logitech Inalámbrico</li>
-              <li>M185 Blanco</li>
-              <li>USB Bluetooth</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto3">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
-          </div>
-        </div>
-        <div id="floating-message" class="floating-message">
-          Producto añadido al carrito
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm h-100">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
-          </div>
-          
-          <div class="card-body">
-            <img src="https://i5.walmartimages.com.mx/mg/gm/3pp/asr/95b44175-8d68-442e-afb9-8694429fbcc0.3bc8c6ca8652901b9a89baf62092bb2d.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$35<small class="text-body-secondary fw-light"></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Auriculares Inalámbricos Bluetooth Negros</li>
-              <li>Con cancelación de Ruido Esquí</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto4">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
-          </div>
-        </div>
-        <div id="floating-message" class="floating-message">
-          Producto añadido al carrito
-        </div>
-      </div>
-  
-    -->
-  
-  
-  
-  
-  
     <!-- Modal 1 -->
         <div class="modal fade" id="modalProducto1" tabindex="-1" aria-labelledby="modalProducto1Label" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">

@@ -1,40 +1,45 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Producto } from '../models/producto';
+import { environment } from '../../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Producto } from '../../../../interface/Producto';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InventarioService {
-  private products: Producto[] = [];
+  private myAppUrl: string = environment.endpoint;
 
-  constructor() {}
+  private myApiUrl: string = 'api/Productos/';
 
-  getProducts(): Producto[] {
-    return this.products;
+  constructor(private http: HttpClient) { }
+
+  getProductos(): Observable<Producto[]>{
+
+    return this.http.get<Producto[]>(`${this.myAppUrl}${this.myApiUrl}`)
+  }
+ 
+
+  getProducto(id:number ): Observable <Producto>{
+
+    return this.http.get<Producto>(`${this.myAppUrl}${this.myApiUrl}${id}`)
   }
 
-  addProduct(product: Producto): void {
-    this.products.push(product);
+
+  
+  getCrearProducto(producto: Producto ): Observable <Producto>{
+
+    return this.http.post<Producto>(`${this.myAppUrl}${this.myApiUrl}`, producto);
   }
 
-  updateProduct(updatedProduct: Producto): void {
-    const index = this.products.findIndex((p) => p.id === updatedProduct.id);
-    if (index !== -1) {
-      this.products[index] = updatedProduct;
-    }
+
+  
+  eliminarProducto(id: number): Observable <void>{
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`);
   }
 
-  verifyProduct(productId: number): void {
-    const product = this.products.find((p) => p.id === productId);
-    if (product) {
-      product.isVerified = !product.isVerified;
-      this.updateProduct(product);
-    }
+  
+  modificarProducto(producto: Producto): Observable<number>{
+    return this.http.put<number>(`${this.myAppUrl}${this.myApiUrl}${producto.id}`,producto);
   }
-
-  removeProduct(productId: number): void {
-    this.products = this.products.filter((p) => p.id !== productId);
-  }
-
 }

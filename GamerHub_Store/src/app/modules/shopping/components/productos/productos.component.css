@@ -11,19 +11,31 @@
     z-index: 1000;
 }
 
-.borders{
-    border: 2px solid #4d65a1;
-    
-    border-radius: 10px;
-    
+.product-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
 }
-.bordersabajo{
+
+.borders {
+    border: 2px solid #4d65a1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+
+.bordersabajo {
     border-bottom: 2px solid #4d65a1;
 }
-.cartaFondo{
+
+.cartaFondo {
     background-color: #4d65a175;
-    
+
 }
-.hr{
-    color:  #1F2536;
+
+.hr {
+    color: #1F2536;
 }

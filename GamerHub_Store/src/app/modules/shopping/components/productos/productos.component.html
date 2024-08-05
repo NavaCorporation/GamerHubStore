@@ -1,23 +1,30 @@
 <div class="backgroundPrincipal">
-<app-encabezado-compras></app-encabezado-compras>
+  <app-encabezado-compras></app-encabezado-compras>
 
-<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
     <h1 class="clienteh1 textcolor ">GamerHub</h1>
-    <p class="fs-5 text-body-secondary">Explora nuestra variedad de artículos tecnológicos 
-    <br>y sumérgete en la experiencia hoy mismo.</p>
+    <p class="fs-5 text-body-secondary">Explora nuestra variedad de artículos tecnológicos
+      <br>y sumérgete en la experiencia hoy mismo.
+    </p>
   </div>
+  <!-- Carrusel de imagenes -->
 
-  
   <div id="carouselExampleFade" class="carousel slide carousel-fade">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/latam/latin/mkt/plp/laptops/kv/matebook-14-2021-kv.jpg" class="d-block w-100" alt="...">
+        <img
+          src="https://consumer.huawei.com/content/dam/huawei-cbg-site/latam/latin/mkt/plp/laptops/kv/matebook-14-2021-kv.jpg"
+          class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/monitors/mateview-gt-se/specs/mateview-gt-se-black.png" class="d-block w-100" alt="...">
+        <img
+          src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/monitors/mateview-gt-se/specs/mateview-gt-se-black.png"
+          class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="https://www.sony.com.ec/image/883200845f7cd274bb7faeef27407048?fmt=pjpeg&bgcolor=FFFFFF&bgc=FFFFFF&wid=2515&hei=1320" class="d-block w-100" alt="...">
+        <img
+          src="https://www.sony.com.ec/image/883200845f7cd274bb7faeef27407048?fmt=pjpeg&bgcolor=FFFFFF&bgc=FFFFFF&wid=2515&hei=1320"
+          class="d-block w-100" alt="...">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -30,282 +37,83 @@
     </button>
   </div>
 
-<br>
+  <br>
+  <!-- Filtro -->
 
   <div class="container">
+    <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
+      <label for="categoriaSelect" class="form-label">Filtrar por categoría:</label>
+      <select class="form-select" id="categoriaSelect" [(ngModel)]="selectCategoria" (change)="filtrarPorCategoria()">
+        <option [value]="null">Todas</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Productos -->
+  <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
-      <div class="col">
-        <div class=" rounded-3 shadow-sm h-100 borders">
-          <div class=" py-3 bordersabajo cartaFondo">
+      <div class="col mb-4" *ngFor="let producto of productos">
+        <div class="rounded-3 shadow-sm h-100 borders">
+          <div class="py-3 bordersabajo cartaFondo">
             <h4 class="my-0 fw-normal clienteh4"><strong>STOCK</strong></h4>
           </div>
           <div class="py-5 cartaFondo2 ">
-            <img src="https://th.bing.com/th/id/R.45e8b55abf1788b6a7a0b04aae0a333e?rik=aO%2bNdLFXmhSf4w&pid=ImgRaw&r=0" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$12<small class="text-body-secondary fw-light"></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Teclado Logitech Pop Keys Mecánico</li>
-              <li>Inalámbrico Rosado</li>
-            </ul>
-            <button type="button" class="w-75 btn-save btn-min-size " data-bs-toggle="modal" data-bs-target="#modalProducto1">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-75  btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
-          </div>
-        </div>
-        <div id="floating-message" class="floating-message">
-          Producto añadido al carrito
-        </div>
-      </div>
+            @if(producto.id) {
+            <img [src]="ImagenProduct[producto.id]" alt="imagen" class="img-fluid product-image">
+            }
+            @else {
+            <img [src]="defaultImage" alt="imagen" class="img-fluid product-image">
+            }
 
-      <!-- Producto 2 -->
-  
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm h-100">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
-          </div>
-          <div class="card-body">
-            <img src="https://www.profesionalreview.com/wp-content/uploads/2019/08/AORUS-CV27Q-Gaming-Monitor.jpg" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light"></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Monitor samsung 24inc Curved 1.8m</li>
-              <li>Full HD HDMI D-SUB Negro</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto2">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
-          </div>
-        </div>
-        <div id="floating-message" class="floating-message">
-          Producto añadido al carrito
-        </div>
-      </div>
+            <!--<img *ngIf="producto.id" [src]="ImagenProduct[producto.id] || defaultImage" alt="imagen" class="img-fluid"> -->
 
-      <!-- Producto 3 -->
-  
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm h-100">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
-          </div>
-          <div class="card-body">
-            <img src="https://mihome.ec/wp-content/uploads/2020/12/Mi_Dual_Mode_Silent_Mouse_white_1.jpg" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$8<small class="text-body-secondary fw-light"></small></h1>
+            <h1 class="card-title pricing-card-title">{{ producto.precio | currency }}</h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>Mouse Logitech Inalámbrico</li>
-              <li>M185 Blanco</li>
-              <li>USB Bluetooth</li>
+              <li>{{ producto.nombreProducto }}</li>
+              <li>{{ producto.descripcion }}</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto3">Mostrar Detalles</button>
+            <button type="button" class="w-75 btn-save btn-min-size" data-bs-toggle="modal" [attr.data-bs-target]="'#modalProducto' + producto.id">Mostrar Detalles</button>
             <br><br>
-            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
+            <button type="button" class="w-75 btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
           </div>
-        </div>
-        <div id="floating-message" class="floating-message">
-          Producto añadido al carrito
         </div>
       </div>
+    </div>
 
-      <!-- Producto 4 -->
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm h-100">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal"><strong>STOCK</strong></h4>
-          </div>
-          
-          <div class="card-body">
-            <img src="https://i5.walmartimages.com.mx/mg/gm/3pp/asr/95b44175-8d68-442e-afb9-8694429fbcc0.3bc8c6ca8652901b9a89baf62092bb2d.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Descripción de la imagen" class="img-fluid">
-            <h1 class="card-title pricing-card-title">$35<small class="text-body-secondary fw-light"></small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Auriculares Inalámbricos Bluetooth Negros</li>
-              <li>Con cancelación de Ruido Esquí</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto4">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-100 btn btn-lg btn-outline-success" (click)="addToCart()">Añadir al carrito</button>
-          </div>
-        </div>
-        <div id="floating-message" class="floating-message">
-          Producto añadido al carrito
-        </div>
-      </div>
-  
-  
-  
-  
-  
-  
-  
+    <div id="floating-message" class="floating-message">
+      Producto añadido al carrito
+    </div>
+
+
     <!-- Modal 1 -->
-        <div class="modal fade" id="modalProducto1" tabindex="-1" aria-labelledby="modalProducto1Label" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="modalProducto1Label"><strong>Teclado Mecánico Inalámbrico Logitech Pop Keys Rosado</strong></h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              
-              <div class="modal-body" style="text-align: left;">
-                <p style="color: #FF6347;"><strong><h2>$12</h2></strong></p>
-                <h4><strong>Características destacadas:</strong></h4>
-                <ul>
-                  <li>104 teclas</li>
-                  <li>Idioma inglés</li>
-                  <li>Compatibilidad Universal: Compatible con una amplia gama de sistemas operativos incluyendo:</li>
-                  <ul>
-                    <li>Windows 11</li>
-                    <li>Windows 10</li>
-                    <li>Windows 8</li>
-                    <li>Windows 7</li>
-                    <li>Windows XP</li>
-                    <li>Windows Vista</li>
-                    <li>Mac</li>
-                  </ul>
-                  <li>Switches Mecánicos de Alta Calidad</li>
-                  <li>Diseño Ergonómico y Duradero</li>
-                </ul>
-              </div>
-              
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              </div>
+      @for (producto of productos; track $index) {
+        <div class="modal fade" [id]="'modalProducto' + producto.id" tabindex="-1" aria-labelledby="modalProductoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="modalProductoLabel">{{ producto.nombreProducto }}</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="text-align: left;">
+              <p style="color: #FF6347;"><strong>
+                  <h2>{{ producto.precio | currency }}</h2>
+                </strong></p>
+              <h4><strong>Características destacadas:</strong></h4>
+              <ul>
+                <li>{{ producto.descripcion }}</li>
+                <li>Stock: {{ producto.stock }}</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
         </div>
+      </div>
+      }
+      
+  </div>
 
-
-        <!-- Modal 2 -->
-        <div class="modal fade" id="modalProducto2" tabindex="-1" aria-labelledby="modalProducto2Label" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="modalProducto2Label"><strong>Monitor Samsung 24INC</strong></h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              
-              
-              <div class="modal-body" style="text-align: left;">
-                <p style="color: #FF6347;"><strong><h2>$15</h2></strong></p>
-                <h4><strong>Características destacadas:</strong></h4>
-                <ul>
-                  <li>AMD FreeSync</li>
-                  <li>Super Slim con un elegante diseño curvo</li>
-                  <li>Reduce el consumo energético:</li>
-                  <ul>
-                    <li>Función de brillo automático</li>
-                    <li>Reducirás en un 10%* el consumo energético</li>
-                    <li>Ajuste manual desde un 25% hasta un 50%.</li>
-                  </ul>
-                </ul>
-                <h4><strong>Pantalla (pulgadas):</strong></h4>
-                  <ul>
-                    <li>23.5</li>
-                  </ul>
-                <h4><strong>Resolución:</strong></h4>
-                  <ul>
-                    <li>1920x1080</li>
-                  </ul>
-                <h4><strong>Resolución de imagen:</strong></h4>
-                  <ul>
-                    <li>3840x2160</li>
-                  </ul>
-                <h4><strong>Color:</strong></h4>
-                  <ul>
-                    <li>Plata</li>
-                  </ul>
-                <h4><strong>Conexión:</strong></h4>
-                  <ul>
-                    <li>USB 3.0</li>
-                  </ul>
-                <h4><strong>Conectividad:</strong></h4>
-                  <ul>
-                    <li>Wi-Fi 6</li>
-                    <li>Bluetooth</li>
-                    <li>USB</li>
-                  </ul>
-              </div>
-              
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Modal 3 -->
-        <div class="modal fade" id="modalProducto3" tabindex="-1" aria-labelledby="modalProducto3Label" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="modalProducto3Label"><strong>Mouse Logitech Inalámbrico</strong></h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              
-              <div class="modal-body" style="text-align: left;">
-                <p style="color: #FF6347;"><strong><h2>$8</h2></strong></p>
-                <h4><strong>Características destacadas:</strong></h4>
-                <ul>
-                  <li>Durabilidad confiable</li>
-                  <li>Confortable, compacto y fácil de usar</li>
-                </ul>
-
-                <h4><strong>Dimensiones:</strong></h4>
-                <ul>
-                  <li>Altura: 99 mm</li>
-                  <li>Ancho: 60 mm</li>
-                  <li>Profundidad: 39 mm</li>
-                  <li>Peso (con baterías): 75,2 g</li>
-                </ul>
-                
-                <h4><strong>Especificaciones técnicas:</strong></h4>
-                  <ul>
-                    <li>Seguimiento óptico uniforme
-                      DPI (mín./máx.) 1000±</li>
-                    <li>Conexión inalámbrica de 2.4 GHz</li>
-                    <li>Conexión USB y Bluetooth</li>
-                  </ul>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-
-        <!-- Modal 4 -->
-        <div class="modal fade" id="modalProducto4" tabindex="-1" aria-labelledby="modalProducto4Label" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="modalProducto4Label"><strong>Auriculares Inalámbricos Bluetooth</strong></h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              
-              
-              <div class="modal-body" style="text-align: left;">
-                <p style="color: #FF6347;"><strong><h2>$35</h2></strong></p>
-                <h4><strong>Características destacadas:</strong></h4>
-                <ul>
-                  <li>Sonido de alta calidad y de forma inalámbrica</li>
-                  <li>Soporta BT, tarjeta micro SD y cable auxiliar</li>
-                  <li>Controladores Razer™ Triforce de 50 mm.</li>
-                  <li>Sonido envolvente 7.1.</li>
-                  <li>Conector de audio de 3,5 mm.</li>
-                  <li>Conexión inalambrica de 2.4 GHz</li>
-                  <li>Conexión USB y Bluetooth</li>
-                </ul>
-                <h4><strong>Compatibilidad:</strong></h4>
-                  <ul>
-                    <li>PC, Mac, PS4, Xbox One, Nintendo Switch y dispositivos móviles.</li>
-                  </ul>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-</div>
-  
 </div>

@@ -15,7 +15,7 @@ import { CategoriaService } from '../../services/Categoria/categoria.service';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent  {
     productoForm: FormGroup;
     isFormSubmitted: boolean = false;
     productos: Producto[] = [];
@@ -32,11 +32,6 @@ export class AddProductComponent implements OnInit {
       });
     }
 
-    ngOnInit() {  
-      this.categoriaService.getCategorias().subscribe(categorias => {
-        this.categorias = categorias;
-      });
-    }
 
     onSubmit() {
       const isformValid = this.productoForm.valid;

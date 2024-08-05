@@ -17,41 +17,56 @@ import { FormsModule } from '@angular/forms';
 export class ProductosComponent implements OnInit {
 [x: string]: any;
   productos: Producto[] = [];
-  filtrarProductos: Producto[] = [];
+  productosFiltrados: Producto[] = [];
   selectedProduct: Producto | null = null;
-  ImagenProduct: { [key: number]: SafeUrl | null  } = {};
+  ImagenProduct: { [key: number]: SafeUrl | null } = {};
   selectCategoria: number | null = null;
+  minPrice: number = 0;
+  maxPrice: number = 1000;
+  searchName: string = '';
   categorias: Categoria[] = [];
   pagina: number = 1;
   paginaSize: number = 10;
   totalItems: number = 0;
   paginas: number[] = [];
   defaultImage: SafeUrl;
+  noProductsImage: SafeUrl;
   
 
   constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer) {
     this.defaultImage = this.sanitizer.bypassSecurityTrustUrl('assets/img/noImagenP.jpg');
+    this.noProductsImage = this.sanitizer.bypassSecurityTrustUrl('assets/img/error404.avif');
   }
   ngOnInit(): void {
     this.loadProductos();
     this.loadCategorias();
-    this.calculatePages();
   }
 
   loadProductos(): void {
-    this.productService.getProductos(this.pagina, this.paginaSize).subscribe(
-      (productos: Producto[]) => {
-        this.productos = productos;
-        this.filtrarProductos = productos;
-        this.totalItems = productos.length; 
-        this.calculatePages();
-        this.productos.forEach(producto => {
-          this.loadProductImage(producto.id);
-      });
-
-      },
-      (error: any) => console.error('Error al obtener los productos', error)
-    );
+    if (this.selectCategoria) {
+      this.productService.getProductosPorCategoria(this.selectCategoria, this.pagina, this.paginaSize).subscribe(
+          (productos: Producto[]) => {
+              this.productos = productos;
+              this.totalItems = productos.length;
+              this.calculatePages();
+              this.productos.forEach(producto => this.loadProductImage(producto.id));
+              this.filtrarProductos();
+          },
+          (error: any) => console.error('Error al obtener los productos', error)
+      );
+    } else {
+        this.productService.getProductos(this.pagina, this.paginaSize).subscribe(
+            (productos: Producto[]) => {
+                this.productos = productos;
+                this.totalItems = productos.length;
+                this.calculatePages();
+                this.productos.forEach(producto => this.loadProductImage(producto.id));
+                this.filtrarProductos();
+            },
+            (error: any) => console.error('Error al obtener los productos', error)
+        );
+    }
+  
   }
   calculatePages(): void {
     this.paginas = Array(Math.ceil(this.totalItems / this.paginaSize)).fill(0).map((x, i) => i + 1);
@@ -84,7 +99,6 @@ export class ProductosComponent implements OnInit {
   loadCategorias(): void {
     this.productService.getCategorias().subscribe(
       (categorias: Categoria[]) => {
-        console.log('Categorías recibidas:', categorias);
         this.categorias = categorias;
       },
       (error: any) => console.error('Error al obtener las categorías', error)
@@ -104,11 +118,23 @@ export class ProductosComponent implements OnInit {
   }
 
 
-  filtrarPorCategoria(): void {
-    if (this.selectCategoria === null) {
-      this.filtrarProductos = this.productos;
-    } else {
-      this.filtrarProductos = this.productos.filter(producto => producto.categoriaId === this.selectCategoria);
-    }
+  applyFilters(productos: Producto[]): Producto[] {
+    return productos.filter(producto => {
+        const matchesCategory = this.selectCategoria ? producto.categoriaId === this.selectCategoria : true;
+        const matchesPrice = producto.precio >= this.minPrice && producto.precio <= this.maxPrice;
+        const matchesName = producto.nombreProducto.toLowerCase().includes(this.searchName.toLowerCase());
+        return matchesCategory && matchesPrice && matchesName;
+    });
+}
+
+  filtrarProductos(): void {
+    this.productosFiltrados = this.applyFilters(this.productos);
   }
+  onCategoryChange(event: any): void {
+    this.selectCategoria = event.target.value ? Number(event.target.value) : null;
+    this.filtrarProductos();
+  }
+  mostrarSiNoHayProducto(): boolean {
+    return this.productosFiltrados.length === 0;
+}
 }

@@ -1,5 +1,6 @@
 ﻿using GamerHub_Backend.Entities;
 using GamerHub_Backend.Repository;
+using GamerHub_Backend.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamerHub_Backend.Controllers
@@ -18,6 +19,16 @@ namespace GamerHub_Backend.Controllers
         public async Task<IActionResult> GetProductos()
         {
             var productos = await _productoRepository.ObtenerTodos();
+            return Ok(productos);
+        }
+        [HttpGet("categoria/{categoriaId}")]
+        public async Task<IActionResult> GetProductosPorCategoria(int categoriaId)
+        {
+            var productos = await _productoRepository.ObtenerPorCategoriaId(categoriaId);
+            if (productos == null || !productos.Any())
+            {
+                return NotFound(new { message = "No se encontraron productos para esta categoría." });
+            }
             return Ok(productos);
         }
 
@@ -45,8 +56,9 @@ namespace GamerHub_Backend.Controllers
             string base64Image = Convert.ToBase64String(producto.Imagen);
             return Content(base64Image, "text/plain");
         }
-
+        
         [HttpPost]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> AgregarProducto([FromForm] Producto producto, [FromForm] IFormFile? imagen)
         {
             try
@@ -75,7 +87,7 @@ namespace GamerHub_Backend.Controllers
                 return StatusCode(500, new { message = "Error al agregar el producto.", details = ex.InnerException?.Message ?? ex.Message });
             }
         }
-
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> ActualizarProducto(int id, Producto producto)
         {

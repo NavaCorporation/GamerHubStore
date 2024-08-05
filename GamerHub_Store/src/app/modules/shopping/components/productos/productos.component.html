@@ -38,48 +38,71 @@
   </div>
 
   <br>
-  <!-- Filtro -->
+  <!-- Filtros -->
+<div class="container">
+  <!-- Filtro por categoría -->
+  <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
+    <label for="categoriaSelect" class="form-label">Filtrar por categoría:</label>
+    <select class="form-select" id="categoriaSelect" [(ngModel)]="selectCategoria" (change)="onCategoryChange($event)">
+      <option [value]="null">Todas</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
+    </select>
+  </div>
 
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
-      <label for="categoriaSelect" class="form-label">Filtrar por categoría:</label>
-      <select class="form-select" id="categoriaSelect" [(ngModel)]="selectCategoria" (change)="filtrarPorCategoria()">
-        <option [value]="null">Todas</option>
-        <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
-      </select>
+  <!-- Filtro por precio -->
+  <div class="row mb-3 text-center">
+    <label for="priceRange" class="form-label">Filtrar por precio:</label>
+    <input type="range" id="priceRangeMin" [(ngModel)]="minPrice" [min]="0" [max]="maxPrice" (change)="filtrarProductos()">
+    <input type="range" id="priceRangeMax" [(ngModel)]="maxPrice" [min]="0" [max]="1000" (change)="filtrarProductos()">
+    <div>
+      Precio: {{ minPrice }} - {{ maxPrice }}
     </div>
   </div>
 
+  <!-- Filtro por nombre -->
+  <div class="row mb-3 text-center">
+    <label for="searchName" class="form-label">Buscar por nombre:</label>
+    <input type="text" id="searchName" [(ngModel)]="searchName" (input)="filtrarProductos()" placeholder="Buscar producto...">
+  </div>
+</div>
+
+
   <!-- Productos -->
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
-      <div class="col mb-4" *ngFor="let producto of productos">
-        <div class="rounded-3 shadow-sm h-100 borders">
-          <div class="py-3 bordersabajo cartaFondo">
-            <h4 class="my-0 fw-normal clienteh4"><strong>STOCK</strong></h4>
-          </div>
-          <div class="py-5 cartaFondo2 ">
-            @if(producto.id) {
-            <img [src]="ImagenProduct[producto.id]" alt="imagen" class="img-fluid product-image">
-            }
-            @else {
-            <img [src]="defaultImage" alt="imagen" class="img-fluid product-image">
-            }
-
-            <!--<img *ngIf="producto.id" [src]="ImagenProduct[producto.id] || defaultImage" alt="imagen" class="img-fluid"> -->
-
-            <h1 class="card-title pricing-card-title">{{ producto.precio | currency }}</h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>{{ producto.nombreProducto }}</li>
-              <li>{{ producto.descripcion }}</li>
-            </ul>
-            <button type="button" class="w-75 btn-save btn-min-size" data-bs-toggle="modal" [attr.data-bs-target]="'#modalProducto' + producto.id">Mostrar Detalles</button>
-            <br><br>
-            <button type="button" class="w-75 btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
+    <div *ngIf="mostrarSiNoHayProducto(); else productList" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+      <img [src]="noProductsImage" alt="No products found" class="img-fluid center">
+    </div>
+    <ng-template #productList>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
+        <div class="col mb-4" *ngFor="let producto of productosFiltrados">
+          <div class="rounded-3 shadow-sm h-100 borders">
+            <div class="py-3 bordersabajo cartaFondo">
+              <h4 class="my-0 fw-normal clienteh4"><strong>STOCK</strong></h4>
+            </div>
+            <div class="py-5 cartaFondo2 ">
+              @if(producto.id) {
+              <img [src]="ImagenProduct[producto.id]" alt="imagen" class="img-fluid product-image">
+              }
+              @else {
+              <img [src]="defaultImage" alt="imagen" class="img-fluid product-image">
+              }
+  
+              <!--<img *ngIf="producto.id" [src]="ImagenProduct[producto.id] || defaultImage" alt="imagen" class="img-fluid"> -->
+  
+              <h1 class="card-title pricing-card-title">{{ producto.precio | currency }}</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>{{ producto.nombreProducto }}</li>
+                <li>{{ producto.descripcion }}</li>
+              </ul>
+              <button type="button" class="w-75 btn-save btn-min-size" data-bs-toggle="modal" [attr.data-bs-target]="'#modalProducto' + producto.id">Mostrar Detalles</button>
+              <br><br>
+              <button type="button" class="w-75 btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-template>
+    
 
     <div id="floating-message" class="floating-message">
       Producto añadido al carrito
@@ -104,6 +127,7 @@
               <ul>
                 <li>{{ producto.descripcion }}</li>
                 <li>Stock: {{ producto.stock }}</li>
+                <li>Categoria: {{ producto.categoriaId }}</li>
               </ul>
             </div>
             <div class="modal-footer">

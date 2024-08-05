@@ -17,8 +17,16 @@ export class ProductServicesService {
     return this.http.get<Producto[]>(`${this.myAppUrl}${this.myApiUrl}?page=${page}&pageSize=${pageSize}`)
       .pipe(catchError(this.handleError));
   }
+  /*getProductos(page: number, pageSize: number): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.myAppUrl}${this.myApiUrl}?page=${page}&pageSize=${pageSize}`)
+      .pipe(catchError(this.handleError));
+  }*/ 
   getFotoProducto(id: number): Observable<string> {
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}/${id}/imagen`, { responseType: 'text' })
+      .pipe(catchError(this.handleError));
+  }
+  getProductosPorCategoria(categoriaId: number, page: number, pageSize: number): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.myAppUrl}/categoria/${categoriaId}?page=${page}&pageSize=${pageSize}`)
       .pipe(catchError(this.handleError));
   }
 

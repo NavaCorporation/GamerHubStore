@@ -18,8 +18,8 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 
 // Navarrete
-builder.Services.AddScoped<RolRepository>();
-builder.Services.AddScoped<UsuarioRepository>();
+//builder.Services.AddScoped<RolRepository>();
+//builder.Services.AddScoped<UsuarioRepository>();
 // Gia
 builder.Services.AddScoped<ProductoRepository>();
 builder.Services.AddScoped<CategoriaRepository>();
@@ -40,8 +40,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseCors("AllowWebApp");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
+
+

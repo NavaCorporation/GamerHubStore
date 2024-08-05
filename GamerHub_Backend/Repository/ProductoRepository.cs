@@ -19,6 +19,13 @@ namespace GamerHub_Backend.Repository
                 .ToListAsync();
         }
 
+        public async Task<List<Producto>> ObtenerPorCategoriaId(int categoriaId)
+        {
+            return await _dbContext.Productos
+                .Where(p => p.CategoriaId == categoriaId)
+                .ToListAsync();
+        }
+
         public async Task<Producto?> ObtenerPorId(int id)
         {
             return await _dbContext.Productos

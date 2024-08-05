@@ -12,7 +12,7 @@ export interface Producto {
     descripcion: string;
     stock: number;
     categoriaId: number;
-    categoria: Categoria;
+    categoria?: Categoria;
     detallesCompras?: DetallesCompra[];
     devoluciones?: Devolucion[];
     comentarios?: Comentario[];

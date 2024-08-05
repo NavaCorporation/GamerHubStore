@@ -45,7 +45,10 @@
     <label for="categoriaSelect" class="form-label">Filtrar por categoría:</label>
     <select class="form-select" id="categoriaSelect" [(ngModel)]="selectCategoria" (change)="onCategoryChange($event)">
       <option [value]="null">Todas</option>
-      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
+      @for (categoria of categorias; track $index) {
+        <option [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
+      }
+
     </select>
   </div>
 
@@ -69,12 +72,13 @@
 
   <!-- Productos -->
   <div class="container">
-    <div *ngIf="mostrarSiNoHayProducto(); else productList" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    @if (mostrarSiNoHayProducto()) {
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
       <img [src]="noProductsImage" alt="No products found" class="img-fluid center">
     </div>
-    <ng-template #productList>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
-        <div class="col mb-4" *ngFor="let producto of productosFiltrados">
+    } @else {<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mb-3 text-center">
+      @for (producto of productosFiltrados; track $index) {
+        <div class="col mb-4">
           <div class="rounded-3 shadow-sm h-100 borders">
             <div class="py-3 bordersabajo cartaFondo">
               <h4 class="my-0 fw-normal clienteh4"><strong>STOCK</strong></h4>
@@ -100,8 +104,11 @@
             </div>
           </div>
         </div>
-      </div>
-    </ng-template>
+      }
+      
+
+    </div>}
+
     
 
     <div id="floating-message" class="floating-message">

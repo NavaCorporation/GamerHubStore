@@ -40,16 +40,18 @@
                 <table class="table">
                 <thead>
                     <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let categoria of categories">
-                    <td>{{ categoria.nombrecategoria }}</td>
-                    <td>{{ categoria.descripcioncategoria }}</td>
+                      <td>{{ categoria.id }}</td>    
+                      <td>{{ categoria.nombreCategoria }}</td>
+                      <td>{{ categoria.descripcion }}</td>
                     </tr>
-                </tbody>
+                  </tbody>
                 </table>
             
             

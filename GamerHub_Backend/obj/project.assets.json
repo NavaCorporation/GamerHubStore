@@ -8256,19 +8256,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nava\\.nuget\\packages\\": {}
+    "C:\\Users\\juanv\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nava\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
+      "projectUniqueName": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
       "projectName": "GamerHub_Backend",
-      "projectPath": "C:\\Users\\nava\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
-      "packagesPath": "C:\\Users\\nava\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nava\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\obj\\",
+      "projectPath": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
+      "packagesPath": "C:\\Users\\juanv\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nava\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\juanv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

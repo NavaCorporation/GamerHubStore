@@ -20,6 +20,9 @@ export class InventarioComponent {
   listadoProductor!: Producto[];
   listadoCategoria!: Categoria[];
 
+  profilePicturePreview: string | ArrayBuffer | null = null;
+  perfilDefault: string = 'assets/img/fotoPerfil.jpg';
+
   formularioProducto: FormGroup;
 
   constructor(private _productoService: InventarioService,
@@ -117,6 +120,34 @@ export class InventarioComponent {
       
       });
     } 
+  }
+
+
+
+  onProfilePictureChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const allowedMinetypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+      
+      if (!allowedMinetypes.includes(file.type)) {
+        alert('El archivo seleccionado no es una imagen válida. Por favor, seleccione una imagen con una extensión válida. (jpg, jpeg, png, gif)');
+        return;
+      }
+  
+      this.formularioProducto.patchValue({ profilePicture: file });
+  
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.profilePicturePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+  }
+  triggerFileInput(): void {
+    const input = document.getElementById('profilePicture') as HTMLInputElement;
+    input.click();
   }
 
 

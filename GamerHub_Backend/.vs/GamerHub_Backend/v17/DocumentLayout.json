@@ -1,25 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\",
+  "WorkspaceRootPath": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|c:\\users\\juanv\\onedrive\\documentos\\github\\gamerhubstore\\gamerhub_backend\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|d:\\documents\\github\\gamerhubstore\\gamerhub_backend\\migrations\\20240807025639_v1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:migrations\\20240807025639_v1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|c:\\users\\juanv\\onedrive\\documentos\\github\\gamerhubstore\\gamerhub_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|d:\\documents\\github\\gamerhubstore\\gamerhub_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|c:\\users\\juanv\\onedrive\\documentos\\github\\gamerhubstore\\gamerhub_backend\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|d:\\documents\\github\\gamerhubstore\\gamerhub_backend\\gamerhub_backend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:gamerhub_backend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|d:\\documents\\github\\gamerhubstore\\gamerhub_backend\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|d:\\documents\\github\\gamerhubstore\\gamerhub_backend\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|c:\\users\\juanv\\onedrive\\documentos\\github\\gamerhubstore\\gamerhub_backend\\entities\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|d:\\documents\\github\\gamerhubstore\\gamerhub_backend\\entities\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:entities\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|c:\\users\\juanv\\onedrive\\documentos\\github\\gamerhubstore\\gamerhub_backend\\entities\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|d:\\documents\\github\\gamerhubstore\\gamerhub_backend\\entities\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:entities\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,8 +38,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 13,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -83,23 +95,48 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "Controllers\\UsuarioController.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAcwAAAAAAAAAAA",
+              "Title": "20240807025639_V1.cs",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Migrations\\20240807025639_V1.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240807025639_V1.cs",
+              "ToolTip": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Migrations\\20240807025639_V1.cs",
+              "RelativeToolTip": "Migrations\\20240807025639_V1.cs",
+              "ViewState": "AQIAALkAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T01:06:27.071Z",
+              "WhenOpened": "2024-08-07T02:56:39.595Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "GamerHub_Backend.http",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.http",
+              "RelativeDocumentMoniker": "GamerHub_Backend.http",
+              "ToolTip": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.http",
+              "RelativeToolTip": "GamerHub_Backend.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-08-07T02:46:48.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T01:06:27.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ProductosController.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\ProductosController.cs",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\ProductosController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductosController.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\ProductosController.cs",
+              "ToolTip": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Controllers\\ProductosController.cs",
               "RelativeToolTip": "Controllers\\ProductosController.cs",
               "ViewState": "AQIAACkAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -109,22 +146,22 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
+              "ToolTip": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-08-05T00:23:32.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Categoria.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Categoria.cs",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Categoria.cs",
               "RelativeDocumentMoniker": "Entities\\Categoria.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Categoria.cs",
+              "ToolTip": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Categoria.cs",
               "RelativeToolTip": "Entities\\Categoria.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -132,11 +169,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ApplicationDBContext.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\ApplicationDBContext.cs",
+              "DocumentMoniker": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\ApplicationDBContext.cs",
               "RelativeDocumentMoniker": "Entities\\ApplicationDBContext.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\ApplicationDBContext.cs",
+              "ToolTip": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\ApplicationDBContext.cs",
               "RelativeToolTip": "Entities\\ApplicationDBContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

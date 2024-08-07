@@ -31,6 +31,9 @@ export class ProductosComponent implements OnInit {
   paginas: number[] = [];
   defaultImage: SafeUrl;
   noProductsImage: SafeUrl;
+  producto ={
+    
+  }
   
 
   constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer) {
@@ -136,5 +139,12 @@ export class ProductosComponent implements OnInit {
   }
   mostrarSiNoHayProducto(): boolean {
     return this.productosFiltrados.length === 0;
-}
+  }
+  
+  //agregar 
+
+
+
+
+
 }

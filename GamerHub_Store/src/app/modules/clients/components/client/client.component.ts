@@ -3,7 +3,6 @@ import { EncabezadoComprasComponent } from "../../../shopping/components/encabez
 import { CommonModule } from '@angular/common';
 import { OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../../../administration/components/services/user.service';
 @Component({
     selector: 'app-client',
     standalone: true,
@@ -18,7 +17,7 @@ export class ClientComponent implements OnInit {
     isEditing: boolean = false;
     showSuccessMessage: boolean = false;
   
-    constructor(private fb: FormBuilder, private _userservice: UserService) {
+    constructor(private fb: FormBuilder) {
       this.profileForm = this.fb.group({
         firstName: [{ value: '', disabled: true }],
         lastName: [{ value: '', disabled: true }],
@@ -29,27 +28,15 @@ export class ClientComponent implements OnInit {
       
     }
     ngOnInit(): void {
-      this.obtenerUsuario(1);
+      
+      this.profileForm.patchValue({
+        firstName: 'UserName',
+        lastName: 'UserLastName',
+        email: 'user@gmail.com',
+        phoneNumber: '0987654321',
+        address: '12 de octubre Guayaquil'
+      })
   }
-  obtenerUsuario(userId: number): void {
-    this._userservice.getDataUser(userId).subscribe(data => {
-      if (data) {
-        this.profileForm.patchValue({
-          firstName: data.nombre,
-          lastName: data.apellido,
-          email: data.correo,
-          phoneNumber: data.telefono,
-          address: data.direccion
-        }); if (data.fotoPerfil) {
-          this.userProfilePicture = 'data:image/jpeg;base64,' + data.fotoPerfil; 
-        }
-      }
-    }, error => {
-      console.error('Error al obtener los datos del usuario', error);
-    });
-  
-  }
-  
   toggleEdit(): void {
     this.isEditing = !this.isEditing;
     if (this.isEditing) {

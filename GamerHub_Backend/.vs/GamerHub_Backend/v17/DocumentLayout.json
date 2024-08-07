@@ -1,6 +1,5 @@
 {
   "Version": 1,
-
   "WorkspaceRootPath": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\",
   "Documents": [
     {
@@ -18,7 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\entities\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:entities\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-
     }
   ],
   "DocumentGroupContainers": [
@@ -28,7 +26,6 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-
           "SelectedChildIndex": 1,
           "Children": [
             {
@@ -42,83 +39,17 @@
               "ViewState": "AQIAACkAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T01:33:15.934Z"
-
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IUsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Repository\\IUsuarioRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\IUsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Repository\\IUsuarioRepository.cs",
-              "RelativeToolTip": "Repository\\IUsuarioRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T23:01:27.707Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Usuario.cs",
-              "RelativeDocumentMoniker": "Entities\\Usuario.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Usuario.cs",
-              "RelativeToolTip": "Entities\\Usuario.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T21:41:25.197Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "VerificacionEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\VerificacionEnvio.cs",
-              "RelativeDocumentMoniker": "Entities\\VerificacionEnvio.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\VerificacionEnvio.cs",
-              "RelativeToolTip": "Entities\\VerificacionEnvio.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T21:40:11.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Sesion.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Sesion.cs",
-              "RelativeDocumentMoniker": "Entities\\Sesion.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Entities\\Sesion.cs",
-              "RelativeToolTip": "Entities\\Sesion.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T21:40:06.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RolRepository.cs",
-              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Repository\\RolRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\RolRepository.cs",
-              "ToolTip": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\Repository\\RolRepository.cs",
-              "RelativeToolTip": "Repository\\RolRepository.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T21:39:56.087Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
-
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-
               "WhenOpened": "2024-08-05T00:23:32.104Z",
               "EditorCaption": ""
             },
@@ -145,7 +76,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T00:23:10.848Z"
-
             }
           ]
         }

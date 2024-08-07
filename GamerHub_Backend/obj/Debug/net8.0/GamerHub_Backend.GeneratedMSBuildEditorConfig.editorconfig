@@ -17,15 +17,12 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GamerHub_Backend
 build_property.RootNamespace = GamerHub_Backend
-
 build_property.ProjectDir = E:\Semestre CI - 2024-2025\Desarrollo WA\GamerHubStore\GamerHub_Backend\
-
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-
 build_property.MSBuildProjectDirectory = E:\Semestre CI - 2024-2025\Desarrollo WA\GamerHubStore\GamerHub_Backend
 build_property._RazorSourceGeneratorDebug = 
 
@@ -70,6 +67,5 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Semestre CI - 2024-2025/Desarrollo WA/GamerHubStore/GamerHub_Backend/Views/Usuarios/Index.cshtml]
-
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -7,31 +7,23 @@ import { PurchaseHistoryComponent } from './components/purchase-history/purchase
 import { UserService } from '../administration/components/services/user.service';
 import { ClientComponent } from './components/client/client.component';
 import { AppComponent } from '../../app.component';
-import { DatosUser } from '../security/interface/datosUser';
 
 
 
+//import { DatosUser } from '../security/interface/datosUser';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientComponent,PurchaseHistoryComponent],
+    ClientComponent],
   imports: [
     CommonModule,
     BrowserModule,
     PurchaseHistoryComponent,
     HttpClientModule,
     ReactiveFormsModule
-  ],
-  exports:[
-    HttpClientModule,
-    ReactiveFormsModule,
-    AppComponent,
-    ClientComponent,
-    PurchaseHistoryComponent,
-    UserService  
   ],
   providers: [
     UserService ],

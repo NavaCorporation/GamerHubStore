@@ -8,6 +8,8 @@ import { DetalleProductoComponent } from './modules/shopping/components/detalle-
 import { InventarioComponent } from './modules/administration/components/inventario/inventario.component';
 import { TareaPendienteComponent } from './modules/administration/components/tarea-pendiente/tarea-pendiente.component';
 import { EmployeeManagementComponent } from './modules/management/components/employee-management/employee-management.component';
+import { HeaderComponent } from './modules/shared/components/header/header.component';
+import { FooterComponent } from './modules/shared/components/footer/footer.component';
 import { AddProductComponent } from './modules/management/components/add-product/add-product.component';
 //import { ReturnsComponent } from './modules/management/components/returns/returns.component';
 import { ProfileComponent } from './modules/administration/components/profile/profile.component';

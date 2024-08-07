@@ -8,6 +8,18 @@ import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-com
     styleUrl: './carrito.component.css',
     imports: [EncabezadoComprasComponent]
 })
-export class CarritoComponent {
 
+export class CarritoComponent {
+  
+  productos: { nombre: string; precio: number; }[] = [];
+  total = 0;
+  iva = 0.12;
+
+  agregarProducto(precio: number) {
+    this.total += precio;
+  }
+
+  calcularTotalConIva(): number {
+    return this.total * (1 + this.iva);
+  }
 }

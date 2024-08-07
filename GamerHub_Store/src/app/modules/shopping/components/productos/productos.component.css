@@ -39,3 +39,7 @@
 .hr {
     color: #1F2536;
 }
+.carousel-inner img {
+    width: 600px;
+    height: 800px;
+}

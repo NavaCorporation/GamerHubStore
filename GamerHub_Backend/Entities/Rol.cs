@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Build.Framework;
 using System.Text.Json.Serialization;
 
 namespace GamerHub_Backend.Entities

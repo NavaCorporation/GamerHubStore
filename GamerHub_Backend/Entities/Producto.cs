@@ -12,13 +12,13 @@ namespace GamerHub_Backend.Entities
         [Required]
         public decimal Precio { get; set; }
         [Required]
-        public string? Caracteristicas { get; set; }
-        [Required]
+        public string Caracteristicas { get; set; } = null!;
         public string? Descripcion { get; set; }
         [Required]
-        public int stock { get; set; }
-        public int IdCategoria { get; set; }
-        public Categoria Categoria { get; set; } = null!;
+        public int Stock { get; set; }
+        [Required]
+        public int CategoriaId { get; set; }
+        public Categoria? Categoria { get; set; } = null!;
         [JsonIgnore]
         public List<DetallesCompra>? DetallesCompras { get; set; }
         [JsonIgnore]

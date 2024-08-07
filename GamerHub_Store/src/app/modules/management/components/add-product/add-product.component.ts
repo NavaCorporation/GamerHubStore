@@ -1,10 +1,12 @@
 import { CommonModule, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ManagerComponent } from '../manager/manager.component';
 import { Producto } from '../../../../interface/Producto';
+import { Categoria } from '../../../../interface/Categoria';
+import { CategoriaService } from '../../services/Categoria/categoria.service';
 
 @Component({
   selector: 'app-add-product',
@@ -13,21 +15,23 @@ import { Producto } from '../../../../interface/Producto';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
-export class AddProductComponent {
-  productoForm: FormGroup;
-  //iniciamos las variables en el contructor para tener un buen codigo si hubieramos quedio podian haber estado en la parte de arriba 
+export class AddProductComponent  {
+    productoForm: FormGroup;
     isFormSubmitted: boolean = false;
     productos: Producto[] = [];
-    constructor () {
+    categorias: Categoria[] = [];
 
+    constructor ( private categoriaService: CategoriaService) {
       this.productoForm = new FormGroup({
         nombreproducto: new FormControl('', [Validators.required]),
         precioproducto: new FormControl('', [Validators.required]),
+        descripcionproducto: new FormControl('', [Validators.required]),
         imagenproducto: new FormControl('', [Validators.required]),
         categoria: new FormControl('', [Validators.required]),
         stockproducto: new FormControl('', [Validators.required])
       });
     }
+
 
     onSubmit() {
       const isformValid = this.productoForm.valid;

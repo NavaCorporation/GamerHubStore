@@ -11,8 +11,8 @@ export interface Producto {
     caracteristicas: string;
     descripcion: string;
     stock: number;
-    idCategoria: number;
-    categoria: Categoria;
+    categoriaId: number;
+    categoria?: Categoria;
     detallesCompras?: DetallesCompra[];
     devoluciones?: Devolucion[];
     comentarios?: Comentario[];

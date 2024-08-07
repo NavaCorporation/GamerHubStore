@@ -4,7 +4,7 @@ namespace GamerHub_Backend.Repository
 {
     public interface ICategoriaRepository
     {
-        Task<IEnumerable<Categoria>> ObtenerTodasLasCategoriasAsync();
+        Task<List<Categoria>> ObtenerTodasLasCategoriasAsync();
         Task<Categoria> ObtenerCategoriaPorIdAsync(int id);
         Task<Categoria> AgregarCategoriaAsync(Categoria categoria);
         Task ActualizarCategoriaAsync(Categoria categoria);

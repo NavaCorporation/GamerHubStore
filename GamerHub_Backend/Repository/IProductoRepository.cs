@@ -4,10 +4,12 @@ namespace GamerHub_Backend.Repository
 {
     public interface IProductoRepository
     {
-        Task<IEnumerable<Producto>> ObtenerTodosLosProductosAsync();
-        Task<Producto> ObtenerProductoPorIdAsync(int id);
-        Task<Producto> AgregarProductoAsync(Producto producto);
+        Task<IEnumerable<Producto>> ObtenerTodos();
+        Task<Producto?> ObtenerPorId(int id);
+        Task<int?> AgregarProductoAsync(Producto producto);
         Task ActualizarProductoAsync(Producto producto);
+        Task<List<Producto>> ObtenerPorCategoriaId(int categoriaId);
+        Task<Categoria?> VerificarCat(int categoriaId);
         Task EliminarProductoAsync(int id);
     }
 }

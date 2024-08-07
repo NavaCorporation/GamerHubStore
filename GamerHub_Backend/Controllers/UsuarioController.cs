@@ -19,8 +19,10 @@ namespace GamerHub_Backend.Controllers
             _usuarioRepository = usuarioRepository;
             _configuration = configuration;
         }
-
+        
+        
         [HttpPost("register")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Register([FromForm] Usuario usuario, [FromForm] IFormFile? profilePicture)
         {
             try
@@ -57,7 +59,7 @@ namespace GamerHub_Backend.Controllers
                 return StatusCode(500, new { message = "Error al registrar el usuario.", details = ex.InnerException?.Message ?? ex.Message });
             }
         }
-
+        
         [HttpGet]
         public async Task<ActionResult<Usuario>> ObtenerUsuarioPorId(int id)
         {
@@ -98,8 +100,9 @@ namespace GamerHub_Backend.Controllers
                 return StatusCode(500, new { message = "Error al actualizar el usuario.", details = ex.InnerException?.Message ?? ex.Message });
             }
         }
-
+        
         [HttpPut("update-photo/{id}")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> ModificarFoto(int id, [FromForm] IFormFile profilePicture)
         {
             try
@@ -128,6 +131,7 @@ namespace GamerHub_Backend.Controllers
             }
 
         }
+        
         [HttpGet("{id}/fotoPerfil")]
         public async Task<IActionResult> GetFotoPerfil(int id)
         {

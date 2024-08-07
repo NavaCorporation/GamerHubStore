@@ -10,8 +10,8 @@ namespace GamerHub_Backend.Entities
         public string NombreCategoria { get; set; } = null!;
 
         public string Descripcion { get; set; } = null!;
-        [JsonIgnore]
 
+        [JsonIgnore]
         public List<Producto>? Productos { get; set; }
 
     }

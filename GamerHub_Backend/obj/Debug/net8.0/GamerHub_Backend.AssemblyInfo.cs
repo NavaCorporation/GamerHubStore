@@ -14,10 +14,12 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86b13dfb405c3f9766b742c71088e29eb960dc54")]
+
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e36950b3c14c71b4f614cb2d4b68b71a287ad4d9")]
+
 [assembly: System.Reflection.AssemblyProductAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
-// Generado por la clase WriteCodeFragment de MSBuild.
+
 

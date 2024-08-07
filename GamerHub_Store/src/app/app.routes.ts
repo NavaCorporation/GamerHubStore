@@ -17,6 +17,7 @@ import { ContactsComponent } from './modules/clients/components/contacts/contact
 import { PreferencesComponent } from './modules/clients/components/preferences/preferences.component';
 import { PurchaseHistoryComponent } from './modules/clients/components/purchase-history/purchase-history.component';
 import { ReviewsComponent } from './modules/clients/components/reviews/reviews.component'; 
+import { AddCategoryComponent } from './modules/management/components/add-category/add-category.component';
 
 
 export const routes: Routes = [
@@ -35,6 +36,7 @@ export const routes: Routes = [
     //management
     { path: 'management', component: EmployeeManagementComponent },
     { path: 'addproduct', component: AddProductComponent},
+    { path: 'addcategory', component: AddCategoryComponent},
     //{ path: 'returns', component: ReturnsComponent},
 
 

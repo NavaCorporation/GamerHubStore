@@ -8264,19 +8264,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\juanv\\.nuget\\packages\\": {}
+    "C:\\Users\\Michelle\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
+      "projectUniqueName": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
       "projectName": "GamerHub_Backend",
-      "projectPath": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
-      "packagesPath": "C:\\Users\\juanv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juanv\\OneDrive\\Documentos\\GitHub\\GamerHubStore\\GamerHub_Backend\\obj\\",
+      "projectPath": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.csproj",
+      "packagesPath": "C:\\Users\\Michelle\\.nuget\\packages\\",
+      "outputPath": "D:\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\juanv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Michelle\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8350,7 +8350,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

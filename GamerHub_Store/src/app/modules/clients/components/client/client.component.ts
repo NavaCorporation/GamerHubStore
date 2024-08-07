@@ -3,6 +3,7 @@ import { EncabezadoComprasComponent } from "../../../shopping/components/encabez
 import { CommonModule } from '@angular/common';
 import { OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationService } from '../../../security/services/authService/authentication.service';
 @Component({
     selector: 'app-client',
     standalone: true,

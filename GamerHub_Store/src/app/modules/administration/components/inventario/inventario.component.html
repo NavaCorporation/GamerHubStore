@@ -1,20 +1,10 @@
 <div class="container mt-5">
   <h1>Inventario</h1>
-  <button class="btn btn-secondary mb-4" (click)="goBack()">Back</button> <!-- Botón de regreso -->
 
-  <form [formGroup]="formularioProducto" (ngSubmit)="agregarProducto()">
+  <form [formGroup]="formularioProducto" (ngSubmit)="crearProducto()">
     <div class="form-group form-control-lg">
-      <label for="nombreProducto">nombre Producto</label>
+      <label for="nombreProducto">Nombre del Producto</label>
       <input type="text" id="nombreProducto" formControlName="nombreProducto" class="form-control" required>
-    </div>
-
-    <div class="mb-3 text-center">
-
-      <img [src]="profilePicturePreview || perfilDefault" alt="Profile picture" class="img-thumbnail rounded-circle"
-          width="150" (click)="triggerFileInput()" style="cursor: pointer;">
-
-      <input id="profilePicture" type="file" (change)="onProfilePictureChange($event)" class="form-control"
-          accept="image/*" style="display: none;">
     </div>
 
 
@@ -24,25 +14,21 @@
     </div>
 
     <div class="form-group form-control-lg">
-      <label for="caracteristicas">Caracteristicas</label>
+      <label for="caracteristicas">Características</label>
       <input type="text" id="caracteristicas" formControlName="caracteristicas" class="form-control" required>
     </div>
 
-    
-    
-
     <div class="form-group form-control-lg">
-      <label for="descripcion">Descripcion</label>
+      <label for="descripcion">Descripción</label>
       <input type="text" id="descripcion" formControlName="descripcion" class="form-control" required>
     </div>
 
     <div class="form-group form-control-lg">
-      <label for="stock">stock</label>
-      <input type="text" id="stock" formControlName="stock" class="form-control" required>
+      <label for="stock">Stock</label>
+      <input type="number" id="stock" formControlName="stock" class="form-control" required>
     </div>
 
-
-    <div class="col-lg-3 " >
+   
       <div class="form-group form-control-lg">
           <label for="categoria">Categoria</label>
           <select formControlName="categoria" id="categoria" class="form-select  form-control-lg">
@@ -55,11 +41,8 @@
           </select>
           
       </div>
-    </div>
    
-
-    
-    <button type="submit" class="btn btn-primary mt-3 form-control-lg">Agregar</button>
+    <button type="submit" class="btn btn-primary mt-3 form-control-lg" [disabled]="formularioProducto.invalid">Agregar</button>
   </form>
 
   <h2 class="mt-5">Elementos en Inventario</h2>
@@ -67,29 +50,30 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>NombreProducto</th>
+        <th>Nombre</th>
         <th>Precio</th>
-        <th>Caracteristicas</th>
-        <th>Stock </th>
-        <th>categoria </th>
+        <th>Características</th>
+        <th>Descripcion</th>
+        <th>Stock</th>
+        <th>Categoría</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      @for (product of listadoProductor; track product) {
+      @for (producto of listadoProductor; track producto) {
       <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.nombreProducto }}</td>
-        <td>{{ product.precio }}</td>
-        <td>{{ product.caracteristicas }}</td>
-        <td>{{ product.stock }}</td>
-        <td>{{ product.categoria?.nombreCategoria }}</td>
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombreProducto }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.caracteristicas }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>{{ producto.categoria?.nombreCategoria }}</td>
         <td>
           <button class="btn btn-primary btn-sm">Editar</button>
-          <button class="btn btn-danger btn-sm" >Eliminar</button>
         </td>
       </tr>
-  }
+    }
     </tbody>
   </table>
 </div>

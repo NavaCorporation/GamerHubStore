@@ -60,6 +60,8 @@ export class RegisterComponent implements OnInit {
         console.error('Error al registrar', error);
       });
     }
+    
+
     onProfilePictureChange(event: Event): void {
       const input = event.target as HTMLInputElement;
       if (input.files && input.files[0]) {

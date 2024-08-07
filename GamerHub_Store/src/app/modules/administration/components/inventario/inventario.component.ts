@@ -19,9 +19,8 @@ export class InventarioComponent {
   id!:number;
   listadoProductor!: Producto[];
   listadoCategoria!: Categoria[];
+ 
 
-  profilePicturePreview: string | ArrayBuffer | null = null;
-  perfilDefault: string = 'assets/img/fotoPerfil.jpg';
 
   formularioProducto: FormGroup;
 
@@ -32,7 +31,6 @@ export class InventarioComponent {
 
     this.formularioProducto = this.fb.group({
       nombreProducto: ['', Validators.required],
-      imagen: ['', Validators.required],
       precio:  ['', Validators.required],
       caracteristicas: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -90,74 +88,40 @@ export class InventarioComponent {
 
   }
 
-
-  agregarProducto(): void {
-    if (this.formularioProducto.valid) {
+  
+  crearProducto(): void {
+    if (this.formularioProducto.valid ) {
+      const formData = new FormData();
+      formData.append('nombreProducto', this.formularioProducto.get('nombreProducto')?.value);
+      formData.append('precio', this.formularioProducto.get('precio')?.value);
+      formData.append('caracteristicas', this.formularioProducto.get('caracteristicas')?.value);
+      formData.append('descripcion', this.formularioProducto.get('descripcion')?.value);
+      formData.append('stock', this.formularioProducto.get('stock')?.value);
       
-      const nuevaProducto: Producto = {
-        nombreProducto: this.formularioProducto.value.nombreProducto,
-        imagen: this.formularioProducto.value.imagen,
-        precio: this.formularioProducto.value.precio,
-        caracteristicas: this.formularioProducto.value.caracteristicas,
-        descripcion: this.formularioProducto.value.descripcion,
-        stock: this.formularioProducto.value.stock,
-        categoriaId: this.formularioProducto.value.categoria
-      };
-
-      this._productoService.getCrearProducto(nuevaProducto).subscribe({
-        next: producto => {
-          console.log(' Producto creada:', producto);
-          // Puedes realizar acciones adicionales después de agregar la persona
-          // Por ejemplo, redireccionar a otra página o mostrar un mensaje de éxito.
+      // Asegúrate de que `categoria` sea un ID o la estructura correcta esperada por la API
+      const categoriaId = this.formularioProducto.get('categoria')?.value;
+      formData.append('categoriaId', categoriaId); 
+  
+      this._productoService.crearProducto(formData).subscribe({
+        next: () => {
+          alert('Producto creado con éxito');
+          this.obtenerProducto();
+          this.formularioProducto.reset();
+         
         },
-        error: producto =>{
-          alert("Ocurrio un Error al añadir a la producto");
-        },
-        complete:()=>{
-          console.info('obtencion completa de producto');
-          alert("Se agrego correctamente");
+        error: error => {
+          console.error('Error al crear el producto:', error);
+          alert('Error al crear el producto: ' + error.error?.message || 'Verifica los datos e intenta nuevamente.');
         }
-      
       });
-    } 
-  }
-
-
-
-  onProfilePictureChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const allowedMinetypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
-      
-      if (!allowedMinetypes.includes(file.type)) {
-        alert('El archivo seleccionado no es una imagen válida. Por favor, seleccione una imagen con una extensión válida. (jpg, jpeg, png, gif)');
-        return;
-      }
-  
-      this.formularioProducto.patchValue({ profilePicture: file });
-  
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.profilePicturePreview = reader.result;
-      };
-      reader.readAsDataURL(file);
+    } else {
+      alert('Por favor, complete todos los campos requeridos');
     }
-
   }
-  triggerFileInput(): void {
-    const input = document.getElementById('profilePicture') as HTMLInputElement;
-    input.click();
-  }
+  
 
-
-
-
-
-  goBack() {
-    window.history.back();
-  }
-
+ 
+  
 
   
 

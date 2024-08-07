@@ -48,7 +48,7 @@ export class ClientComponent implements OnInit {
   }
   saveChanges(): void {
     if (this.profileForm.valid) {
-     
+    
       console.log(this.profileForm.value);
       this.showSuccessMessage = true;
       setTimeout(() => {

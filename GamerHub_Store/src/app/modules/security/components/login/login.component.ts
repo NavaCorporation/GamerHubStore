@@ -31,19 +31,17 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-
-    // Detectar cambios en el formulario de login
     this.loginForm.get('email')?.valueChanges.subscribe(value => {
-      this.checkAdminEmail(value);
     });
-    
   }
+
   toggleAdminLogin(): void {
     this.showAdminLogin = !this.showAdminLogin;
   }
 
   toggleForm(): void {
     this.showLogin = !this.showLogin;
+    this.resetForms();
   }
   onLogin(): void {
     const { email, password } = this.loginForm.value;
@@ -53,8 +51,12 @@ export class LoginComponent implements OnInit {
         if (user) {
           this.loggedInUser = user;
           this.userLoggedIn.emit(user);
-          this.router.navigate(['/product']);
-        } 
+          if (email.endsWith('@ghs.com')) {
+            this.showAdminLogin = true;
+          } else {
+            this.router.navigate(['/product']);
+          }
+        }
       },
       error => {
         this.notificationService.addNotification({ type: 'Error de inicio de sesión', message: 'Se ha detectado un error al iniciar sesión' });
@@ -64,6 +66,7 @@ export class LoginComponent implements OnInit {
   logoutUser(): void {
     this._authService.logoutUser();
     this.loggedInUser = null;
+    this.resetForms();
   }
   resetForms(): void {
     this.loginForm.reset();
@@ -73,11 +76,4 @@ export class LoginComponent implements OnInit {
     return this.notificationService.hasNotifications();
   }
 
-  private checkAdminEmail(email: string): void {
-    if (email.endsWith('@ghs.com')) {
-      this.showAdminLogin = true;
-    } else {
-      this.showAdminLogin = false;
-    }
-  }
 }

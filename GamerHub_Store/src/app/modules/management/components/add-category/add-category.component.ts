@@ -17,13 +17,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AddCategoryComponent implements OnInit {
   categoriaForm: FormGroup;
   categories: Categoria[] = [];
+  selectedCategoria: Categoria | null = null;
   isFormSubmitted = false;
   loading: boolean = false;
 
   constructor(private fb: FormBuilder, private _categoriaService: CategoriaService) {
     this.categoriaForm = this.fb.group({
-      nombrecategoria: ['', Validators.required],
-      descripcioncategoria: ['', Validators.required]
+      id: [null],
+      nombreCategoria: ['', Validators.required],
+      descripcion: ['', Validators.required]
     });
   }
 
@@ -34,32 +36,92 @@ export class AddCategoryComponent implements OnInit {
 
 
   // Cargar las categorías desde el servicio
-  loadCategorias()  {
-this._categoriaService.getCategorias().subscribe(data => {
-  this.loading = false;
-  this.categories = data;
-  console.log(data); // Verifica las propiedades aquí
-}, error => {
-  this.loading = false;
-  console.error('Error al cargar las categorías', error);
-});
+  loadCategorias(): void {
+    this.loading = true;
+    this._categoriaService.getCategorias().subscribe(
+      data => {
+        this.loading = false;
+        this.categories = data;
+        console.log(data); // Verifica las propiedades aquí
+      },
+      (error: HttpErrorResponse) => {
+        this.loading = false;
+        console.error('Error al cargar categorías:', error);
+      }
+    );
   }
 
-  // Manejar el envío del formulario
-  onSubmit(): void {
-    this.isFormSubmitted = true;
-    if (this.categoriaForm.valid) {
-      const categoria: Categoria = this.categoriaForm.value;
-      this._categoriaService.addCategoria(categoria).subscribe(
-        () => {
-          this.loadCategorias(); // Recargar las categorías después de agregar
-          this.categoriaForm.reset(); // Resetear el formulario
+  // Método para registrar una nueva categoría
+onsubmit(categoria: Categoria): void {
+  if (this.categoriaForm.valid) {
+    const newCategoria: Categoria = {
+      nombreCategoria: this.categoriaForm.value.nombreCategoria,
+      descripcion: this.categoriaForm.value.descripcion
+    };
+
+    this._categoriaService.addCategoria(newCategoria).subscribe(
+      data => {
+        this.categories.push(data);
+        this.categoriaForm.reset();
+        this.isFormSubmitted = false;
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error al agregar categoría:', error);
+      }
+    );
+  }
+}
+
+// Método para guardar la edición de una categoría
+saveCategoria(): void {
+  this.isFormSubmitted = true;
+
+  if (this.categoriaForm.valid) {
+    const categoria: Categoria = {
+      id: this.categoriaForm.value.id || null,
+      nombreCategoria: this.categoriaForm.value.nombreCategoria,
+      descripcion: this.categoriaForm.value.descripcion
+    };
+
+    if (categoria.id) {
+      // Si se ha seleccionado una categoría, actualizarla
+      this._categoriaService.updateCategoria(categoria).subscribe(
+        data => {
+          const index = this.categories.findIndex(c => c.id === categoria.id);
+          if (index !== -1) {
+            this.categories[index] = data;
+          }
+          this.selectedCategoria = null;
+          this.categoriaForm.reset();
           this.isFormSubmitted = false;
         },
-        (error: HttpErrorResponse) => { // Tipo explícito para el parámetro error
-          console.error('Error adding category', error.message);
+        (error: HttpErrorResponse) => {
+          console.error('Error al actualizar categoría:', error);
         }
       );
     }
   }
+}
+
+    // Seleccionar una categoría para editar
+    editCategoria(categoria: Categoria): void {
+      this.selectedCategoria = categoria;
+      this.categoriaForm.patchValue(categoria);
+      this.categoriaForm.get('id')?.setValue(categoria.id);
+    }
+
+  eliminarCategoria(id: number | undefined): void {
+    if (id !== undefined) {
+      this._categoriaService.deleteCategoria(id).subscribe(
+        () => {
+          this.categories = this.categories.filter(categoria => categoria.id !== id);
+        },
+        (error: HttpErrorResponse) => {
+          console.error('Error al eliminar categoría:', error);
+        }
+      );
+    }
+  }
+
+
 }

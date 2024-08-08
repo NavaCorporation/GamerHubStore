@@ -9,8 +9,6 @@
 
 .background{
     display: flex;
-    background-color:#ffffff;
-    background-image: url('/assets/svg/fondofinal.svg');
     justify-content: center; 
     align-items: center;
     background-size: cover;
@@ -32,4 +30,8 @@
 .dashboard1{
     padding: 30px;
     margin-bottom: 60px;
+
+}
+.dashboard2{
+    padding: 10px;
 }

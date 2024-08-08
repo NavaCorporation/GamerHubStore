@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class CategoriaService {
   private appUrl = environment.endpoint;
-  private apiUrl = 'api/categorias/'; // O lo que corresponda
+  private apiUrl = 'api/Categorias'; 
 
   constructor(private http: HttpClient) { }
 
@@ -20,11 +20,19 @@ export class CategoriaService {
   }
 
   // Método para agregar una categoría
-  addCategoria(categoria: Categoria): Observable<void> {
-    return this.http.post<any>(`${this.appUrl}${this.apiUrl}`, categoria, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });  }
+  addCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(`${this.appUrl}${this.apiUrl}`, categoria);  
+  }
+
+  //Metodo para borrar una categoría
+  deleteCategoria(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.appUrl}${this.apiUrl}/${id}`);
+  }
+
+   // Método para actualizar una categoría
+   updateCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(`${this.appUrl}${this.apiUrl}/${categoria.id}`, categoria);
+  }
+  
 }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-compras.component";
 
 @Component({
@@ -6,7 +7,7 @@ import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-com
     standalone: true,
     templateUrl: './carrito.component.html',
     styleUrl: './carrito.component.css',
-    imports: [EncabezadoComprasComponent]
+    imports: [EncabezadoComprasComponent, CommonModule]
 })
 
 export class CarritoComponent {

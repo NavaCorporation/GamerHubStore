@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IDevolucionRepository, DevolucionRepository>();
+builder.Services.AddScoped<IRepositorioHistorial, RepositorioHistorial>();
 
 
 

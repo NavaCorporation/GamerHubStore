@@ -8,5 +8,6 @@ namespace GamerHub_Backend.Repository
         Task<int?> Crear(Devolucion devolucion);
         Task<bool> Actualizar(Devolucion devolucion);
         Task<bool> Eliminar(int id);
+        Task<List<Devolucion>> ObtenerTodas();
     }
 }

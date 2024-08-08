@@ -1,4 +1,5 @@
 ﻿using GamerHub_Backend.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamerHub_Backend.Repository
 {
@@ -12,14 +13,32 @@ namespace GamerHub_Backend.Repository
 
         public async Task<Devolucion?> ObtenerPorId(int id)
         {
-            return await _dbContext.Devolucions.FindAsync(id);
+            return await _dbContext.Devolucions
+                .Where(d => d.Id == id)
+                .Select(d => new Devolucion
+                {
+                    OrdenCompra = d.OrdenCompra,
+                    Razon = d.Razon,
+                    Estado = d.Estado
+                })
+                .FirstOrDefaultAsync();
         }
 
         public async Task<int?> Crear(Devolucion devolucion)
         {
-            _dbContext.Devolucions.Add(devolucion);
+            var nuevaDevolucion = new Devolucion
+            {
+                OrdenCompra = devolucion.OrdenCompra,
+                Razon = devolucion.Razon,
+                Estado = devolucion.Estado,
+                IdOreden = devolucion.IdOreden,
+                IdProducto = devolucion.IdProducto,
+                FechaDevolucion = devolucion.FechaDevolucion
+            };
+
+            _dbContext.Devolucions.Add(nuevaDevolucion);
             await _dbContext.SaveChangesAsync();
-            return devolucion.Id;
+            return nuevaDevolucion.Id;
         }
 
         public async Task<bool> Actualizar(Devolucion devolucion)
@@ -40,6 +59,10 @@ namespace GamerHub_Backend.Repository
             _dbContext.Devolucions.Remove(devolucion);
             var result = await _dbContext.SaveChangesAsync();
             return result > 0;
+        }
+        public async Task<List<Devolucion>> ObtenerTodas()
+        {
+            return await _dbContext.Devolucions.ToListAsync();
         }
     }
 }

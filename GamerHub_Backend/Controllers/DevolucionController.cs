@@ -16,7 +16,6 @@ namespace GamerHub_Backend.Controllers
             {
                 _devolucionRepository = devolucionRepository;
             }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -25,26 +24,51 @@ namespace GamerHub_Backend.Controllers
             {
                 return NotFound();
             }
-            return Ok(devolucion);
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Devolucion devolucion)
+            var resultado = new
+            {
+                OrdenCompra = devolucion.OrdenCompra,
+                Razon = devolucion.Razon,
+                Estado = devolucion.Estado
+            };
+
+            return Ok(resultado);
+        }
+        [HttpGet]
+        public async Task<IActionResult> ObtenerTodas()
         {
-            if (devolucion == null)
-            {
-                return BadRequest();
-            }
-
-            var id = await _devolucionRepository.Crear(devolucion);
-            if (id == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al crear la devolución.");
-            }
-
-            return CreatedAtAction(nameof(Get), new { id = id }, devolucion);
+            var devoluciones = await _devolucionRepository.ObtenerTodas();
+            return Ok(devoluciones);
         }
+        [HttpPost]
+        public async Task<IActionResult> Crear([FromBody] Devolucion devolucion)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            
+            var nuevaDevolucion = new Devolucion
+            {
+                OrdenCompra = devolucion.OrdenCompra,
+                Razon = devolucion.Razon,
+                Estado = devolucion.Estado,
+               
+                IdOreden = devolucion.IdOreden,
+                IdProducto = devolucion.IdProducto,
+                FechaDevolucion = DateTime.UtcNow 
+            };
+
+            var devolucionId = await _devolucionRepository.Crear(nuevaDevolucion);
+
+            if (devolucionId == null)
+            {
+                return StatusCode(500, "Ocurrió un error al crear la devolución.");
+            }
+
+            return CreatedAtAction(nameof(Get), new { id = devolucionId }, nuevaDevolucion);
+        }
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Devolucion devolucion)
         {

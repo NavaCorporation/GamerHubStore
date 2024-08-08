@@ -146,19 +146,13 @@ export class ProductosComponent implements OnInit {
   }
   
   //agregar2 e importar output y eventemitter
-  @Output() añadirAlCarrito = new EventEmitter<number>();
+  @Output() añadirAlCarrito = new EventEmitter<Producto>();
 
-  agregarProducto() {
+  agregarProducto(producto: Producto) {
     // Emitir el evento para agregar al carrito
-    this.añadirAlCarrito.emit(this.producto.precio);
-    
+    this.añadirAlCarrito.emit(producto);
+
     // Mostrar mensaje flotante
     this.addToCart();
   }
-  
-
-
-
-
-
 }

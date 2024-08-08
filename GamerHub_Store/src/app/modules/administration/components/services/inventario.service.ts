@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../../../../interface/Producto';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +16,13 @@ export class InventarioService {
 
   getProductos(): Observable<Producto[]>{
 
-    return this.http.get<Producto[]>(`${this.myAppUrl}${this.myApiUrl}`)
+    return this.http.get<Producto[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
  
 
   getProducto(id:number ): Observable <Producto>{
 
-    return this.http.get<Producto>(`${this.myAppUrl}${this.myApiUrl}${id}`)
+    return this.http.get<Producto>(`${this.myAppUrl}${this.myApiUrl}${id}`);
   }
 
 
@@ -41,5 +41,17 @@ export class InventarioService {
   
   modificarProducto(producto: Producto): Observable<number>{
     return this.http.put<number>(`${this.myAppUrl}${this.myApiUrl}${producto.id}`,producto);
+  }
+
+
+  crearP(formData: FormData): Observable<any> {
+    const url = `${this.myAppUrl}${this.myApiUrl}`;
+    return this.http.post(url, formData);
+  }
+ 
+
+
+  crearProducto(formData: FormData): Observable<Producto> {
+    return this.http.post<Producto>(`${this.myAppUrl}${this.myApiUrl}`, formData);
   }
 }

@@ -19,6 +19,7 @@ builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IDevolucionRepository, DevolucionRepository>();
 
 
+
 // Navarrete
 //builder.Services.AddScoped<RolRepository>();
 //builder.Services.AddScoped<UsuarioRepository>();

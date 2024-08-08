@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-compras.component";
 import { CommonModule } from '@angular/common';
 import { Producto } from '../../../../interface/Producto';
@@ -31,6 +31,13 @@ export class ProductosComponent implements OnInit {
   paginas: number[] = [];
   defaultImage: SafeUrl;
   noProductsImage: SafeUrl;
+  
+  //agregar
+  producto ={
+    nombreProducto: "",
+    precio: 0,
+    descripcion: "",
+  }
   
 
   constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer) {
@@ -136,5 +143,22 @@ export class ProductosComponent implements OnInit {
   }
   mostrarSiNoHayProducto(): boolean {
     return this.productosFiltrados.length === 0;
-}
+  }
+  
+  //agregar2 e importar output y eventemitter
+  @Output() añadirAlCarrito = new EventEmitter<number>();
+
+  agregarProducto() {
+    // Emitir el evento para agregar al carrito
+    this.añadirAlCarrito.emit(this.producto.precio);
+    
+    // Mostrar mensaje flotante
+    this.addToCart();
+  }
+  
+
+
+
+
+
 }

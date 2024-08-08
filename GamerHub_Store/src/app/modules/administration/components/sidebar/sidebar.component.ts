@@ -1,5 +1,9 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { UserService } from '../services/user.service';
+import { AutenticacionService } from '../services/autenticacion.service';
+import { Router } from '@angular/router';
+import { Usuario } from '../../../../interface/Usuario';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 
@@ -11,41 +15,37 @@ import { UserService } from '../services/user.service';
     imports: []
 })
 export class SidebarComponent  implements OnInit {
-  nameAdmin: string = 'AdminSteven';
-  emailAdmin: string = 'admin@ghs.com';
-  ImgAdmin: string = 'assets/img/userPerfil.jpeg';
-  user = {
-    name: this.nameAdmin,
-    email: this.ImgAdmin,
-    photoUrl: this.ImgAdmin
-  };
+  
+  currentUser: Usuario | null = null;
+  fotoPerfilAdmin: SafeUrl | string = 'assets/img/fotoPerfil.jpg';
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private _authService: AutenticacionService,
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) { }
 
-  isActive: boolean = true; // Activa por defecto
-
-  ngOnInit() {
-    // Load user data from localStorage if available
-    const savedName = localStorage.getItem('userName');
-    const savedEmail = localStorage.getItem('userEmail');
-    const savedPhotoUrl = localStorage.getItem('userPhotoUrl');
-
-    if (savedName) {
-      this.user.name = savedName;
-    }
-    if (savedEmail) {
-      this.user.email = savedEmail;
-    }
-    if (savedPhotoUrl) {
-      this.user.photoUrl = savedPhotoUrl;
-    }
-
-    this.userService.user$.subscribe(user => {
-      this.user = { ...user };
+  ngOnInit(): void {
+    this._authService.currentUser.subscribe(user => {
+      if (user && user.rolId === 3) { 
+        this.currentUser = user;
+        this.loadProfileImage(user.id!);
+      }
     });
   }
+  logout(): void {
+    this._authService.logoutUser();
+    this.router.navigate(['/login']);
+  }
 
-
-
- 
+  private loadProfileImage(id: number): void {
+    this._authService.getFotoPerfil(id).subscribe(
+      (base64Image: string) => {
+        this.fotoPerfilAdmin = this.sanitizer.bypassSecurityTrustUrl(`data:image/jpeg;base64,${base64Image}`);
+      },
+      (error: any) => {
+        console.error('Error al obtener la foto de perfil', error);
+      }
+    );
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
@@ -15,7 +15,7 @@ import { RegisterService } from '../../services/registerService/register.service
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
-
+  @Output() registrationSuccess = new EventEmitter<void>();
   profilePicturePreview: string | ArrayBuffer | null = null;
   perfilDefault: string = 'assets/img/fotoPerfil.jpg';
   passwordMatch: boolean = false;
@@ -55,11 +55,14 @@ export class RegisterComponent implements OnInit {
     
       this._registerService.register(formData).subscribe(response => {
         console.log('Registro exitoso', response);
-        this.router.navigate(['/login']);
+        this.registrationSuccess.emit();
+
       }, error => {
         console.error('Error al registrar', error);
       });
     }
+    
+
     onProfilePictureChange(event: Event): void {
       const input = event.target as HTMLInputElement;
       if (input.files && input.files[0]) {

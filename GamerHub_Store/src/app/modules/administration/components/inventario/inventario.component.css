@@ -1,0 +1,67 @@
+/* Estilo principal del contenedor que incluye el sidebar y el contenido principal */
+.containerTodo {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Estilo del sidebar para que esté fijo a la izquierda */
+  .sidebar {
+    width: 250px; /* Ajusta el ancho del sidebar según sea necesario */
+    background-color: #f8f9fa; /* Color de fondo del sidebar */
+    padding: 20px; /* Espaciado dentro del sidebar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para el sidebar */
+  }
+  
+  /* Estilo del contenedor principal para el contenido que se encuentra al lado del sidebar */
+  .container {
+    flex: 1;
+    padding: 20px; /* Espaciado interno del contenedor principal */
+    overflow-y: auto; /* Desplazamiento vertical si el contenido es demasiado largo */
+  }
+  
+  /* Opcional: ajustar el tamaño de los inputs y botones en el formulario */
+  .form-control-lg {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.3rem;
+  }
+  
+  .form-select {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.3rem;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.3rem;
+  }
+  
+  /* Estilo de la tabla para darle un aspecto limpio */
+  .table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Opcional: agregar estilo para el botón de editar */
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  

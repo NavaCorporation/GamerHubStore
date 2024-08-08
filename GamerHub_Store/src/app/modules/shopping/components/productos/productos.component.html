@@ -13,17 +13,22 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img
-          src="https://consumer.huawei.com/content/dam/huawei-cbg-site/latam/latin/mkt/plp/laptops/kv/matebook-14-2021-kv.jpg"
+          src="assets\img\producto1.png"
           class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img
-          src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/monitors/mateview-gt-se/specs/mateview-gt-se-black.png"
+          src="assets\img\producto2.png"
           class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img
-          src="https://www.sony.com.ec/image/883200845f7cd274bb7faeef27407048?fmt=pjpeg&bgcolor=FFFFFF&bgc=FFFFFF&wid=2515&hei=1320"
+          src="assets\img\producto3.png"
+          class="d-block w-100" alt="">
+      </div>
+      <div class="carousel-item">
+        <img
+          src="assets\img\producto4.png"
           class="d-block w-100" alt="...">
       </div>
     </div>
@@ -38,36 +43,49 @@
   </div>
 
   <br>
-  <!-- Filtros -->
-<div class="container">
-  <!-- Filtro por categoría -->
-  <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
-    <label for="categoriaSelect" class="form-label">Filtrar por categoría:</label>
-    <select class="form-select" id="categoriaSelect" [(ngModel)]="selectCategoria" (change)="onCategoryChange($event)">
-      <option [value]="null">Todas</option>
-      @for (categoria of categorias; track $index) {
-        <option [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
-      }
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <!-- Contenedor de filtros -->
+      <div class="col-md-4 mb-3 align-items-center">
+        <!-- Filtro por categoría -->
+        <label for="categoriaSelect" class="form-label  flex-column align-items-center">
+          <i class="bi bi-filter-circle"></i> Filtrar por categoría:
+        </label>
+        <select class="form-select" id="categoriaSelect" [(ngModel)]="selectCategoria"
+          (change)="onCategoryChange($event)">
+          <option [value]="null">Todas</option>
+          @for (categoria of categorias; track $index) {
+          <option [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
+          }
+        </select>
+      </div>
 
-    </select>
-  </div>
+      <!-- Filtro por precio -->
+      <div class="col-md-4 mb-3 d-flex flex-column align-items-center ">
+        <label for="priceRange" class="form-label">
+          <i class="bi bi-cash-stack"></i> Filtrar por precio:
+        </label>
+        <div id="priceRange">
+          <input type="range" id="priceRangeMin" class="custom-range" [(ngModel)]="minPrice" [min]="0" [max]="maxPrice"
+            (input)="filtrarProductos()">
+          <input type="range" id="priceRangeMax" class="custom-range" [(ngModel)]="maxPrice" [min]="minPrice"
+            [max]="1000" (input)="filtrarProductos()">
+        </div>
+        <div class="range-value mt-2">
+          Precio: {{ minPrice }} - {{ maxPrice }}
+        </div>
+      </div>
 
-  <!-- Filtro por precio -->
-  <div class="row mb-3 text-center">
-    <label for="priceRange" class="form-label">Filtrar por precio:</label>
-    <input type="range" id="priceRangeMin" [(ngModel)]="minPrice" [min]="0" [max]="maxPrice" (change)="filtrarProductos()">
-    <input type="range" id="priceRangeMax" [(ngModel)]="maxPrice" [min]="0" [max]="1000" (change)="filtrarProductos()">
-    <div>
-      Precio: {{ minPrice }} - {{ maxPrice }}
+      <!-- Filtro por nombre -->
+      <div class="col-md-4 mb-3 d-flex flex-column align-items-cente">
+        <label for="searchName" class="form-label">
+          <i class="bi bi-search"></i> Buscar por nombre:
+        </label>
+        <input type="text" id="searchName" class="form-control" [(ngModel)]="searchName" (input)="filtrarProductos()"
+          placeholder="Buscar producto...">
+      </div>
     </div>
   </div>
-
-  <!-- Filtro por nombre -->
-  <div class="row mb-3 text-center">
-    <label for="searchName" class="form-label">Buscar por nombre:</label>
-    <input type="text" id="searchName" [(ngModel)]="searchName" (input)="filtrarProductos()" placeholder="Buscar producto...">
-  </div>
-</div>
 
 
   <!-- Productos -->
@@ -105,11 +123,11 @@
           </div>
         </div>
       }
-      
+
 
     </div>}
 
-    
+
 
     <div id="floating-message" class="floating-message">
       Producto añadido al carrito
@@ -117,34 +135,34 @@
 
 
     <!-- Modal 1 -->
-      @for (producto of productos; track $index) {
-        <div class="modal fade" [id]="'modalProducto' + producto.id" tabindex="-1" aria-labelledby="modalProductoLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="modalProductoLabel">{{ producto.nombreProducto }}</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="text-align: left;">
-              <p style="color: #FF6347;"><strong>
-                  <h2>{{ producto.precio | currency }}</h2>
-                </strong></p>
-              <h4><strong>Características destacadas:</strong></h4>
-              <ul>
-                <li>{{ producto.descripcion }}</li>
-                <li>Stock: {{ producto.stock }}</li>
-                <li>Categoria: {{ producto.categoriaId }}</li>
-              </ul>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
+    @for (producto of productos; track $index) {
+    <div class="modal fade" [id]="'modalProducto' + producto.id" tabindex="-1" aria-labelledby="modalProductoLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modalProductoLabel">{{ producto.nombreProducto }}</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+            <p style="color: #FF6347;"><strong>
+                <h2>{{ producto.precio | currency }}</h2>
+              </strong></p>
+            <h4><strong>Características destacadas:</strong></h4>
+            <ul>
+              <li>{{ producto.descripcion }}</li>
+              <li>Stock: {{ producto.stock }}</li>
+              <li>Categoria: {{ producto.categoriaId }}</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
-      }
-      
+    </div>
+    }
+
   </div>
 
 </div>

@@ -15,24 +15,38 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class LoginAdmComponent implements OnInit {
 
+  loginForm: FormGroup;
   adminLoginForm: FormGroup;
-  showAdminLogin: boolean = false;
+  isAuthenticated: boolean = false;
   private readonly adminAccessCode: string = '12345';
   private readonly gestorAccessCode: string = '67890';
-  constructor(private fb: FormBuilder, private router: Router) {
+
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+
     this.adminLoginForm = this.fb.group({
-      adminCode : ['', Validators.required]
-    })
+      adminCode: ['', Validators.required]
+    });
   }
 
-  ngOnInit(): void {
-    this.adminLoginForm = this.fb.group({
-      adminCode: ['', [Validators.required]]
+  ngOnInit(): void {}
+
+  onLogin(): void {
+    const { email, password } = this.loginForm.value;
+    this.authService.login(email, password).subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        this.isAuthenticated = true;
+      } else {
+        alert('Invalid credentials');
+      }
     });
   }
 
   onAdminLogin(): void {
-    const {adminCode} = this.adminLoginForm.value;
+    const { adminCode } = this.adminLoginForm.value;
 
     if (adminCode === this.adminAccessCode) {
       console.log('Login Admin exitoso!');
@@ -42,12 +56,8 @@ export class LoginAdmComponent implements OnInit {
       console.log('Login Gestor exitoso!');
       alert('Login Gestor exitoso!');
       this.router.navigate(['/management']);
-    }
-    
-    else {
+    } else {
       alert('Solo personal autorizado');
-      this.showAdminLogin = false;
     }
   }
-
 }

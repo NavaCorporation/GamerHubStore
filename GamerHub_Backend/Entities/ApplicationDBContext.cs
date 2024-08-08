@@ -43,6 +43,23 @@ namespace GamerHub_Backend.Entities
                 new Categoria { Id = 7, NombreCategoria = "Software", Descripcion = "Software especializado para gaming y creación de contenido" }
             );
             //////////////////////////////////////////
+            /*modelBuilder.Entity<Usuario>().HasData(
+               new Usuario
+               {
+                   Id = 1,
+                   Nombre = "Admin",
+                   Apellido = "User",
+                   Correo = "admin@example.com",
+                   NombreUsuario = "admin",
+                   Contrasena = "admin123",
+                   Telefono = "1234567890",
+                   Estado = "A",
+                   FotoPerfil = null,
+                   RolId = 3 
+               }
+           );*/
+
+
 
             modelBuilder.Entity<Producto>().HasData(
     new Producto

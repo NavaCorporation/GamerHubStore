@@ -28,6 +28,7 @@
     margin: 0;
     padding: 0;
     display: flex;
+
 }
 
 .navbar-css .menu li {      
@@ -36,7 +37,7 @@
 
 .navbar-css .menu li a {
     font-size: 18px;
-    color: #F1FAEE;
+    color: #000000;
 
 }
 

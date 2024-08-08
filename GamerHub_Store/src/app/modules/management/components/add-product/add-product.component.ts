@@ -23,7 +23,7 @@ export class AddProductoComponent implements OnInit {
   isFormSubmitted = false;
   image: File | null = null;
   editingProductId: number | null = null;
-
+  
   constructor(
     private fb: FormBuilder,
     private productoService: ProductoService,
@@ -35,7 +35,7 @@ export class AddProductoComponent implements OnInit {
       caracteristicas: ['', Validators.required],
       descripcion: ['', Validators.required],
       stock: ['', [Validators.required, Validators.min(0)]],
-      categoriaId: ['', Validators.required],    
+      categoriaId: ['', Validators.required],
     });
   }
 
@@ -65,7 +65,7 @@ export class AddProductoComponent implements OnInit {
     if (event.target.files && event.target.files.length) {
       this.image = event.target.files[0];
     } else {
-      this.image = null; 
+      this.image = null;
     }
   }
 
@@ -106,6 +106,7 @@ export class AddProductoComponent implements OnInit {
             this.image = null;
             this.isFormSubmitted = false;
             alert('Producto registrado exitosamente');
+            window.location.reload();
           },
           error => {
             console.error('Error al registrar el producto:', error);
@@ -136,6 +137,39 @@ export class AddProductoComponent implements OnInit {
       console.error('ID del producto no definido');
     }
   }
-}
+  //Filtros
+  filterByPrice(event: any): void {
+    this.applyFilters();
+  }
   
+  filterByProductName(event: any): void {
+    this.applyFilters();
+  }
+  
+  filterByCategory(event: any): void {
+    this.applyFilters();
+  }
+  
+  applyFilters(): void {
+    const priceFilter = parseFloat((document.getElementById('searchPrice') as HTMLInputElement).value);
+    const productFilter = (document.getElementById('searchProductName') as HTMLInputElement).value.toLowerCase();
+    const categoryFilter = (document.getElementById('searchCategory') as HTMLInputElement).value.toLowerCase();
+  
+    this.productos = this.productos.filter(product => {
+      const matchesPrice = isNaN(priceFilter) || product.precio.toString().includes(priceFilter.toString());
+      const matchesProduct = !productFilter || product.nombreProducto.toLowerCase().includes(productFilter);
+      const matchesCategory = !categoryFilter || product.categoria?.nombreCategoria.toLowerCase().includes(categoryFilter);
+      return matchesPrice && matchesProduct && matchesCategory;
+      
+    });
+  }
+  resetFilters(): void {
+    this.loadProductos();
+    (document.getElementById('searchPrice') as HTMLInputElement).value = '';
+    (document.getElementById('searchProductName') as HTMLInputElement).value = '';
+    (document.getElementById('searchCategory') as HTMLInputElement).value = '';
+  } 
+
+}
+
 

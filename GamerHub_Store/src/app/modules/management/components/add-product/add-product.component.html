@@ -79,6 +79,25 @@
             <div class="dashboard2 dashboard1 cartaFondo2 bordersfino tareas ">
               <h2 class="textcoloradmin clienteh4">Lista de Productos</h2>
               <br>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label" for="searchPrice">Precio:</label>
+                  <input class="form-control" type="text" id="searchPrice" (keyup)="applyFilters()" >
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="searchProductName">Nombre de producto:</label>
+                  <input class="form-control" type="text" id="searchProductName" (keyup)="applyFilters()" >
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="searchCategory">Categoría:</label>
+                  <input class="form-control" type="text" id="searchCategory" (keyup)="applyFilters()" >
+                </div>
+
+                <div>
+                  <button class="btn btn-primary" (click)="resetFilters()">Nueva busqueda</button>
+                </div>
+              </div>
+              <br>
             <table class="tableprimer">
                 <thead>
                   <tr>

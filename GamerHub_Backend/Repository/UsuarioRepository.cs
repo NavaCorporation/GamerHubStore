@@ -35,7 +35,7 @@ namespace GamerHub_Backend.Repository
         }
         public async Task<Usuario?> ObtenerPorId(int id)
         {
-            return _dbContext.Usuarios.Where(usuario => usuario.Id == id).ToList()[0];
+            return await _dbContext.Usuarios.FirstOrDefaultAsync(usuario => usuario.Id == id);
         }
         public async Task<Rol?> VerificarRol(int rolId)
         {
@@ -55,7 +55,7 @@ namespace GamerHub_Backend.Repository
 
         public async Task<Usuario?> ModificarFoto(int id, byte[] nuevaFoto)
         {
-            var usuarioExistente = await _dbContext.Usuarios.FindAsync(id);
+            var usuarioExistente = await _dbContext.Usuarios .FindAsync(id);
             if (usuarioExistente != null)
             {
                 usuarioExistente.FotoPerfil = nuevaFoto;

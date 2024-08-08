@@ -107,7 +107,9 @@ namespace GamerHub_Backend.Entities
 
             // Tabla de Devolucion
             modelBuilder.Entity<Devolucion>()
+
                 .Property(d => d.FechaDevolucion)
+                
                 .HasColumnType("Date");
 
             // Tabla DetallesCompra
@@ -166,7 +168,7 @@ namespace GamerHub_Backend.Entities
         public DbSet<Sesion> Sesiones { get; set; }
         public DbSet<VerificacionEnvio> VerificacionesEnvio { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
-
+    
     }
 
 }

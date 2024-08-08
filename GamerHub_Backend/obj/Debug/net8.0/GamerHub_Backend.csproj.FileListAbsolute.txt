@@ -1530,3 +1530,4 @@ E:\Semestre CI - 2024-2025\Desarrollo WA\GamerHubStore\GamerHub_Backend\obj\Debu
 E:\Semestre CI - 2024-2025\Desarrollo WA\GamerHubStore\GamerHub_Backend\obj\Debug\net8.0\GamerHub_Backend.genruntimeconfig.cache
 E:\Semestre CI - 2024-2025\Desarrollo WA\GamerHubStore\GamerHub_Backend\obj\Debug\net8.0\ref\GamerHub_Backend.dll
 C:\Users\nava\Documents\GitHub\GamerHubStore\GamerHub_Backend\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\juanv\OneDrive\Documentos\GitHub\GamerHubStore\GamerHub_Backend\bin\Debug\net8.0\System.Text.Json.dll

@@ -2,6 +2,7 @@
 using GamerHub_Backend.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamerHub_Backend.Controllers
 {
@@ -60,7 +61,7 @@ namespace GamerHub_Backend.Controllers
             }
         }
         
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> ObtenerUsuarioPorId(int id)
         {
             var usuario = await _usuarioRepository.ObtenerPorId(id);

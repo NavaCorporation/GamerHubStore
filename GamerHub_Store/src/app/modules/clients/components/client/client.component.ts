@@ -3,6 +3,7 @@ import { EncabezadoComprasComponent } from "../../../shopping/components/encabez
 import { CommonModule } from '@angular/common';
 import { OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder,FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClienteServiceService } from '../../service/cliente-service.service';
 import { AuthenticationService } from '../../../security/services/authService/authentication.service';
 @Component({
     selector: 'app-client',
@@ -12,32 +13,41 @@ import { AuthenticationService } from '../../../security/services/authService/au
     imports: [EncabezadoComprasComponent,FormsModule,ReactiveFormsModule,CommonModule]
 })
 export class ClientComponent implements OnInit {
-    userProfilePicture= 'assets/img/userPerfil.jpeg';
-    fotoProfilePicture= 'assets/img/fotoPerfil.jpeg';
-    profileForm: FormGroup;
-    isEditing: boolean = false;
-    showSuccessMessage: boolean = false;
+  userProfilePicture = 'assets/img/userPerfil.jpeg';
+  profileForm: FormGroup;
+  isEditing: boolean = false;
+  showSuccessMessage: boolean = false;
+  userId: number = 1;
   
-    constructor(private fb: FormBuilder) {
-      this.profileForm = this.fb.group({
-        firstName: [{ value: '', disabled: true }],
-        lastName: [{ value: '', disabled: true }],
-        email: [{ value: '', disabled: true }],
-        phoneNumber: [{ value: '', disabled: true }],
-        address: [{ value: '', disabled: true }]
-      });
-      
-    }
-    ngOnInit(): void {
-      
-      this.profileForm.patchValue({
-        firstName: 'UserName',
-        lastName: 'UserLastName',
-        email: 'user@gmail.com',
-        phoneNumber: '0987654321',
-        address: '12 de octubre Guayaquil'
-      })
+  constructor(private fb: FormBuilder,
+    private clienteService: ClienteServiceService,
+    private authService: AuthenticationService) { 
+    this.profileForm = this.fb.group({
+      firstName: [{ value: '', disabled: true }],
+      lastName: [{ value: '', disabled: true }],
+      email: [{ value: '', disabled: true }],
+      phoneNumber: [{ value: '', disabled: true }],
+      address: [{ value: '', disabled: true }]
+    });
   }
+  
+  ngOnInit(): void {
+    this.loadUserData(); 
+  }
+  loadUserData(): void {
+    this.clienteService.getUser(this.userId).subscribe(data => {
+      this.profileForm.patchValue({
+        Nombre: data.nombre,
+        lastName: data.apellido,
+        phoneNumber: data.telefono,
+        address: data.correo
+      });
+      if (data.fotoProfile) {
+        this.userProfilePicture = 'data:image/jpeg;base64,' + data.fotoProfile;
+      }
+    });
+  }
+
   toggleEdit(): void {
     this.isEditing = !this.isEditing;
     if (this.isEditing) {
@@ -46,17 +56,25 @@ export class ClientComponent implements OnInit {
       this.profileForm.disable();
     }
   }
+
   saveChanges(): void {
     if (this.profileForm.valid) {
-     
-      console.log(this.profileForm.value);
-      this.showSuccessMessage = true;
-      setTimeout(() => {
-        this.showSuccessMessage = false;
-      }, 3000);
-      this.toggleEdit();
+      this.clienteService.updateUser({
+        id: this.userId,
+        nombre: this.profileForm.value.firstName, 
+        apellido: this.profileForm.value.lastName,
+        correo: this.profileForm.value.email,
+        telefono: this.profileForm.value.phoneNumber,
+      }).subscribe(() => {
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+        }, 3000);
+        this.toggleEdit();
+      });
     }
   }
+
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
@@ -64,8 +82,8 @@ export class ClientComponent implements OnInit {
       reader.onload = (e: any) => {
         this.userProfilePicture = e.target.result;
       };
-    reader.readAsDataURL(file);
-    console.log(file); 
-  }
+      reader.readAsDataURL(file);
+      this.clienteService.updateProfilePicture(this.userId, file).subscribe();
+    }
   }
 }

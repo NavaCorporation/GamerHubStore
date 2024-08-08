@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  RouterLink } from '@angular/router';
+import { AggTareaService } from '../services/agg-tarea.service';
 import { Tarea } from '../models/tarea';
 import { Ventas } from '../models/ventas';
 import { VentasService } from '../services/ventas.service';
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
 
   constructor( private salesService: VentasService,
-    private userService: UserService
+    private userService: UserService, private taskService2 : AggTareaService
   ) { 
     // Load user data from localStorage
     const savedName = localStorage.getItem('userName');
@@ -58,10 +59,14 @@ export class DashboardComponent implements OnInit {
       this.sales = sales;
     });
 
-
+    this.updatePendingTasksCount2();
   }
 
 
+
+  updatePendingTasksCount2(): void {
+    this.pendingTasksCount2 = this.taskService2.getPendingTasksCount2();
+  }
 
 
 

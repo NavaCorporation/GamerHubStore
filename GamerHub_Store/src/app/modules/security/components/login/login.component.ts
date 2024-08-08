@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
@@ -9,16 +9,18 @@ import { RegisterComponent } from "../register/register.component";
 import { LoginAdmComponent } from "../login-adm/login-adm.component";
 import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
 import { NotificationService } from '../../services/notifications/notification.service';
+import { AlertaComponent } from "../alerta/alerta.component";
 @Component({
     selector: 'app-login',
     standalone: true,
     templateUrl: './login.component.html',
     styleUrl: './login.component.css',
-    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent, EncabezadoComprasComponent],
+    imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, HttpClientModule, RegisterComponent, LoginAdmComponent, EncabezadoComprasComponent, AlertaComponent],
 })
 
 export class LoginComponent implements OnInit {
   @Output() userLoggedIn = new EventEmitter<Usuario>();
+  @ViewChild('alerta') alerta!: AlertaComponent;
   showLogin: boolean = true;
   showAdminLogin: boolean = false;
   loginForm!: FormGroup;
@@ -54,7 +56,9 @@ export class LoginComponent implements OnInit {
           if (email.endsWith('@ghs.com')) {
             this.showAdminLogin = true;
           } else {
-            this.router.navigate(['/product']);
+            this.router.navigate(['/productos']);
+            this.alerta.showAlert('Inicio de sesión', 'Se ha iniciado sesión', 'bi bi-check-circle-fill');
+            
           }
         }
       },

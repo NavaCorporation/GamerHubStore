@@ -46,22 +46,3 @@
 
 
 
-<!-- 
-<div *ngIf="showNotifications" class="notification-panel">
-    <div *ngIf="notifications.length > 0">
-        <div *ngFor="let notification of notifications; let i = index" class="notification-item"
-            [class.unread]="!notification.read" (mouseover)="markAsRead(i)">
-            <div class="notification-content">
-                <p [class.read]="notification.read">
-                    {{ notification.type }}: {{ notification.message }}
-                </p>
-                <div *ngIf="i < notifications.length - 1" class="notification-divider"></div>
-            </div>
-        </div>
-    </div>
-    <div *ngIf="notifications.length === 0">
-        <p>Sin notificaciones :D</p>
-    </div>
-</div>
--->
-

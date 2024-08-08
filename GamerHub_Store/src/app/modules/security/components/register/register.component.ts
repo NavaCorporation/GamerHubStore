@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
@@ -6,16 +6,17 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Usuario } from '../../../../interface/Usuario';
 import { RegisterService } from '../../services/registerService/register.service';
+import { AlertaComponent } from '../alerta/alerta.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ RouterLink, FormsModule, ReactiveFormsModule, HttpClientModule, CommonModule],
+  imports: [ RouterLink, FormsModule, ReactiveFormsModule, HttpClientModule, CommonModule, AlertaComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
-  @Output() registrationSuccess = new EventEmitter<void>();
+  @ViewChild('alert') alert!: AlertaComponent;
   profilePicturePreview: string | ArrayBuffer | null = null;
   perfilDefault: string = 'assets/img/fotoPerfil.jpg';
   passwordMatch: boolean = false;
@@ -52,14 +53,23 @@ export class RegisterComponent implements OnInit {
       if (this.registerForm.get('profilePicture')?.value) {
         formData.append('profilePicture', this.registerForm.get('profilePicture')?.value);
       }
-    
+      this._registerService.register(formData).subscribe(
+        response => {
+          this.alert.showAlert('Registro Exitoso', '¡Tu registro ha sido exitoso!', 'bi bi-check-circle-fill');
+          this.router.navigate(['/login']);
+        },
+        error => {
+          this.alert.showAlert('Error', 'Hubo un problema al registrar. Inténtalo de nuevo.', 'bi bi-x-circle-fill');
+        }
+      );
+      /*
       this._registerService.register(formData).subscribe(response => {
         console.log('Registro exitoso', response);
-        this.registrationSuccess.emit();
-
+        this.router.navigate(['/login']);
       }, error => {
         console.error('Error al registrar', error);
       });
+      */
     }
     
 

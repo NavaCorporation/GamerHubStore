@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NotificationService } from '../../services/notifications/notification.service';
-
+import { Renderer2, ViewChild,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-security-notifications',
@@ -12,14 +12,23 @@ import { NotificationService } from '../../services/notifications/notification.s
   styleUrl: './security-notifications.component.css'
 })
 export class SecurityNotificationsComponent implements OnInit {
+  @ViewChild('bellIcon') bellIcon!: ElementRef;
 
-  notifications: { type: string, message: string, read: boolean, date: Date }[] = [];
+  notifications: { type: string, message: string, read: boolean, date: Date, }[] = [];
   showNotifications: boolean = false;
   readFilter: boolean | null = null; 
   sortOrder: 'asc' | 'desc' = 'desc';
 
-  constructor( private ntserv: NotificationService) {}
-
+  constructor( private ntserv: NotificationService, private renderer:Renderer2) {}
+  shakeBell() {
+    const bell = this.bellIcon.nativeElement;
+    this.renderer.addClass(bell, 'shake');
+    
+    
+    setTimeout(() => {
+      this.renderer.removeClass(bell, 'shake');
+    }, 800);
+  }
   ngOnInit(): void {
     this.ntserv.createOfferNotifications();
     this.loadNotifications();
@@ -58,4 +67,5 @@ export class SecurityNotificationsComponent implements OnInit {
     this.sortOrder = 'desc';
     this.loadNotifications();
   }
+  
 }

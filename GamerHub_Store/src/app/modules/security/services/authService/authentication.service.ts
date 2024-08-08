@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
 import { Usuario } from '../../../../interface/Usuario';
@@ -13,6 +13,8 @@ export class AuthenticationService {
   private myApiUrl: string = 'api/Usuario/login';
   private currentUserSubject: BehaviorSubject<Usuario | null>;
   public currentUser: Observable<Usuario | null>;
+
+  public alertSubject: Subject<{ title: string; message: string; iconClass: string, alertClass: string}> = new Subject();
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<Usuario | null>(JSON.parse(localStorage.getItem('currentUser')!));
@@ -30,11 +32,20 @@ export class AuthenticationService {
       map((response: Usuario) => {
         localStorage.setItem('currentUser', JSON.stringify(response));
         this.currentUserSubject.next(response);
-        alert('Login exitoso!');
+        //alert('Login exitoso!');
+        this.alertSubject.next({ title: 'Inicio de sesión',
+        message: 'Se ha iniciado sesión exitosamente',
+        iconClass: 'bi bi-check-circle-fill',
+        alertClass: 'alert-success'});
         return response;
       }),
       catchError((err) => {
-        alert('Contraseña o correo incorrecto');
+        //alert('Contraseña o correo incorrecto');
+        this.alertSubject.next({ title: 'Error',
+        message: 'Contraseña o correo incorrecto',
+        iconClass: 'bi bi-x-circle-fill',
+        alertClass: 'alert-danger' });
+        
         return throwError(err);
       })
     );

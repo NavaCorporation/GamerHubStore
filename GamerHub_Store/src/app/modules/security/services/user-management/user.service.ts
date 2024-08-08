@@ -11,7 +11,7 @@ export class UserService {
   private myApiUrl: string = 'api/Usuario';
   constructor(private http: HttpClient) {}
 
-  getFotoPerfil(id: number, file: File): Observable<string> {
+  getFotoPerfil(id: number): Observable<string> {
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}/${id}/fotoPerfil`, { responseType: 'text' }).pipe(
       catchError(this.handleError)
     );

@@ -10,7 +10,7 @@ import { TareaPendienteComponent } from './modules/administration/components/tar
 import { EmployeeManagementComponent } from './modules/management/components/employee-management/employee-management.component';
 import { HeaderComponent } from './modules/shared/components/header/header.component';
 import { FooterComponent } from './modules/shared/components/footer/footer.component';
-import { AddProductComponent } from './modules/management/components/add-product/add-product.component';
+import { AddProductoComponent } from './modules/management/components/add-product/add-product.component';
 //import { ReturnsComponent } from './modules/management/components/returns/returns.component';
 import { ProfileComponent } from './modules/administration/components/profile/profile.component';
 import { RestablecimientoCComponent } from './modules/administration/components/restablecimiento-c/restablecimiento-c.component';
@@ -37,7 +37,7 @@ export const routes: Routes = [
 
     //management
     { path: 'management', component: EmployeeManagementComponent },
-    { path: 'addproduct', component: AddProductComponent},
+    { path: 'addproduct', component: AddProductoComponent},
     { path: 'addcategory', component: AddCategoryComponent},
     //{ path: 'returns', component: ReturnsComponent},
 

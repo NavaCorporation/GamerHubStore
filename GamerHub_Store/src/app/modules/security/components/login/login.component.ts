@@ -20,7 +20,7 @@ import { AlertaComponent } from "../alerta/alerta.component";
 
 export class LoginComponent implements OnInit {
   @Output() userLoggedIn = new EventEmitter<Usuario>();
-  @ViewChild('alerta') alerta!: AlertaComponent;
+  @ViewChild(AlertaComponent) alerta!: AlertaComponent;
   showLogin: boolean = true;
   showAdminLogin: boolean = false;
   loginForm!: FormGroup;
@@ -35,12 +35,18 @@ export class LoginComponent implements OnInit {
     });
     this.loginForm.get('email')?.valueChanges.subscribe(value => {
     });
+    this._authService.alertSubject.subscribe(alertData => {
+      this.alerta.showAlert(alertData.title, alertData.message, alertData.iconClass, alertData.alertClass);
+    });
   }
 
   toggleAdminLogin(): void {
     this.showAdminLogin = !this.showAdminLogin;
   }
 
+  resetForm() {
+    this.loginForm.reset();
+  }
   toggleForm(): void {
     this.showLogin = !this.showLogin;
     this.resetForms();
@@ -56,9 +62,10 @@ export class LoginComponent implements OnInit {
           if (email.endsWith('@ghs.com')) {
             this.showAdminLogin = true;
           } else {
+           //this.router.navigate(['/productos']);
+          setTimeout(() => {
             this.router.navigate(['/productos']);
-            this.alerta.showAlert('Inicio de sesión', 'Se ha iniciado sesión', 'bi bi-check-circle-fill');
-            
+          }, 2000);
           }
         }
       },

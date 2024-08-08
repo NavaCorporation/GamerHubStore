@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authService/authentication.service';
@@ -16,11 +16,13 @@ import { AlertaComponent } from '../alerta/alerta.component';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('alert') alert!: AlertaComponent;
+
+  @Output() registrationSuccess = new EventEmitter<void>();
   profilePicturePreview: string | ArrayBuffer | null = null;
   perfilDefault: string = 'assets/img/fotoPerfil.jpg';
   passwordMatch: boolean = false;
   registerForm!: FormGroup;
+  @ViewChild(AlertaComponent) alerta!: AlertaComponent ;
 
   constructor( private fb: FormBuilder, private router: Router, private _registerService: RegisterService) {}
   ngOnInit(): void {
@@ -37,6 +39,10 @@ export class RegisterComponent implements OnInit {
     this.registerForm.statusChanges.subscribe(() => {
       this.passwordMatch = this.registerForm.get('password')?.value === this.registerForm.get('confirmPassword')?.value;
     });
+    this._registerService.alertSubject.subscribe(alertData => {
+      this.alerta.showAlert(alertData.title, alertData.message, alertData.iconClass, alertData.alertClass);
+    });
+  
     }
 
     onRegister(event: Event): void {
@@ -55,11 +61,23 @@ export class RegisterComponent implements OnInit {
       }
       this._registerService.register(formData).subscribe(
         response => {
-          this.alert.showAlert('Registro Exitoso', '¡Tu registro ha sido exitoso!', 'bi bi-check-circle-fill');
-          this.router.navigate(['/login']);
+          setTimeout(() => {
+            this.registrationSuccess.emit();
+            if (this.alerta) {
+              this.alerta.showAlert('Registro exitoso', 'Se ha registrado exitosamente', 'bi bi-check-circle-fill', 'alert-success');
+            } else {
+              console.error('Alerta no inicializada');
+            }
+          }, 2000);
         },
         error => {
-          this.alert.showAlert('Error', 'Hubo un problema al registrar. Inténtalo de nuevo.', 'bi bi-x-circle-fill');
+          setTimeout(() => {
+            if (this.alerta) {
+              this.alerta.showAlert('Error', 'Hubo un problema al registrar. Inténtalo de nuevo.', 'bi bi-x-circle-fill', 'alert-danger');
+            } else {
+              console.error('Alerta no inicializada');
+            }
+          }, 0);
         }
       );
       /*

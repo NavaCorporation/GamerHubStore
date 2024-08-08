@@ -1,6 +1,6 @@
 .modal-confirm {
     color: #636363;
-    width: 325px;
+    width: 425px;
     font-size: 14px;
 }
 
@@ -51,12 +51,34 @@
     height: 95px;
     border-radius: 50%;
     z-index: 9;
-    background: #82ce34;
     padding: 0px;
     text-align: center;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
+.modal-confirm .icon-box.success {
+    background: #82ce34; 
+}
 
+.modal-confirm .icon-box.danger {
+    background: #f2dede; 
+}
+
+.modal-confirm .btn.success {
+    background: #82ce34; 
+}
+
+.modal-confirm .btn.danger {
+    background: #f2dede; 
+    color: #a94442;
+}
+
+.modal-confirm.success .icon-box {
+    background: #82ce34; 
+}
+
+.modal-confirm.error .icon-box {
+    background: #f44336; 
+}
 .modal-confirm .icon-box i {
     font-size: 70px;
     position: relative;
@@ -70,7 +92,7 @@
 .modal-confirm .btn {
     color: #fff;
     border-radius: 4px;
-    background: #82ce34;
+    background: #82ce34; 
     text-decoration: none;
     transition: all 0.4s;
     line-height: normal;
@@ -86,4 +108,63 @@
 .trigger-btn {
     display: inline-block;
     margin: 100px auto;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d; 
+    background-color: #82ce34 ;
+    border-color: #d6e9c6; 
+}
+
+.alert-danger {
+    color: #db1b1b;
+    background-color: #da2f2f;
+    border-color: #ebccd1;
+}
+.modal-confirm .btn-success {
+    background-color: #82ce34; 
+    color: #fff;
+    border: none;
+}
+
+.modal-confirm .btn-danger {
+    background-color: #da2f2f; 
+    color: #fff;
+    border: none;
+}
+
+.modal-confirm .btn {
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+}
+.btn-success {
+    background-color: #82ce34;
+    border-color: #82ce34;
+}
+
+.btn-danger {
+    background-color: #da2f2f; 
+    border-color: #da2f2f;
+}
+
+.btn {
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.8;
 }

@@ -13,14 +13,16 @@ export class AlertaComponent  {
   @Input() title: string = '';
   @Input() message: string = '';
   @Input() iconClass: string = 'bi bi-check-circle-fill'; 
+  @Input() alertClass: string = 'alert-success'; 
   show: boolean = false;
 
-  showAlert(title: string, message: string, iconClass: string = 'bi bi-check-circle-fill') {
+  showAlert(title: string, message: string, iconClass: string = 'bi bi-check-circle-fill', alertClass: string = 'alert-success') {
     this.title = title;
     this.message = message;
     this.iconClass = iconClass;
+    this.alertClass = alertClass;
     this.show = true;
-    setTimeout(() => this.show = false, 5000);
+    setTimeout(() => this.show = false, 2000);
   }
 
   closeAlert() {

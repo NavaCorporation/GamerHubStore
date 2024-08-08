@@ -31,7 +31,11 @@
                             </label>
                         </div>
                         @if (showLogin && !showAdminLogin) {
-                            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+                                <button type="button" (click)="resetForm()" class="btn btn-secondary">Limpiar</button>
+                            </div>
+
                         }
                     </form>
                     @if (showAdminLogin) {
@@ -46,4 +50,4 @@
         </div>
     </div>
 </div>
-<app-alerta #alert></app-alerta>
+<app-alerta></app-alerta>

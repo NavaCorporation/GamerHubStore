@@ -88,10 +88,14 @@
 
 /* Eliminar los márgenes y agregar borde entre botones */
 .btn-espacio {
+    gap: 0.5rem;
     margin-right: 10px; /* Ajusta según sea necesario */
 }
 
-
+.btn-container {
+    display: flex;
+    gap: 10px;
+}
 /* Textos de la pagina principal */
 
     .textcolor{
@@ -237,13 +241,12 @@
     /* Bordes para contenedores o cards que se usan en el sistema */
     .borders{
         border: 2px solid #4d65a1 ;;
-        
         border-radius: 10px ;;
         
     }
     .bordersfino{
         border: 1px solid #4d65a1 ;;
-        
+
         border-radius: 10px ;;
         
     }
@@ -260,6 +263,7 @@
     }
     .cartaFondo2{
         background-color: #4d65a11f;
+        width: 100%;
         padding-bottom: 20px; 
         box-sizing: border-box;
     }
@@ -273,9 +277,10 @@
 /* Tabla base */
 .tableprimer {
     width: 100%;
+    min-width: 50%;
+    border-collapse: collapse;
     margin-bottom: 1rem;
     color: #1F2536; /* Gris oscuro para el texto principal */
-    border-collapse: collapse;
 }
 
 /* Estilo de cabecera */
@@ -330,3 +335,19 @@
     .tableprimer .btn-secondary:hover {
         background-color: #0A0D12; /* Gris oscuro/negro para hover */
     }
+
+
+      
+
+/* Imagenes */
+.product-image {
+    width: 100px; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* Mantiene la relación de aspecto */
+    object-fit: cover; /* Cubre el área del contenedor sin distorsionar la imagen */
+  }
+
+/* overflow */
+.overflow {
+    overflow-x:auto;
+    max-width: 100%;
+}

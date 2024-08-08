@@ -57,10 +57,12 @@ namespace GamerHub_Backend.Controllers
             return Content(base64Image, "text/plain");
         }
         
-        [HttpPost]
+        [HttpPost ("Registrar")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> AgregarProducto([FromForm] Producto producto, [FromForm] IFormFile? imagen)
         {
+            Console.WriteLine($"Producto: {producto.NombreProducto}, Precio: {producto.Precio}, Imagen: {imagen?.FileName}");
+
             try
             {
                 var categoria = await _productoRepository.VerificarCat(producto.CategoriaId);
@@ -101,6 +103,8 @@ namespace GamerHub_Backend.Controllers
                 return BadRequest("El Id de la categoría debe ser válido.");
             }
 
+            
+
             await _productoRepository.ActualizarProductoAsync(producto);
             return NoContent();
         }
@@ -112,5 +116,49 @@ namespace GamerHub_Backend.Controllers
             return NoContent();
         }
 
+        [HttpPut("actualizar")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> ActualizarProducto([FromForm] Producto producto, [FromForm] IFormFile? imagen)
+        {
+            try
+            {
+                var productoEncontrado = await _productoRepository.ObtenerPorId(producto.Id);
+                if (productoEncontrado == null)
+                {
+                    return NotFound();
+                }
+
+                if (producto.CategoriaId <= 0)
+                {
+                    return BadRequest("El Id de la categoría debe ser válido.");
+                }
+
+                var categoria = await _productoRepository.VerificarCat(producto.CategoriaId);
+                if (categoria == null)
+                {
+                    return BadRequest(new { message = "Categoria no valida" });
+                }
+
+                if (imagen != null && imagen.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await imagen.CopyToAsync(memoryStream);
+                        producto.Imagen = memoryStream.ToArray();
+                    }
+                }
+
+                producto.Categoria = null;
+                await _productoRepository.ActualizarProductoAsync(producto);
+                return Ok(new { message = "Producto actualizado" });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException?.Message ?? ex.Message);
+                return StatusCode(500, new { message = "Error al actualizar el producto.", details = ex.InnerException?.Message ?? ex.Message });
+            }
+        }
     }
 }
+
+

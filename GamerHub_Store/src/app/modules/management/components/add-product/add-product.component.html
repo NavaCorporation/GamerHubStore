@@ -1,98 +1,120 @@
-<div class="dashboard">
-<app-sidebar></app-sidebar>
-<div>
-<div class="outit">
-<div class="background">
+<div class="backgroundSecundario">
+  <div class="dashboard">
+    <app-sidebar></app-sidebar>
     <div>
-        <h1>Bienvenido a Productos
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-                <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
-            </svg>
-        </h1>
-        
-    </div>
-</div>
-
-<div class="dashboard1">
-        <h2>Añadir Productos</h2>
-        <form class="row g-3 needs-validation" [formGroup]="productoForm" (ngSubmit)="onSubmit()">
-        
-            <div class="col-md-4">
-                <label for="nombreproducto" class="form-label">Nombre de la Categoria</label>
-                <input type="text" class="form-control" formControlName="nombreproducto" placeholder="Ingrese el nombre del Producto">
-                <div class="text-danger" *ngIf="productoForm.controls['nombreproducto'].invalid && (productoForm.controls['nombreproducto'].touched || productoForm.controls['nombreproducto'].dirty || isFormSubmitted)" >
-                    <span *ngIf="productoForm.controls['nombreproducto'].errors?.['required']">El nombre es obligatorio</span>    
-                </div>
-            </div>   
+      <div class="outit">
+      <div class="background">
+        <div>
+            <h1>Bienvenido a Productos
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                </svg>
+            </h1>
             
-            <div class="col-md-4">
-                <label for="precioproducto" class="form-label">Precio</label>
-                <input type="text" class="form-control" formControlName="precioproducto" placeholder="Ingrese el precio">
-                <div class="text-danger" *ngIf="productoForm.controls['precioproducto'].invalid && (productoForm.controls['precioproducto'].touched || productoForm.controls['precioproducto'].dirty || isFormSubmitted)" >
-                    <span *ngIf="productoForm.controls['precioproducto'].errors?.['required']">El precio es obligatorio</span>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <label for="stockproducto" class="form-label">stock</label>
-                <input type="text" class="form-control" formControlName="stockproducto" placeholder="Ingrese el stockproducto">
-                <div class="text-danger" *ngIf="productoForm.controls['stockproducto'].invalid && (productoForm.controls['stockproducto'].touched || productoForm.controls['stockproducto'].dirty || isFormSubmitted)" >
-                    <span *ngIf="productoForm.controls['stockproducto'].errors?.['required']">El stock es obligatorio</span>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <label for="descripcionproducto" class="form-label">Descripcion</label>
-                <input type="text" class="form-control" formControlName="descripcionproducto" placeholder="Ingrese la descripcion">
-                <div class="text-danger" *ngIf="productoForm.controls['descripcionproducto'].invalid && (productoForm.controls['descripcionproducto'].touched || productoForm.controls['descripcionproducto'].dirty || isFormSubmitted)" >
-                    <span *ngIf="productoForm.controls['descripcionproducto'].errors?.['required']">La descripcion es obligatoria</span>    
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <label for="nombrecategoria" class="form-label" >Seleccione la Categoria</label>
-                <select class="form-select" formControlName="nombrecategoria" title="Nombre de la Categoria">
-                    <!-- <option *ngFor="let categoria of categorias" [value]="categoria.nombrecategoria">{{ categoria.nombrecategoria }}</option> -->                 
-                </select>
-            </div>
-        </form>
-        
-        <table class="table mt-4">
-            <thead>
-              <tr>
-                <th scope="col">Nombre del Producto</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-            
-            <tr *ngFor="let producto of productos; let i = index">
-                <td>{{ producto.nombreProducto }}</td>
-                <td>{{ producto.precio }}</td>
-                <td>{{ producto.imagen }}</td>
-                <td>{{ producto.categoria }}</td>
-                <td>{{ producto.stock }}</td>
-                <td>{{ producto.descripcion }}</td>
-                <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button type="button" class="btn btn-danger " title="Eliminar" (click)="deleteEvent(i)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-                      </svg></button>
-                    <button type="button" title="Editar" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                      </svg></button>
-                  </div></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
     </div>
-</div>    
 
+    <div class="dashboard1">
+        <div class="tareas cartaFondo2 bordersfino dashboard1 ">
+            <h2 class="textcoloradmin clienteh4">Añadir Productos</h2>
+            <form class="row g-3 needs-validation" [formGroup]="productoForm" (ngSubmit)="registrarOActualizar()">
+              <div class="col-md-4">
+                <label for="nombreProducto" class="form-label">Nombre del Producto</label>
+                <input type="text" class="form-control" formControlName="nombreProducto" placeholder="Ingrese el nombre del Producto" >
+                <div class="text-danger" *ngIf="productoForm.controls['nombreProducto'].invalid && (productoForm.controls['nombreProducto'].touched || productoForm.controls['nombreProducto'].dirty || isFormSubmitted)">
+                  <span *ngIf="productoForm.controls['nombreProducto'].errors?.['required']">El nombre es obligatorio</span>
+                </div>
+              </div>
+            
+              <div class="col-md-4">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" class="form-control" formControlName="precio" placeholder="Ingrese el precio" >
+                <div class="text-danger" *ngIf="productoForm.controls['precio'].invalid && (productoForm.controls['precio'].touched || productoForm.controls['precio'].dirty || isFormSubmitted)">
+                  <span *ngIf="productoForm.controls['precio'].errors?.['required']">El precio es obligatorio</span>
+                </div>
+              </div>
+            
+              <div class="col-md-4">
+                <label for="caracteristicas" class="form-label">Características</label>
+                <input type="text" class="form-control" formControlName="caracteristicas" placeholder="Ingrese las características" >
+                <div class="text-danger" *ngIf="productoForm.controls['caracteristicas'].invalid && (productoForm.controls['caracteristicas'].touched || productoForm.controls['caracteristicas'].dirty || isFormSubmitted)">
+                  <span *ngIf="productoForm.controls['caracteristicas'].errors?.['required']">Las características son obligatorias</span>
+                </div>
+              </div>
+            
+              <div class="col-md-4">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" formControlName="stock" placeholder="Ingrese el stock" >
+                <div class="text-danger" *ngIf="productoForm.controls['stock'].invalid && (productoForm.controls['stock'].touched || productoForm.controls['stock'].dirty || isFormSubmitted)">
+                  <span *ngIf="productoForm.controls['stock'].errors?.['required']">El stock es obligatorio</span>
+                </div>
+              </div>
+            
+              <div class="col-md-4">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input type="text" class="form-control" formControlName="descripcion" placeholder="Ingrese la descripción" >
+                <div class="text-danger" *ngIf="productoForm.controls['descripcion'].invalid && (productoForm.controls['descripcion'].touched || productoForm.controls['descripcion'].dirty || isFormSubmitted)">
+                  <span *ngIf="productoForm.controls['descripcion'].errors?.['required']">La descripción es obligatoria</span>
+                </div>
+              </div>
+            
+              <div class="col-md-4">
+                <label for="categoriaId" class="form-label">Categoría</label>
+                <select id="categoriaId" formControlName="categoriaId" class="form-control" >
+                  <option value="">Seleccione una categoría</option>
+                  <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombreCategoria }}</option>
+                </select>
+              </div>
+            
+              <div class="col-md-4">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="imagen" (change)="onFileChange($event)" >
+              </div>
+            
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Agregar Producto</button>
+              </div>
+            </form>
+            </div>
+            <div class="dashboard2 dashboard1 cartaFondo2 bordersfino tareas ">
+              <h2 class="textcoloradmin clienteh4">Lista de Productos</h2>
+              <br>
+            <table class="tableprimer">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                <tr *ngFor="let producto of productos; let i = index">
+                    <td>{{ producto.nombreProducto }}</td>
+                    <td>{{ producto.precio}}</td>
+                    <td><img class="product-image" title="{{producto.imagen}}" src="data:image/png;base64,{{producto.imagen}}"></td>
+                    <td>{{ producto.categoria?.nombreCategoria }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button (click)="eliminarProducto(producto.id)" type="button" class="btn btn-danger">Eliminar</button>
+                                
+                                <button  (click)="iniciarEdicion(producto)" class="btn btn-warning" type="button" >Editar</button>
+                            
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+        </div>
+  </div>    
+</div>
 
     

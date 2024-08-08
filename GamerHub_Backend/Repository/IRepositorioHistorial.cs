@@ -2,8 +2,7 @@
 
 namespace GamerHub_Backend.Repository
 {
-    public class IRepositorioHistorial
-    {
+   
         public interface IHistorialVentaRepository
         {
             Task<List<HistorialVenta>> ObtenerTodos();
@@ -12,4 +11,4 @@ namespace GamerHub_Backend.Repository
             Task<bool> EliminarPorOrdenCompra(int idOrdenCompra);
         }
     }
-}
+

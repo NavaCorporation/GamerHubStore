@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f365a9f5bf01be81d699632e1981db94a36ecf29")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89b9cbac19dbd2393d8617732aa87c4a2c4b790e")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GamerHub_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

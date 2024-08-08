@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -23,6 +24,38 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nava\\Documents\\GitHub\\GamerHubStore\\GamerHub_Backend\\Migrations\\20240807060348_V0.010.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Migrations\\20240805000310_Inicial_2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240805000310_Inicial_2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\repository\\categoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:repository\\categoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:controllers\\categoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\repository\\icategoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:repository\\icategoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\gamerhub_backend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:gamerhub_backend.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|e:\\semestre ci - 2024-2025\\desarrollo wa\\gamerhubstore\\gamerhub_backend\\repository\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8CFBC0-90B5-4670-A7CC-3F47C30AF492}|GamerHub_Backend.csproj|solutionrelative:repository\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -32,6 +65,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 3,
           "Children": [
             {
@@ -53,10 +87,27 @@
               "ViewState": "AQIAAPUAAAAAAAAAAAAlwAkBAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2024-08-07T03:51:09.18Z"
+=======
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20240805000310_Inicial_2.cs",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Migrations\\20240805000310_Inicial_2.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240805000310_Inicial_2.cs",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Migrations\\20240805000310_Inicial_2.cs",
+              "RelativeToolTip": "Migrations\\20240805000310_Inicial_2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T00:03:10.298Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+<<<<<<< Updated upstream
               "Title": "ProductosController.cs",
               "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Controllers\\ProductosController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductosController.cs",
@@ -78,10 +129,58 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-08-05T00:23:32.104Z",
+=======
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-04T23:59:53.673Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoriaController.cs",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Controllers\\CategoriaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriaController.cs",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Controllers\\CategoriaController.cs",
+              "RelativeToolTip": "Controllers\\CategoriaController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T23:00:37.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ICategoriaRepository.cs",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\ICategoriaRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\ICategoriaRepository.cs",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\ICategoriaRepository.cs",
+              "RelativeToolTip": "Repository\\ICategoriaRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T22:50:53.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoriaRepository.cs",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\CategoriaRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\CategoriaRepository.cs",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\CategoriaRepository.cs",
+              "RelativeToolTip": "Repository\\CategoriaRepository.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAcwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T22:49:55.707Z",
+>>>>>>> Stashed changes
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 4,
               "Title": "Categoria.cs",
               "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Entities\\Categoria.cs",
@@ -103,6 +202,41 @@
               "ViewState": "AQIAAB8AAAAAAAAAAAAAADUAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T00:23:10.848Z"
+=======
+              "DocumentIndex": 5,
+              "Title": "UsuarioRepository.cs",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\UsuarioRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\UsuarioRepository.cs",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\UsuarioRepository.cs",
+              "RelativeToolTip": "Repository\\UsuarioRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T15:15:38.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IProductoRepository.cs",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\IProductoRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\IProductoRepository.cs",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\Repository\\IProductoRepository.cs",
+              "RelativeToolTip": "Repository\\IProductoRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T02:03:26.076Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GamerHub_Backend.http",
+              "DocumentMoniker": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.http",
+              "RelativeDocumentMoniker": "GamerHub_Backend.http",
+              "ToolTip": "E:\\Semestre CI - 2024-2025\\Desarrollo WA\\GamerHubStore\\GamerHub_Backend\\GamerHub_Backend.http",
+              "RelativeToolTip": "GamerHub_Backend.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-07-26T21:03:52.617Z"
+>>>>>>> Stashed changes
             }
           ]
         }

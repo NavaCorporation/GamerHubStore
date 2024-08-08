@@ -83,25 +83,32 @@ namespace GamerHub_Backend.Controllers
             return Ok(user);
         }
 
-        [HttpPut("update")]
-        public async Task<IActionResult> ModificarUsuario([FromBody] Usuario usuario)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ModificarUsuario(int id, [FromBody] Usuario usuario)
         {
-            try
+            if (id != usuario.Id)
             {
-                var usuarioExistente = await _usuarioRepository.ModificarUsuario(usuario);
-                if (usuarioExistente == null)
-                {
-                    return NotFound(new { message = "Usuario no encontrado." });
-                }
-                return Ok(new { message = "Usuario actualizado exitosamente." });
+                return BadRequest("ID del usuario no coincide.");
             }
-            catch (Exception ex)
+
+            var usuarioExistente = await _usuarioRepository.ObtenerPorId(id);
+            if (usuarioExistente == null)
             {
-                Console.WriteLine(ex.InnerException?.Message ?? ex.Message);
-                return StatusCode(500, new { message = "Error al actualizar el usuario.", details = ex.InnerException?.Message ?? ex.Message });
+                return NotFound();
             }
+
+            // Puedes actualizar solo los campos permitidos
+            usuario.Id = id; // Asegúrate de que el ID coincida
+            var resultado = await _usuarioRepository.ModificarUsuario(usuario);
+
+            if (resultado == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(resultado);
         }
-        
+
         [HttpPut("update-photo/{id}")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> ModificarFoto(int id, [FromForm] IFormFile profilePicture)

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
 import { HistorialCompraService } from '../../service/historial-compra.service';
 import { DevolucionService } from '../../service/devolucion.service';
+import { environment } from '../../../../../environments/environment';
 @Component({
   selector: 'app-purchase-history',
   standalone: true,
@@ -19,7 +20,7 @@ export class PurchaseHistoryComponent implements OnInit {
   
   filteredPurchases = [...this.purchases];
   devoluciones: any[] = [];
-  apiUrl = 'http://localhost:4200/historial';
+  apiUrl = environment.endpoint;
   constructor(private fb: FormBuilder, private http: HttpClient,private HistorialCompraService: HistorialCompraService, private DevolucionService:DevolucionService ) {
     this.devolucionForm = this.fb.group({
       numeroFactura: ['', Validators.required],

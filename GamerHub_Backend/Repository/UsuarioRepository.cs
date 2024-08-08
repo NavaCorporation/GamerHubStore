@@ -46,12 +46,19 @@ namespace GamerHub_Backend.Repository
             var usuarioExistente = await _dbContext.Usuarios.FindAsync(usuario.Id);
             if (usuarioExistente != null)
             {
-                _dbContext.Entry(usuarioExistente).CurrentValues.SetValues(usuario);
+                
+                usuarioExistente.Nombre = usuario.Nombre;
+                usuarioExistente.Apellido = usuario.Apellido;
+                usuarioExistente.Correo = usuario.Correo;
+                usuarioExistente.Telefono = usuario.Telefono;
+              
                 await _dbContext.SaveChangesAsync();
                 return usuarioExistente;
             }
             return null;
         }
+
+
 
         public async Task<Usuario?> ModificarFoto(int id, byte[] nuevaFoto)
         {

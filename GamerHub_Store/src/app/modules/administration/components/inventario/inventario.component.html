@@ -1,4 +1,9 @@
-<div class="container mt-5">
+<div class="containerTodo">
+
+  <app-sidebar class="sidebar"></app-sidebar>
+
+<div class="container">
+  <app-sidebar></app-sidebar>
   <h1>Inventario</h1>
 
   <form [formGroup]="formularioProducto" (ngSubmit)="crearProducto()">
@@ -76,4 +81,5 @@
     }
     </tbody>
   </table>
+</div>
 </div>

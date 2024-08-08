@@ -6,11 +6,12 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Producto } from '../../../../interface/Producto';
 import { Categoria } from '../../../../interface/Categoria';
 import { CategoriasService } from '../services/categorias.service';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-inventario',
   standalone: true,
-  imports: [RouterLink,ReactiveFormsModule,RouterModule],
+  imports: [RouterLink,ReactiveFormsModule,RouterModule, SidebarComponent],
   templateUrl: './inventario.component.html',
   styleUrl: './inventario.component.css'
 })

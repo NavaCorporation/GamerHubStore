@@ -1,27 +1,37 @@
-<!-- reportes-detallados.component.html -->
+<div class="containerTodo">
 
-<h1>Reportes-detallados</h1>
-<button class="btn btn-secondary mb-4" (click)="goBack()">Back</button> <!-- Botón de regreso -->
+  <app-sidebar class="sidebar"></app-sidebar>
 
-<table class="table table-striped">
-    <thead>
+<div class="container mt-3 ">
+    <h1>Reporte de Productos</h1>
+  
+    <!-- Tabla de productos -->
+    <table class="table table-striped">
+      <thead>
         <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Características</th>
+          <th>Descripción</th>
+          <th>Stock</th>
+          <th>Categoría</th>
         </tr>
-    </thead>
-    <tbody>
-        @for (reporte of reportes; track reporte) {
-        <tr>
-            <td>{{ reporte.id }}</td>
-            <td>{{ reporte.title }}</td>
-            <td>{{ reporte.description }}</td>
-            <td>
-                <button class="btn btn-danger btn-sm" (click)="eliminarReporte(reporte.id)">Eliminar</button>
-            </td>
+      </thead>
+      <tbody>
+        <!-- Aquí se generarán las filas de la tablaaa -->
+         @for(producto of listadoProductor; track producto){
+        <tr >
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombreProducto }}</td>
+          <td>{{ producto.precio }}</td>
+          <td>{{ producto.caracteristicas }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>{{ producto.categoria?.nombreCategoria}}</td>
         </tr>
-        }
-    </tbody>
-</table>
+      }
+      </tbody>
+    </table>
+  </div>
+</div>

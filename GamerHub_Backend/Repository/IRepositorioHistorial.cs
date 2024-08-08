@@ -3,8 +3,7 @@
 namespace GamerHub_Backend.Repository
 {
    
-        public interface IHistorialVentaRepository
-        {
+        public interface IRepositorioHistorial { 
             Task<List<HistorialVenta>> ObtenerTodos();
             Task<HistorialVenta?> ObtenerPorFecha(DateTime fecha);
             Task<HistorialVenta?> ObtenerPorOrdenCompra(int idOrdenCompra);

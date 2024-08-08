@@ -6,6 +6,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ProductServicesService } from '../../services/products/product-services.service';
 import { Categoria } from '../../../../interface/Categoria';
 import { FormsModule } from '@angular/forms';
+import { CarritoComponent } from '../carrito/carrito.component';
+import { CarritopruebaService } from '../../services/carritoprueba/carritoprueba.service';
 
 @Component({
     selector: 'app-productos',
@@ -40,10 +42,12 @@ export class ProductosComponent implements OnInit {
   }
   
 
-  constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer) {
+  constructor (private carritopruebaservice: CarritopruebaService,private productService: ProductServicesService, private sanitizer: DomSanitizer) {
     this.defaultImage = this.sanitizer.bypassSecurityTrustUrl('assets/img/noImagenP.jpg');
     this.noProductsImage = this.sanitizer.bypassSecurityTrustUrl('assets/img/error404.avif');
   }
+
+  
   ngOnInit(): void {
     this.loadProductos();
     this.loadCategorias();
@@ -155,4 +159,12 @@ export class ProductosComponent implements OnInit {
     // Mostrar mensaje flotante
     this.addToCart();
   }
+
+  agregarProductoAlCarrito(producto: Producto) {
+    this.carritopruebaservice.agregarProductoalCarrito(producto);
+
+    // Mostrar mensaje flotante
+    this.addToCart();
+  };
 }
+

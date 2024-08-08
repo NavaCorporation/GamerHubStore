@@ -84,6 +84,13 @@
         <input type="text" id="searchName" class="form-control" [(ngModel)]="searchName" (input)="filtrarProductos()"
           placeholder="Buscar producto...">
       </div>
+  <!-- Filtro por precio -->
+  <div class="row mb-3 text-center">
+    <label for="priceRange" class="form-label">Filtrar por precio:</label>
+    <input placeholder="0" type="range" id="priceRangeMin" [(ngModel)]="minPrice" [min]="0" [max]="maxPrice" (change)="filtrarProductos()">
+    <input placeholder="1000" type="range" id="priceRangeMax" [(ngModel)]="maxPrice" [min]="0" [max]="1000" (change)="filtrarProductos()">
+    <div>
+      Precio: {{ minPrice }} - {{ maxPrice }}
     </div>
   </div>
 
@@ -118,10 +125,7 @@
               </ul>
               <button type="button" class="w-75 btn-save btn-min-size" data-bs-toggle="modal" [attr.data-bs-target]="'#modalProducto' + producto.id">Mostrar Detalles</button>
               <br><br>
-
-              <button type="button" class="w-75 btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
-
-              <button (click)="agregarProducto(producto)">Añadir al carrito</button>
+              <button  class="w-75 btn-edit btn-min-size" type="button" (click)="agregarProductoAlCarrito(producto)">Añadir al carrito</button>
 
 
             </div>

@@ -52,6 +52,6 @@ export class InventarioService {
 
 
   crearProducto(formData: FormData): Observable<Producto> {
-    return this.http.post<Producto>(`${this.myAppUrl}${this.myApiUrl}`, formData);
+    return this.http.post<Producto>(`${this.myAppUrl}${this.myApiUrl}/registrar`, formData);
   }
 }

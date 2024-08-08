@@ -1,5 +1,5 @@
-<div class="notification-icon d-flex justify-content-end" (click)="toggleNotifications()">
-    <i class="bi bi-bell" style="margin-right: 10px;"></i>
+<div class="notification-icon d-flex justify-content-end" (click)="toggleNotifications()"(click)="shakeBell()">
+    <i #bellIcon class="bi bi-bell" style="margin-right: 10px;"></i>
     @if (unreadNotificationsCount > 0){
         <span class="badge bg-danger">{{ unreadNotificationsCount }}</span>
     }
@@ -37,8 +37,8 @@
         }
     </div>
     @if (notifications.length === 0){
-        <div class="notification-panel">
-            <p> Sin notificaciones :D</p>
+        <div class="notification-panel" >
+            <p style="text-align: center;"> Sin notificaciones :D</p>
         </div>
     }
 }

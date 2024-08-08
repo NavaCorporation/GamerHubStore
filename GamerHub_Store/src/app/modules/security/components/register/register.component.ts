@@ -112,6 +112,14 @@ export class RegisterComponent implements OnInit {
       }
 
     }
+    resetRegisterForm(): void {
+      this.profilePicturePreview = null;
+      this.registerForm.reset();
+      const input = document.getElementById('profilePicture') as HTMLInputElement;
+      if (input) {
+        input.value = '';
+      }
+    }
     triggerFileInput(): void {
       const input = document.getElementById('profilePicture') as HTMLInputElement;
       input.click();

@@ -39,7 +39,7 @@
                     }
                 } @else {
                     <div class="mb-3 text-center">
-                        <app-register></app-register>
+                        <app-register (registrationSuccess)="onRegistrationSuccess()"></app-register>
                     </div>
                 }
             </div>

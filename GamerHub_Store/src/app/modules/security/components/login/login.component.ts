@@ -75,5 +75,8 @@ export class LoginComponent implements OnInit {
   hasNotification(): boolean {
     return this.notificationService.hasNotifications();
   }
+  onRegistrationSuccess(): void {
+    this.showLogin = true;
+  }
 
 }

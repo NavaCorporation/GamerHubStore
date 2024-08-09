@@ -67,7 +67,11 @@
 
         </div>
     </div>
-    <button type="submit" [disabled]="!registerForm.valid"  class="btn btn-primary">Registrate</button>
+    <div class="d-flex justify-content-between  mx-3">
+        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary me-5">Registrar</button>
+        <button type="button" (click)="resetRegisterForm()" class="btn btn-secondary ms-5">Limpiar</button>
+    </div>
+    
 </form>
 <!-- Componente de alerta -->
 <app-alerta></app-alerta>

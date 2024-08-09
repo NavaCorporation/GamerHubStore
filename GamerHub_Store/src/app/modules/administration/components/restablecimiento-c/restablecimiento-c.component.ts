@@ -3,12 +3,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AutenticacionService } from '../services/autenticacion.service';
 import { Router } from '@angular/router';
 import { RecuperarService } from '../services/recuperar.service';
-import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-restablecimiento-c',
   standalone: true,
-  imports: [ReactiveFormsModule, SidebarComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './restablecimiento-c.component.html',
   styleUrl: './restablecimiento-c.component.css'
 })

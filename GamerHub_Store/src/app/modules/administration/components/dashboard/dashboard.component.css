@@ -4,6 +4,7 @@
 
 .sidebar {
     width: 250px;
+    background-color: hsl(210, 10%, 23%);
     color: white;
     position: fixed;
     height: 100%;
@@ -19,12 +20,14 @@
 }
 
 .card-header {
-    background-color: #273C75; /* Gris */
+    background-color: #6c757d; /* Gris */
     color: #ffffff; /* Texto blanco */
     border-radius: 8px; /* Borde redondeado */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .card-header img {
@@ -39,6 +42,7 @@
     color: #333333; /* Texto gris oscuro */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
 }
 
 .card-title {
@@ -46,7 +50,7 @@
 }
 
 .btn-primary {
-    background-color: #273C75; /* Gris */
+    background-color: #6c757d; /* Gris */
     color: #ffffff; /* Texto blanco */
     border-color: #6c757d; /* Borde del mismo color que el fondo */
 }

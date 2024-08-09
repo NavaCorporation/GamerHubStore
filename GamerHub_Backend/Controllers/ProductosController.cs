@@ -56,8 +56,8 @@ namespace GamerHub_Backend.Controllers
             string base64Image = Convert.ToBase64String(producto.Imagen);
             return Content(base64Image, "text/plain");
         }
-        
-        [HttpPost ("Registrar")]
+
+        [HttpPost("Registrar")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> AgregarProducto([FromForm] Producto producto, [FromForm] IFormFile? imagen)
         {
@@ -81,7 +81,7 @@ namespace GamerHub_Backend.Controllers
 
                 producto.Categoria = null;
                 await _productoRepository.AgregarProductoAsync(producto);
-                return Ok(new {message = "Producto registrado" } );
+                return Ok(new { message = "Producto registrado" });
             }
             catch (Exception ex)
             {
@@ -89,7 +89,7 @@ namespace GamerHub_Backend.Controllers
                 return StatusCode(500, new { message = "Error al agregar el producto.", details = ex.InnerException?.Message ?? ex.Message });
             }
         }
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> ActualizarProducto(int id, Producto producto)
         {
@@ -103,7 +103,7 @@ namespace GamerHub_Backend.Controllers
                 return BadRequest("El Id de la categoría debe ser válido.");
             }
 
-            
+
 
             await _productoRepository.ActualizarProductoAsync(producto);
             return NoContent();
@@ -116,16 +116,16 @@ namespace GamerHub_Backend.Controllers
             return NoContent();
         }
 
-        [HttpPut("actualizar")]
+        [HttpPut("actualizar/{id}")]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> ActualizarProducto([FromForm] Producto producto, [FromForm] IFormFile? imagen)
+        public async Task<IActionResult> ActualizarProducto(int id, [FromForm] Producto producto, [FromForm] IFormFile? imagen)
         {
             try
             {
-                var productoEncontrado = await _productoRepository.ObtenerPorId(producto.Id);
+                var productoEncontrado = await _productoRepository.ObtenerPorId(id);
                 if (productoEncontrado == null)
                 {
-                    return NotFound();
+                    return NotFound(new { message = "Producto no encontrado" });
                 }
 
                 if (producto.CategoriaId <= 0)
@@ -144,12 +144,19 @@ namespace GamerHub_Backend.Controllers
                     using (var memoryStream = new MemoryStream())
                     {
                         await imagen.CopyToAsync(memoryStream);
-                        producto.Imagen = memoryStream.ToArray();
+                        productoEncontrado.Imagen = memoryStream.ToArray();  // Actualizar imagen
                     }
                 }
 
-                producto.Categoria = null;
-                await _productoRepository.ActualizarProductoAsync(producto);
+                // Actualizar otros campos del producto
+                productoEncontrado.NombreProducto = producto.NombreProducto;
+                productoEncontrado.Precio = producto.Precio;
+                productoEncontrado.Caracteristicas = producto.Caracteristicas;
+                productoEncontrado.Descripcion = producto.Descripcion;
+                productoEncontrado.Stock = producto.Stock;
+                productoEncontrado.CategoriaId = producto.CategoriaId;
+
+                await _productoRepository.ActualizarProductoAsync(productoEncontrado);
                 return Ok(new { message = "Producto actualizado" });
             }
             catch (Exception ex)
@@ -158,10 +165,9 @@ namespace GamerHub_Backend.Controllers
                 return StatusCode(500, new { message = "Error al actualizar el producto.", details = ex.InnerException?.Message ?? ex.Message });
             }
         }
+
+
+
     }
-
-    
-
 }
-
 

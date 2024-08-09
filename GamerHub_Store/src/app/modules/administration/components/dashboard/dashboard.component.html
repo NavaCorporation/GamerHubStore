@@ -4,39 +4,34 @@
     <app-sidebar class="sidebar"></app-sidebar>
 
     <div class="content">
-        <div class=" d-flex justify-content-center">
-            <!-- Aquí puedes agregar una imagen en lugar del texto -->
-            <img src="../../../../../assets/img/logoAdmi.png" alt="Foto de perfil"
-                style="border-radius: 50px; margin-top: 10px;">
-            <!-- También puedes añadir un texto alternativo -->
-        </div>
-
-        <div class="container mt-5">
+       
+             
+        <div class="container mt-5 ">
             <!-- <h1 class="mb-4">Dashboard</h1>--->
             <div class="col-md-9 mx-auto backgroundSecundario">
-                <div class="card mb-3">
-                    <div class="card-header">
+                <div class="card mb-3 ">
+                    <div class="card-header backgroundSecundario  cartaFondo2 bordersfino ">
                         Ventas
                     </div>
                     <div class="card-body backgroundSecundario">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="card text-center mb-3">
-                                    <div class="card-header">
+                            <div class="col-md-6   ">
+                                <div class="card text-center mb-3   " >
+                                    <div class="card-header backgroundSecundario ">
                                         Ventas Totales
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body  backgroundSecundario ">
                                         <h2 class="card-title">{{ sales.totalSales }}/{{ sales.targetSales }}</h2>
                                         <p class="card-text">Meta: {{ sales.targetSales }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="card text-center mb-3">
-                                    <div class="card-header">
+                                <div class="card text-center mb-3 ">
+                                    <div class="card-header backgroundSecundario">
                                         Producto Más Vendido
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body backgroundSecundario">
                                         <h3 class="card-title">{{ sales.topProduct }}</h3>
                                         <p class="card-text">Vendido por: {{ sales.topSeller }}</p>
                                     </div>
@@ -47,17 +42,17 @@
                 </div>
 
                 <div class="card mb-3 mt-5">
-                    <div class="card-header">
+                    <div class="card-header backgroundSecundario">
                         Gestionar Tareas
                     </div>
                     <div class="card-body backgroundSecundario">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="card text-center mb-3">
-                                    <div class="card-header">
+                                <div class="card text-center mb-3 ">
+                                    <div class="card-header backgroundSecundario">
                                         Inventario
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body backgroundSecundario">
                                         <p class="card-text">Gestionar inventario.</p>
                                         <a href="/inventario" class="btn btn-primary">Ver Inventario</a>
                                     </div>
@@ -67,23 +62,23 @@
                     
 
                             <div class="col-md-6">
-                                <div class="card text-center mb-3">
-                                    <div class="card-header">
+                                <div class="card text-center mb-3  backgroundSecundario">
+                                    <div class="card-header backgroundSecundario">
                                         Reportes
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body backgroundSecundario">
                                         <p class="card-text">Ver reportes..</p>
                                         <a href="/reporte" class="btn btn-primary">Ver Reporte</a>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="card text-center mb-3">
-                                    <div class="card-header">
+                            <div class="col-md-6 ">
+                                <div class="card text-center mb-3 backgroundSecundario">
+                                    <div class="card-header backgroundSecundario">
                                         Restablecer Contraseña
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body backgroundSecundario">
                                         <p class="card-text">Gestionar restablecimiento de contraseñas.</p>
                                         <a routerLink="/restablecimiento-c" class="btn btn-primary">Restablecer
                                             Contraseña</a>

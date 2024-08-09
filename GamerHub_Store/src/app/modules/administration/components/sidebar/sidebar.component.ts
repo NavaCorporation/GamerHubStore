@@ -1,7 +1,7 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AutenticacionService } from '../services/autenticacion.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Usuario } from '../../../../interface/Usuario';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
@@ -12,7 +12,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
     standalone: true,
     templateUrl: './sidebar.component.html',
     styleUrl: './sidebar.component.css',
-    imports: []
+    imports: [RouterLink]
 })
 export class SidebarComponent  implements OnInit {
   

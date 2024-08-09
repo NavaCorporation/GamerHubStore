@@ -3,20 +3,22 @@
     <app-encabezado-compras></app-encabezado-compras>
     <main>
       <div class="dashboard2 container content-container">
-        <div class="left box-primary" style="padding-left: 120px;">
-          <div *ngIf="fotoPerfilBase64">
-            <img class="image" [src]="fotoPerfilBase64" alt="Foto de Perfil">
+        <div class="profile-section">
+          <div class="left box-primary">
+            <div *ngIf="fotoPerfilBase64" class="profile-photo">
+              <img style="margin-left: 20px;"class="image" [src]="fotoPerfilBase64" alt="Foto de Perfil">
+            </div>
+            <h3 class="username text-center">{{ profileForm.value.firstName }} {{ profileForm.value.lastName }}</h3>
+          
+            <!-- Input oculto para seleccionar la foto -->
+            <input type="file" id="inputFoto" accept="image/*" style="display: none" (change)="onFileSelected($event)" #fileInput />
+          
+            <!-- Botón para abrir el selector de archivos -->
+            <button style="margin-right: 15px;" (click)="onEditPhotoClick()" class="btn-primary btn btn-min-size">Editar Foto</button>
+          
+            <!-- Botón para guardar la foto seleccionada -->
+            <button (click)="onSavePhoto()" class="btn-primary btn btn-min-size">Guardar Foto</button>
           </div>
-          <h3 class="username text-center">{{ profileForm.value.firstName }} {{ profileForm.value.lastName }}</h3>
-        
-          <!-- Input oculto para seleccionar la foto -->
-          <input type="file" id="inputFoto" accept="image/*" style="display: none" (change)="onFileSelected($event)" #fileInput />
-        
-          <!-- Botón para abrir el selector de archivos -->
-          <button (click)="onEditPhotoClick()" class="btn-primary btn btn-min-size text-center">Editar Foto</button>
-        
-          <!-- Botón para guardar la foto seleccionada -->
-          <button (click)="onSavePhoto()" class="btn btn-primary">Guardar Foto</button>
         </div>
         <div class="right tab-content">
           <form [formGroup]="profileForm" class="form-horizontal">
@@ -46,7 +48,7 @@
             </div>
             <hr>
             <div class="formgroup">
-              <div class="col-sm-offset-2 col-sm-10">
+              <div class="col-sm-offset-2 col-sm-10 buttons">
                 <button type="button" class="btn-edit btn-min-size" (click)="toggleEdit()" *ngIf="!isEditing">Editar Perfil</button>
                 <button type="button" class="btn-cancel btn-min-size" (click)="toggleEdit()" *ngIf="isEditing">Cancelar</button>
                 <button type="button" class="btn-save btn-min-size" (click)="saveChanges()" [disabled]="!profileForm.valid || !isEditing">Guardar Cambios</button>

@@ -61,21 +61,20 @@
       </div>
 
       <!-- Filtro por precio -->
-      <div class="col-md-4 mb-3 d-flex flex-column align-items-center ">
-        <label for="priceRange" class="form-label">
-          <i class="bi bi-cash-stack"></i> Filtrar por precio:
+      <div class="col-md-4 mb-3 d-flex flex-column align-items-center filter-box">
+        <label for="priceRange" class="form-label price-label">
+            <i class="bi bi-cash-stack"></i> Filtrar por precio:
         </label>
-        <div id="priceRange">
-          <input type="range" id="priceRangeMin" class="custom-range" [(ngModel)]="minPrice" [min]="0" [max]="maxPrice"
-            (input)="filtrarProductos()">
-          <input type="range" id="priceRangeMax" class="custom-range" [(ngModel)]="maxPrice" [min]="minPrice"
-            [max]="1000" (input)="filtrarProductos()">
+        <div id="priceRange" class="range-container">
+            <input type="range" id="priceRangeMin" class="custom-range range-slider" [(ngModel)]="minPrice" [min]="0" [max]="maxPrice"
+                (input)="filtrarProductos()">
+            <input type="range" id="priceRangeMax" class="custom-range range-slider" [(ngModel)]="maxPrice" [min]="minPrice"
+                [max]="1000" (input)="filtrarProductos()">
         </div>
         <div class="range-value mt-2">
-          Precio: {{ minPrice }} - {{ maxPrice }}
+            Precio: <span class="price-value">{{ minPrice }}</span> - <span class="price-value">{{ maxPrice }}</span>
         </div>
-      </div>
-
+    </div>
       <!-- Filtro por nombre -->
       <div class="col-md-4 mb-3 d-flex flex-column align-items-cente">
         <label for="searchName" class="form-label">
@@ -84,15 +83,7 @@
         <input type="text" id="searchName" class="form-control" [(ngModel)]="searchName" (input)="filtrarProductos()"
           placeholder="Buscar producto...">
       </div>
-  <!-- Filtro por precio -->
-  <div class="row mb-3 text-center">
-    <label for="priceRange" class="form-label">Filtrar por precio:</label>
-    <input placeholder="0" type="range" id="priceRangeMin" [(ngModel)]="minPrice" [min]="0" [max]="maxPrice" (change)="filtrarProductos()">
-    <input placeholder="1000" type="range" id="priceRangeMax" [(ngModel)]="maxPrice" [min]="0" [max]="1000" (change)="filtrarProductos()">
-    <div>
-      Precio: {{ minPrice }} - {{ maxPrice }}
-    </div>
-  </div>
+  
 
 
   <!-- Productos -->

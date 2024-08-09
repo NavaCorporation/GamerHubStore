@@ -143,10 +143,12 @@ export class ProductosComponent implements OnInit {
     return this.productosFiltrados.length === 0;
   }
   
+  //agregar2 e importar output y eventemitter
+  @Output() añadirAlCarrito = new EventEmitter<Producto>();
 
-
-
-
+  agregarProducto(producto: Producto) {
+    // Emitir el evento para agregar al carrito
+    this.añadirAlCarrito.emit(producto);
 
     // Mostrar mensaje flotante
     this.addToCart();
@@ -157,6 +159,5 @@ export class ProductosComponent implements OnInit {
 
     // Mostrar mensaje flotante
     this.addToCart();
-  };
+  };
 }
-

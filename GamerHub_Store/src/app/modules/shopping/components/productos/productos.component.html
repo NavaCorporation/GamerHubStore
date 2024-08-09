@@ -105,7 +105,7 @@
               </ul>
               <button type="button" class="w-75 btn-save btn-min-size" data-bs-toggle="modal" [attr.data-bs-target]="'#modalProducto' + producto.id">Mostrar Detalles</button>
               <br><br>
-              <button (click)="agregarProducto(producto)">Añadir al carrito</button>
+              <button type="button" class="w-75 btn-edit btn-min-size" (click)="addToCart()">Añadir al carrito</button>
 
             </div>
           </div>

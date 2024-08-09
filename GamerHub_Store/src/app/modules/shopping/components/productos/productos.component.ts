@@ -6,6 +6,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ProductServicesService } from '../../services/products/product-services.service';
 import { Categoria } from '../../../../interface/Categoria';
 import { FormsModule } from '@angular/forms';
+import { CarritoService } from '../../services/carrito/carrito.service';
 
 @Component({
     selector: 'app-productos',
@@ -32,15 +33,10 @@ export class ProductosComponent implements OnInit {
   defaultImage: SafeUrl;
   noProductsImage: SafeUrl;
   
-  //agregar
-  producto ={
-    nombreProducto: "",
-    precio: 0,
-    descripcion: "",
-  }
   
 
-  constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer) {
+  constructor (private productService: ProductServicesService, private sanitizer: DomSanitizer, 
+                                      private carritoService: CarritoService) {
     this.defaultImage = this.sanitizer.bypassSecurityTrustUrl('assets/img/noImagenP.jpg');
     this.noProductsImage = this.sanitizer.bypassSecurityTrustUrl('assets/img/error404.avif');
   }
@@ -145,14 +141,9 @@ export class ProductosComponent implements OnInit {
     return this.productosFiltrados.length === 0;
   }
   
-  //agregar2 e importar output y eventemitter
-  @Output() añadirAlCarrito = new EventEmitter<Producto>();
 
-  agregarProducto(producto: Producto) {
-    // Emitir el evento para agregar al carrito
-    this.añadirAlCarrito.emit(producto);
 
-    // Mostrar mensaje flotante
-    this.addToCart();
-  }
+
+
+
 }

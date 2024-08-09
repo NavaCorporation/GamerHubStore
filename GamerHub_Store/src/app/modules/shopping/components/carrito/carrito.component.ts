@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-compras.component";
 import {Producto} from '../../../../interface/Producto';
 import { CommonModule } from '@angular/common';
+import { CarritoService } from '../../services/carrito/carrito.service';
+import {ElementRef, OnInit, Renderer2} from '@angular/core';
 
 @Component({
     selector: 'app-carrito',
@@ -12,17 +14,5 @@ import { CommonModule } from '@angular/common';
 })
 
 export class CarritoComponent {
-
-  productos: { nombreProducto: string; precio: number;}[] = [];
-  total = 0;
-  iva = 0.12;
-
-  agregarProductoAlCarrito(producto: Producto) {
-    this.productos.push(producto);
-    this.total += producto.precio;
-  }
-
-  calcularTotalConIva(): number {
-    return this.total * (1 + this.iva);
-  }
+    
 }

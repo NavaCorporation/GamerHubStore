@@ -32,7 +32,7 @@ export class ReporteComponent implements OnInit {
         this.listadoProductor = data;
       },
       error: error => {
-        console.error('Error al obtener los productos:', error);
+        console.error('Error al obtener los productoss:', error);
         alert('Ocurrió un error al obtener los productos.');
       }
     });

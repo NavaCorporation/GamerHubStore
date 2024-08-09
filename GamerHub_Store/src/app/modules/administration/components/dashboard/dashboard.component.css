@@ -20,7 +20,7 @@
 }
 
 .card-header {
-    background-color: #6c757d; /* Gris */
+    background-color: #1B2953; /* Gris */
     color: #ffffff; /* Texto blanco */
     border-radius: 8px; /* Borde redondeado */
     display: flex;
@@ -50,7 +50,7 @@
 }
 
 .btn-primary {
-    background-color: #6c757d; /* Gris */
+    background-color: #1B2953; /* Gris */
     color: #ffffff; /* Texto blanco */
     border-color: #6c757d; /* Borde del mismo color que el fondo */
 }

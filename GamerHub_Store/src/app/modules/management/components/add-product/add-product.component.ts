@@ -92,6 +92,7 @@ export class AddProductoComponent implements OnInit {
             this.isFormSubmitted = false;
             this.editingProductId = null;
             alert('Producto actualizado exitosamente');
+            window.location.reload();
           },
           error => {
             console.error('Error al actualizar el producto:', error);

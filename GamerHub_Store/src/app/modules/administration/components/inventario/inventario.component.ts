@@ -90,41 +90,9 @@ export class InventarioComponent {
   }
 
   
-  crearProducto(): void {
-    if (this.formularioProducto.valid ) {
-      const formData = new FormData();
-      formData.append('nombreProducto', this.formularioProducto.get('nombreProducto')?.value);
-      formData.append('precio', this.formularioProducto.get('precio')?.value);
-      formData.append('caracteristicas', this.formularioProducto.get('caracteristicas')?.value);
-      formData.append('descripcion', this.formularioProducto.get('descripcion')?.value);
-      formData.append('stock', this.formularioProducto.get('stock')?.value);
-      
-      // Asegúrate de que `categoria` sea un ID o la estructura correcta esperada por la API
-      const categoriaId = this.formularioProducto.get('categoria')?.value;
-      formData.append('categoriaId', categoriaId); 
-  
-      this._productoService.crearProducto(formData).subscribe({
-        next: () => {
-          alert('Producto creado con éxito');
-          this.obtenerProducto();
-          this.formularioProducto.reset();
-         
-        },
-        error: error => {
-          console.error('Error al crear el producto:', error);
-          alert('Error al crear el producto: ' + error.error?.message || 'Verifica los datos e intenta nuevamente.');
-        }
-      });
-    } else {
-      alert('Por favor, complete todos los campos requeridos');
-    }
-  }
-  
-
- 
-  
 
   
+
 
 }
 

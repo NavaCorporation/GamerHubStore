@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
 import { CommonModule } from '@angular/common';
 import { OnInit, EventEmitter, Output } from '@angular/core';
@@ -23,9 +23,14 @@ export class ClientComponent implements OnInit {
   showSuccessMessage: boolean = false;
   currentUser:Usuario|null=null;
   profileImage: SafeUrl | string = 'assets/img/fotoPerfil.jpg';
+  usuario : Usuario = {} as Usuario;
+  fotoPerfilBase64: string | undefined;
+  selectedFile: File | null = null;
+  @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement> | undefined;
+
   
   constructor(private fb: FormBuilder,
-    private clienteService: ClienteServiceService,
+    public clienteService: ClienteServiceService,
     private UserService : UserService ,
     private authService: AuthenticationService,private sanitizer:DomSanitizer, private Router:Router,userService :UserService ) { 
     this.profileForm = this.fb.group({
@@ -33,37 +38,59 @@ export class ClientComponent implements OnInit {
       lastName: [{ value: '', disabled: true }],
       email: [{ value: '', disabled: true }],
       phoneNumber: [{ value: '', disabled: true }],
-      //address: [{ value: '', disabled: true }]
     });
   }
   
   ngOnInit(): void {
+    this.loadUserData();
+    this.clienteService.getFotoPerfil().subscribe(
+      (base64Image: string) => {
+        this.fotoPerfilBase64 = `data:image/jpeg;base64,${base64Image}`;
+      },
+      error => {
+        console.error('Error al obtener la foto de perfil', error);
+      }
+    );
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
       if (this.currentUser && this.currentUser.id !== undefined) {
-       // this.loadProfileImage(this.currentUser.id);
-       // this.loadUserData();
       }
     });
   }
-/* loadUserData(): void {
-    const currentUser = this.authService.currentUserValue;
-    if (currentUser) {
-      this.clienteService.getUser(currentUser.id).subscribe(data => {
-        this.profileForm.patchValue({
-          firstName: data.nombre,
-          lastName: data.apellido,
-          email: data.correo,
-          phoneNumber: data.telefono,
-         // address: data.direccion // Asegúrate de que esta propiedad existe y es correcta
-        });
   
-        if (data.fotoProfile) {
-          this.userProfilePicture = 'data:image/jpeg;base64,' + data.fotoProfile;
+
+  loadUserData(): void {
+    this.authService.currentUser.subscribe(
+      (currentUser: Usuario | null) => {
+        if (currentUser && currentUser.id) {
+          this.clienteService.getUser(currentUser.id).subscribe(
+            (user: Usuario) => {
+              this.usuario = user;
+              
+              this.profileForm.patchValue({
+                id: user.id,
+                image: user.fotoProfile,
+                firstName: user.nombre,
+                lastName: user.apellido,
+                email: user.correo,
+                phoneNumber: user.telefono
+              });
+
+              this.profileImage = user.fotoProfile;
+            },
+            (error) => {
+              console.error('Error al cargar los datos del usuario:', error);
+            }
+          );
         }
-      });
-    }
-  }*/
+      },
+      (error) => {
+        console.error('Error al obtener el usuario autenticado:', error);
+      }
+    );
+  }
+
+
   toggleEdit(): void {
     this.isEditing = !this.isEditing;
     if (this.isEditing) {
@@ -73,50 +100,66 @@ export class ClientComponent implements OnInit {
     }
   }
 
- saveChanges(): void {
+  saveChanges(): void {
     if (this.profileForm.valid) {
       const updatedUser: Usuario = {
-        id: this.authService.currentUserValue?.id,
+        ...this.usuario,
         nombre: this.profileForm.value.firstName,
         apellido: this.profileForm.value.lastName,
         correo: this.profileForm.value.email,
-        telefono: this.profileForm.value.phoneNumber,
-        nombreUsuario: '',
-        contrasena: '',
-        estado: '',
-       fotoProfile: null!,
-        rolId: 0
+        telefono: this.profileForm.value.phoneNumber
       };
-  
-      this.clienteService.updateUser(updatedUser).subscribe(() => {
-        this.showSuccessMessage = true;
-        setTimeout(() => {
-          this.showSuccessMessage = false;
-        }, 3000);
-        this.toggleEdit();
-      });
+
+      this.clienteService.updateUserProfile(updatedUser).subscribe(
+        response => {
+          console.log('Perfil actualizado con éxito', response);
+          this.isEditing = false; // Desactivar el modo de edición
+        },
+        error => {
+          console.error('Error al actualizar el perfil', error);
+        }
+      );
+    } else {
+      console.warn('El formulario no es válido');
     }
   }
 
   onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
+    const file = event.target.files[0];
     if (file) {
+      this.selectedFile = file;
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.userProfilePicture = e.target.result;
+        this.fotoPerfilBase64 = e.target.result;
       };
-      reader.readAsDataURL(file);
-    //  this.UserService.getFotoPerfil(this.authService.currentUserValue?.id!, file).subscribe();
+      reader.readAsDataURL(file); // Convierte la imagen a base64
     }
   }
- /* loadProfileImage(id: number): void {
-    this.UserService.getFotoPerfil(id).subscribe(
-      (base64Image: string) => {
-        this.profileImage = this.sanitizer.bypassSecurityTrustUrl(`data:image/jpeg;base64,${base64Image}`);
-      },
-      (error: any) => {
-        console.error('Error al obtener la foto de perfil', error);
-      }
-    );
-  }*/
+
+  onSavePhoto(): void {
+    if (this.selectedFile) {
+      this.clienteService.updateProfilePicture(this.selectedFile).subscribe(
+        response => {
+          console.log('Foto de perfil actualizada con éxito', response);
+          // Actualiza la vista o muestra un mensaje de éxito aquí
+          this.fotoPerfilBase64 = undefined; // Opcionalmente, puedes limpiar la vista previa
+          this.selectedFile = null; // Limpiar el archivo seleccionado
+          window.location.reload();
+        },
+        error => {
+          console.error('Error al actualizar la foto de perfil', error);
+          // Manejo de errores
+        }
+      );
+    } else {
+      console.warn('No se ha seleccionado ninguna foto');
+    }
+  }
+
+  onEditPhotoClick(): void {
+    if (this.fileInput) {
+      this.fileInput.nativeElement.click(); // Abre el selector de archivos
+    }
+  }
 }
+

@@ -18,7 +18,7 @@
             <label for="motivo-devolucion">Motivo de Devolución:</label>
             <textarea id="motivo-devolucion" formControlName="motivoDevolucion" rows="4" placeholder="Explique el motivo de la devolución"></textarea>
           </div>
-          <button class="btn-save btn-min-size" type="submit" [disabled]="!devolucionForm.valid">Solicitar Devolución</button>
+          <button class="btn-save btn-min-size" type="submit" >Solicitar Devolución</button>
         </form>
         <div *ngIf="showNotification" class="alert alert-success" role="alert">
           Solicitud de devolución realizada con éxito.
@@ -44,7 +44,7 @@
                 <td>{{ devolucion.motivoDevolucion }}</td>
                 <td>{{ devolucion.fechaSolicitud | date: 'yyyy-MM-dd' }}</td>
                 <td>
-                  <button class="btn btn-danger btn-sm" (click)="eliminarDevolucion(devolucion.id)">
+                  <button class="btn-cancel btn-min-size btn-sm" (click)="eliminarDevolucion(devolucion.id)">
                     Eliminar
                   </button>
                 </td>

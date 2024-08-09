@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EncabezadoComprasComponent } from "../../../shopping/components/encabezado-compras/encabezado-compras.component";
-import { HistorialCompraService } from '../../service/historial-compra.service';
-import { DevolucionService } from '../../service/devolucion.service';
-import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-purchase-history',
   standalone: true,
@@ -17,43 +15,34 @@ export class PurchaseHistoryComponent implements OnInit {
   devolucionForm: FormGroup;
   showNotification: boolean = false;
   purchases: any[] = [];
-  
   filteredPurchases = [...this.purchases];
   devoluciones: any[] = [];
-  apiUrl = environment.endpoint;
-  constructor(private fb: FormBuilder, private http: HttpClient,private HistorialCompraService: HistorialCompraService, private DevolucionService:DevolucionService ) {
+
+  constructor(private fb: FormBuilder) {
     this.devolucionForm = this.fb.group({
       numeroFactura: ['', Validators.required],
       motivoDevolucion: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void { this.devolucionForm = this.fb.group({
-    
-  });this.loadPurchaseHistory();
-  this.loadDevoluciones();
-}
-loadPurchaseHistory(): void {
-  this.HistorialCompraService.getPurchaseHistory().subscribe(
-    (data: any) => {
-      this.purchases = data; 
-      this.filteredPurchases = [...this.purchases]; // Inicializar las compras filtradas
-    },
-    error => {
-      console.error('Error fetching purchase history', error); 
-    }
-  );
-}
-loadDevoluciones(): void {
-  this.DevolucionService.getDevoluciones().subscribe(
-    (data: any) => {
-      this.devoluciones = data;
-    },
-    error => {
-      console.error('Error fetching devoluciones', error); 
-    }
-  );
-}
+  ngOnInit(): void {
+    // Datos quemados para historial de compras
+    this.purchases = [
+      { factura: 'F001', codigoCompra: 'A1001', articulo: 'Laptop', costo: 1000, fechaSalida: '2023-08-01', estado: 'Entregado' },
+      { factura: 'F002', codigoCompra: 'A1002', articulo: 'Mouse', costo: 50, fechaSalida: '2023-08-02', estado: 'Entregado' },
+      { factura: 'F003', codigoCompra: 'A1003', articulo: 'Teclado', costo: 80, fechaSalida: '2023-08-03', estado: 'Entregado' },
+    ];
+
+    // Inicializar las compras filtradas
+    this.filteredPurchases = [...this.purchases];
+
+    // Datos quemados para devoluciones
+    this.devoluciones = [
+      { id: 1, codigoCompra: 'A1001', motivoDevolucion: 'Producto defectuoso', fechaSolicitud: new Date('2023-08-04') },
+      { id: 2, codigoCompra: 'A1002', motivoDevolucion: 'No cumple con las expectativas', fechaSolicitud: new Date('2023-08-05') },
+    ];
+  }
+
   onSubmit(): void {
     if (this.devolucionForm.valid) {
       const factura = this.devolucionForm.value.numeroFactura;
@@ -62,49 +51,38 @@ loadDevoluciones(): void {
       const idProducto = this.getProductId(factura);
 
       if (idOrden && idProducto) {
-        
-        const devolucion = {
-          IdOrden: idOrden,
-          IdProducto: idProducto,
-          FechaDevolucion: new Date(),
-          Razon: motivo,
-          Estado: 'En proceso'
+        const nuevaDevolucion = {
+          id: this.devoluciones.length + 1, // Asignar un ID único
+          codigoCompra: `A${idOrden}`,
+          motivoDevolucion: motivo,
+          fechaSolicitud: new Date(),
         };
-        
-        this.DevolucionService.requestDevolucion(devolucion).subscribe({
-          next: (response) => {
-            console.log(`Devolución creada con ID ${response.id}`); 
-            this.showNotification = true; 
-            setTimeout(() => this.showNotification = false, 3000); 
-            this.loadDevoluciones(); 
-          },
-          error: (error) => {
-            console.error('Error al crear la devolución', error); // Manejo de errores
-          }
-        });
+
+        // Añadir la nueva devolución a la lista
+        this.devoluciones.push(nuevaDevolucion);
+
+        // Mostrar notificación de éxito
+        this.showNotification = true;
+        setTimeout(() => this.showNotification = false, 3000);
       }
     }
   }
+
   eliminarDevolucion(id: number): void {
-    this.DevolucionService.deleteDevolucion(id).subscribe({
-      next: () => {
-        console.log('Devolución eliminada'); // Log para depuración
-        this.loadDevoluciones(); // Recargar devoluciones después de eliminar una
-      },
-      error: (error) => {
-        console.error('Error al eliminar la devolución', error); // Manejo de errores
-      }
-    });
+    // Eliminar la devolución con el ID especificado
+    this.devoluciones = this.devoluciones.filter(d => d.id !== id);
   }
 
   getOrderId(invoiceNumber: string): number {
     const purchase = this.purchases.find(p => p.factura === invoiceNumber);
-    return purchase ? parseInt(purchase.codigoCompra.replace('A', '')) : 0; 
+    return purchase ? parseInt(purchase.codigoCompra.replace('A', '')) : 0;
   }
+
   getProductId(invoiceNumber: string): number {
     const purchase = this.purchases.find(p => p.factura === invoiceNumber);
-    return purchase ? 1 : 0; 
+    return purchase ? 1 : 0;
   }
+
   filterByDate(event: any): void {
     this.applyFilters();
   }
@@ -125,8 +103,7 @@ loadDevoluciones(): void {
     this.filteredPurchases = this.purchases.filter(purchase => {
       const matchesDate = !dateFilter || purchase.fechaSalida === dateFilter;
       const matchesProduct = !productFilter || purchase.articulo.toLowerCase().includes(productFilter);
-      const matchesInvoice = !invoiceFilter || purchase.factura.includes
-      (invoiceFilter);
+      const matchesInvoice = !invoiceFilter || purchase.factura.includes(invoiceFilter);
       return matchesDate && matchesProduct && matchesInvoice;
     });
   }

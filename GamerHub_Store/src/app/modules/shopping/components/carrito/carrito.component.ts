@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EncabezadoComprasComponent } from "../encabezado-compras/encabezado-compras.component";
 import {Producto} from '../../../../interface/Producto';
-import { ProductosComponent } from '../productos/productos.component';
-import { RouterOutlet } from '@angular/router';
-import { CarritopruebaService } from '../../services/carritoprueba/carritoprueba.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-carrito',

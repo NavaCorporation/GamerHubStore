@@ -34,12 +34,6 @@ export class ProductosComponent implements OnInit {
   defaultImage: SafeUrl;
   noProductsImage: SafeUrl;
   
-  //agregar
-  producto ={
-    nombreProducto: "",
-    precio: 0,
-    descripcion: "",
-  }
   
 
   constructor (private carritopruebaservice: CarritopruebaService,private productService: ProductServicesService, private sanitizer: DomSanitizer) {
@@ -149,12 +143,10 @@ export class ProductosComponent implements OnInit {
     return this.productosFiltrados.length === 0;
   }
   
-  //agregar2 e importar output y eventemitter
-  @Output() añadirAlCarrito = new EventEmitter<Producto>();
 
-  agregarProducto(producto: Producto) {
-    // Emitir el evento para agregar al carrito
-    this.añadirAlCarrito.emit(producto);
+
+
+
 
     // Mostrar mensaje flotante
     this.addToCart();

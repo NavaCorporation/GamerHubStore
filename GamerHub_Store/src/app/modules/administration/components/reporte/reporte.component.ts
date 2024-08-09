@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Producto } from '../../../../interface/Producto';
 import { InventarioService } from '../services/inventario.service';
 import { SidebarComponent } from "../sidebar/sidebar.component";
+import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-reporte',
@@ -36,7 +38,12 @@ export class ReporteComponent implements OnInit {
     });
   }
 
-  
+  exportarExcel(): void {
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.listadoProductor);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Productos');
+    XLSX.writeFile(wb, 'Reporte_Productos.xlsx');
+  }
 
 
 }

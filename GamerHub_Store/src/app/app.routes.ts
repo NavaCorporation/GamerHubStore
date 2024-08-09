@@ -6,7 +6,6 @@ import { ProductosComponent } from './modules/shopping/components/productos/prod
 import { CarritoComponent } from './modules/shopping/components/carrito/carrito.component';
 import { DetalleProductoComponent } from './modules/shopping/components/detalle-producto/detalle-producto.component';
 import { InventarioComponent } from './modules/administration/components/inventario/inventario.component';
-import { TareaPendienteComponent } from './modules/administration/components/tarea-pendiente/tarea-pendiente.component';
 import { EmployeeManagementComponent } from './modules/management/components/employee-management/employee-management.component';
 import { HeaderComponent } from './modules/shared/components/header/header.component';
 import { FooterComponent } from './modules/shared/components/footer/footer.component';
@@ -29,7 +28,6 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'product', component: ProductosComponent },
     { path: 'inventario', component: InventarioComponent },
-    { path: 'tarea-pendiente', component: TareaPendienteComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'restablecimiento-c', component: RestablecimientoCComponent },
     { path: 'reporte', component: ReporteComponent },

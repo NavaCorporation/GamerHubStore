@@ -2,49 +2,32 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AutenticacionService } from '../services/autenticacion.service';
 import { Router } from '@angular/router';
+import { RrecuperarService } from '../services/recuperar-service';
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-restablecimiento-c',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SidebarComponent],
   templateUrl: './restablecimiento-c.component.html',
   styleUrl: './restablecimiento-c.component.css'
 })
 export class RestablecimientoCComponent {
 
-  resetPasswordForm: FormGroup;
-  passwordResetSuccess = false;
-  showSuccessMessage = false;
+  formulario: FormGroup;
+  mensaje: string | null = null;
 
-  constructor(private fb: FormBuilder,
-    private router: Router,) {
-    this.resetPasswordForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]]
+  constructor(private fb: FormBuilder, private recuperarService: RrecuperarService) {
+    this.formulario = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
-  onSubmit() {
-    if (this.resetPasswordForm.valid) {
-      // Simulate password reset process
-      this.passwordResetSuccess = true;
-      this.showSuccessMessage = true;
-      this.resetPasswordForm.reset();
-      
-      // Hide the success message after 5 seconds
-      setTimeout(() => {
-        this.showSuccessMessage = false;
-      }, 5000);
-    }
-  }
-
-  reset() {
-    this.passwordResetSuccess = false;
-    this.showSuccessMessage = false;
-  }
-
-  
-  goBack(): void {
-    this.router.navigate(['/dashboard']);  // Navega a la ruta deseada, por ejemplo, '/admin'
+  solicitarRestablecimiento(): void {
+    const email = this.formulario.get('email')?.value;
+    this.recuperarService.solicitarRestablecimiento(email).subscribe(mensaje => {
+      this.mensaje = mensaje;
+    });
   }
   
 }
